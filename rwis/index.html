@@ -15,14 +15,10 @@
 <meta name="publisher" content="Bureau of Reclamation, Lower Colorado Region" />
 <meta name="created" content="20150101" />
 <meta name="expires" content="Never" />
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 <link rel="shortcut icon" href="http://www.usbr.gov/img/favicon.ico">
 
-<!-- Styles -->
+<!-- Stylesheets for visualizations -->
 <link rel="stylesheet" href="http://www.usbr.gov/css/main.min.css" />
 <link rel="stylesheet" href="dygraph.css" />  
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
@@ -30,15 +26,6 @@
     #map{ width: 400px; height: 500px; }
 </style>
 
-
-<!-- jQuery -->
-<script src="http://www.usbr.gov/js/lib/jquery.js"></script>
-<script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
-<script src="dygraph.min.js"></script>
-<script src="liquidFillGauge.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
-   
 <!-- Modernizr -->
 <script src="http://www.usbr.gov/js/lib/modernizr.js"></script>
   
@@ -348,8 +335,16 @@ If the visualizations below do not show up after a few seconds, try reloading th
   </div>
 </div>
 
- <!-- #EndLibraryItem --></div>
+ <!-- #EndLibraryItem --></div> 
 
+ <!-- JS libraries for visualizations -->
+<script src="http://www.usbr.gov/js/lib/jquery.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+<script src="dygraph.min.js"></script>
+<script src="liquidFillGauge.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+<!-- JS for generating visualizations -->
 <script>
 // Only load FastClick if touch events are supported
 if ( Modernizr.touch ) {
@@ -359,9 +354,7 @@ if ( Modernizr.touch ) {
     });
   });
 }
-</script>
-   
-<script>
+// Function to fetch RWIS JSON output
 var getJSON = function(url) {
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
@@ -378,14 +371,18 @@ var getJSON = function(url) {
     xhr.send();
   });
 };
+// Replace-All function for working with strings
 String.prototype.replaceAll = function(search, replace) {
     if (replace === undefined) {
         return this.toString();
     }
     return this.split(search).join(replace);
 }
+// Main script that does all the work
 getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet&start=2017-01-01&end=2017-04-28').then(function(data) {
-    //alert('Your Json result is:  ' + JSON.stringify(data["Lake Mead"], null, 4));     
+    //alert('Your Json result is:  ' + JSON.stringify(data["Lake Mead"], null, 4));  
+	
+	// ACCESSING JSON OUTPUTS WITH JS
 	jsonName.innerText = JSON.stringify(data["Lake Mead"].description, null, 4);
 	jsonType.innerText = JSON.stringify(data["Lake Mead"].type, null, 4);
 	jsonData.innerText = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0], null, 4) + "," + 
@@ -394,6 +391,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 							data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"].length - 1
 						], null, 4);
 	
+	// TIMESERIES CHART USING DYGRAPHS
 	var graphData = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 2);
 			//[ RWIS OUTPUT
 			//  {
@@ -437,6 +435,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 				}
 			 );
 	
+	// FILL GAUGE USING D3
 	var fillVal = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0].value, null, 4).replaceAll("\"","");
 	var config1 = liquidFillGaugeDefaultSettings();
     config1.circleColor = "#244A9F";
@@ -446,14 +445,14 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
     config1.circleThickness = 0.2;
     config1.textVertPosition = 0.2;
     config1.waveAnimateTime = 1000;
-    var gauge1 = loadLiquidFillGauge("fillgauge1", fillVal/15, config1);
+    var gauge1 = loadLiquidFillGauge("fillgauge1", Math.floor(fillVal/15), config1);
 	
+	// MAPPING EXAMPLE USING LEAFLET
 	var dataLat = JSON.stringify(data["Lake Mead"].latitude, null, 4).replaceAll("\"","");
 	var dataLon = JSON.stringify(data["Lake Mead"].longitude, null, 4).replaceAll("\"","");
 	mapLatLon.innerText = "JSON coordinates: " + dataLat + ", " + dataLon;
 	// initialize the map
-	var map = L.map('map').setView([dataLat, dataLon], 13);
-	
+	var map = L.map('map').setView([dataLat, dataLon], 13);	
 	// load a tile layer
 	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 	{
@@ -461,13 +460,13 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 		maxZoom: 19,
 		minZoom: 9
 	}).addTo(map);
-	
+	var marker = L.marker([dataLat, dataLon]).addTo(map);
+	marker.bindPopup(dataLat + ", " + dataLon).openPopup();
 }, function(status) { //error detection....
   alert('Something went wrong.');
 });  
 </script>
- 
-
+   
 <!-- Outlines -->
 <script src="http://www.usbr.gov/js/components/outlines.js"></script>
 
