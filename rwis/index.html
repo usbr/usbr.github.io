@@ -24,13 +24,19 @@
 
 <!-- Styles -->
 <link rel="stylesheet" href="http://www.usbr.gov/css/main.min.css" />
-<link rel="stylesheet" href="dygraph.css" />
+<link rel="stylesheet" href="dygraph.css" />  
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+<style>
+    #map{ width: 400px; height: 500px; }
+</style>
+
 
 <!-- jQuery -->
 <script src="http://www.usbr.gov/js/lib/jquery.js"></script>
 <script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
 <script src="dygraph.min.js"></script>
 <script src="liquidFillGauge.js"></script>
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 
    
 <!-- Modernizr -->
@@ -159,14 +165,14 @@
     </div>
   </div>
 </div><!-- #EndLibraryItem --><!-- Update inline style to change banner image -->
-<div class="Main" id="Main" role="main" style="background-image: url('http://www.usbr.gov/lc/images/bg-banner.jpg')">
+<div class="Main" id="Main" role="main" style="background-image: url('https://www.usbr.gov/img/bg-banner.jpg')">
       <!-- Additional wrapper for bottom background image -->
       <div class="Main-wrap" style="background-image: url('http://www.usbr.gov/img/bg-footer.jpg')">
         <!-- Banner -->
         <div class="Banner Banner--full">
           <div class="Banner-content">
             <div class="container">
-              <h1>Lower Colorado River Operations</h1>
+              <h1>RWIS Data Service Test</h1>
            
             </div>
           </div>
@@ -177,36 +183,11 @@
 <div class="Breadcrumbs">
   <div class="container">
     <ul class="resetList">
-    <li><a href="http://www.usbr.gov">Reclamation Home</a></li>
-      <li><a href="http://www.usbr.gov/lc/">Lower Colorado Region</a></li>
-      <li><a href="http://www.usbr.gov/lc/riverops.html">Lower Colorado River Operations</a></li>
-      
+    <li><a href="http://www.usbr.gov">Reclamation Home</a></li>      
     </ul>
   </div>
 </div>
 
-          <!-- Left Navigation -->
-       <!-- Left Navigation -->
-          <div class="Main-nav">
-            <!-- Left Navigation --><!-- #BeginLibraryItem "/Library/lc-leftnav.lbi" -->			<div class="Main-nav">
-          <div class="LeftNav" role="navigation">
-  <span class="LeftNav-title">LOWER COLORADO REGION</span>
-  <ul class="LeftNav-list">
-<li><a href="http://www.usbr.gov/lc/index.html">LC Region Home</a></li>
-<li><a href="http://www.usbr.gov/lc/area.html">Area Offices</a></li>
-<li><a href="http://www.usbr.gov/lc/aboutus.html">About Us</a></li>
-<li><a href="http://www.usbr.gov/lc/pgmasst.html">Programs & Activities</a></li>
-<li><a href="http://www.usbr.gov/lc/riverops.html">Water Operations</a></li>
-<li><a href="http://www.usbr.gov/lc/projects.html">Facilities</a></li>
-<li><a href="http://www.usbr.gov/lc/news.html">Photos & Features</a></li>
-<li><a href="http://www.usbr.gov/lc/fedjobs.html">Employment</a></li>
-<li><a href="http://www.usbr.gov/lc/links.html">Links</a></li>
-<li><a href="http://www.usbr.gov/lc/siteindx.html">Site Index</a></li>
-<li><a href="http://www.usbr.gov/lc/main/comments.html">Contact Us</a></li>
-  </ul>
-</div>
-</div><!-- #EndLibraryItem -->
-</div><!-- end Main-nav -->
 <div class="Main-well">
             <div align="left">
               <table border="0" cellpadding="2" cellspacing="10" width="100%">
@@ -219,27 +200,50 @@
 <strong>TEST PAGE POINTING TO RWIS<br><br>
 This page is generated with data from <a href="https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet&start=2017-01-01&end=2017-04-28">this</a> RWIS link to JSON data.
 <br><br>
-If the visualization below do not show up after a few seconds, try reloading the page since the RWIS data feed is somewhat flaky...
+If the visualizations below do not show up after a few seconds, try reloading the page since the RWIS data feed is somewhat flaky...
 <br><br>
-Data Plot: <br>
-<div id="graphdiv1"></div>
-<div id="graphdiv2"></div>
-<br><br>
-Fill Gauge: (based on data but % shown is non-sensical)
-<br><br>
-<svg id="fillgauge1" width="97%" height="250"></svg>
-<br><br>
-Partial JSON Content:<br>
-</strong>
-<blockquote>
-Name: <blockquote><div id="jsonName"></div>
-</blockquote></blockquote>
-<blockquote>
-Type: <blockquote><div id="jsonType"></div>
-</blockquote></blockquote>
-<blockquote>
-Data: <blockquote><div id="jsonData"></div>
-</blockquote></blockquote>
+
+	<tr bgcolor="ffffff" align="left">
+	
+		<td width="50%" valign="top">
+		<strong>Data Plot:</strong>
+		<br><br>
+		<div id="graphdiv1"></div>
+		<br><br>
+		</td>
+		
+		<td width="50%" valign="top">
+		<strong>Fill Gauge: (based on data but % shown is non-sensical)</strong>
+		<br><br>
+		<svg id="fillgauge1" width="97%" height="250"></svg>
+		<br><br>
+		</td>
+		
+	</tr>
+	
+	<tr bgcolor="ffffff" align="left">
+	
+		<td width="50%" valign="top">
+		<strong>Partial JSON Content:</strong>
+		<blockquote>
+		Name: <blockquote><div id="jsonName"></div>
+		</blockquote></blockquote>
+		<blockquote>
+		Type: <blockquote><div id="jsonType"></div>
+		</blockquote></blockquote>
+		<blockquote>
+		Data: <blockquote><div id="jsonData"></div>
+		</blockquote></blockquote>
+		</td>
+	
+		<td width="50%" valign="top">
+		<strong>Mapping:</strong>
+		<br><br>
+		<div id="mapLatLon"></div>
+		<div id="map"></div>
+		</td>
+	
+	</tr>
 
 
 
@@ -389,6 +393,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 						JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][
 							data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"].length - 1
 						], null, 4);
+	
 	var graphData = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 2);
 			//[ RWIS OUTPUT
 			//  {
@@ -418,8 +423,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 	graphData = graphData.replaceAll("\"), flag\": \"\""," ],");
 	graphData = graphData.replaceAll(/[\]],\r\n[\]]/g, "");
 	graphData = graphData.slice(0, graphData.length - 5) + graphData.slice(graphData.length - 4);
-	//graphdiv1.innerText = graphData;
-	new Dygraph(document.getElementById("graphdiv2"),
+	new Dygraph(document.getElementById("graphdiv1"),
 				graphData, 
 				{ 	
 					labels: [ "Date", "Value", "B" ],
@@ -432,6 +436,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
 
 				}
 			 );
+	
 	var fillVal = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0].value, null, 4).replaceAll("\"","");
 	var config1 = liquidFillGaugeDefaultSettings();
     config1.circleColor = "#244A9F";
@@ -442,6 +447,21 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameter
     config1.textVertPosition = 0.2;
     config1.waveAnimateTime = 1000;
     var gauge1 = loadLiquidFillGauge("fillgauge1", fillVal/15, config1);
+	
+	var dataLat = JSON.stringify(data["Lake Mead"].latitude, null, 4).replaceAll("\"","");
+	var dataLon = JSON.stringify(data["Lake Mead"].longitude, null, 4).replaceAll("\"","");
+	mapLatLon.innerText = "JSON coordinates: " + dataLat + ", " + dataLon;
+	// initialize the map
+	var map = L.map('map').setView([dataLat, dataLon], 13);
+	
+	// load a tile layer
+	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+	{
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+		maxZoom: 19,
+		minZoom: 9
+	}).addTo(map);
+	
 }, function(status) { //error detection....
   alert('Something went wrong.');
 });  
