@@ -22,22 +22,17 @@
 
 <link rel="shortcut icon" href="http://www.usbr.gov/img/favicon.ico">
 
-<script type="text/javascript"> 
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-17251781-1']);
-_gaq.push(['_anonymizeIp']);
-_gaq.push(['_trackPageview']);
-(function() {
-var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-
 <!-- Styles -->
 <link rel="stylesheet" href="http://www.usbr.gov/css/main.min.css" />
+<link rel="stylesheet" href="dygraph.css" />
 
+<!-- jQuery -->
+<script src="http://www.usbr.gov/js/lib/jquery.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" language="JavaScript"></script>
+<script src="dygraph.min.js"></script>
+<script src="liquidFillGauge.js"></script>
+
+   
 <!-- Modernizr -->
 <script src="http://www.usbr.gov/js/lib/modernizr.js"></script>
   
@@ -224,13 +219,18 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <strong>TEST PAGE POINTING TO RWIS<br><br>
 This page is generated with data from <a href="https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet&start=2017-01-01&end=2017-04-28">this</a> RWIS link to JSON data.
 <br><br>
-</strong>
-
-<br>
-
-
+If the visualization below do not show up after a few seconds, try reloading the page since the RWIS data feed is somewhat flaky...
 <br><br>
-JSON Content:<br>
+Data Plot: <br>
+<div id="graphdiv1"></div>
+<div id="graphdiv2"></div>
+<br><br>
+Fill Gauge: (based on data but % shown is non-sensical)
+<br><br>
+<svg id="fillgauge1" width="97%" height="250"></svg>
+<br><br>
+Partial JSON Content:<br>
+</strong>
 <blockquote>
 Name: <blockquote><div id="jsonName"></div>
 </blockquote></blockquote>
@@ -242,14 +242,12 @@ Data: <blockquote><div id="jsonData"></div>
 </blockquote></blockquote>
 
 
+
 	
                 </tr>
                 </tbody>
               </table>
             </div>
-            <br>
-            <p>Please contact the <a href="http://www.usbr.gov/lc/region/g4000/controlctr.html">Water Operations Control Center</a> via e-mail at <a href="mailto:bcoowaterops@usbr.gov"> bcoowaterops@usbr.gov</a> or via phone at (702) 293-8373 for additional questions or information.</p>
-        </em>
 		</div><!-- end Main-well -->
 	</div><!-- end Main-content -->    
 </div><!-- end Main-wrap -->
@@ -348,8 +346,6 @@ Data: <blockquote><div id="jsonData"></div>
 
  <!-- #EndLibraryItem --></div>
 
-<!-- jQuery -->
-<script src="http://www.usbr.gov/js/lib/jquery.js"></script>
 <script>
 // Only load FastClick if touch events are supported
 if ( Modernizr.touch ) {
@@ -360,11 +356,8 @@ if ( Modernizr.touch ) {
   });
 }
 </script>
-
-</script>
-
+   
 <script>
-
 var getJSON = function(url) {
   return new Promise(function(resolve, reject) {
     var xhr = new XMLHttpRequest();
@@ -381,24 +374,77 @@ var getJSON = function(url) {
     xhr.send();
   });
 };
-
+String.prototype.replaceAll = function(search, replace) {
+    if (replace === undefined) {
+        return this.toString();
+    }
+    return this.split(search).join(replace);
+}
 getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet&start=2017-01-01&end=2017-04-28').then(function(data) {
     //alert('Your Json result is:  ' + JSON.stringify(data["Lake Mead"], null, 4));     
 	jsonName.innerText = JSON.stringify(data["Lake Mead"].description, null, 4);
 	jsonType.innerText = JSON.stringify(data["Lake Mead"].type, null, 4);
-	jsonData.innerText = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 4);
+	jsonData.innerText = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0], null, 4) + "," + 
+						JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][1], null, 4) + ", ..., " + 
+						JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][
+							data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"].length - 1
+						], null, 4);
+	var graphData = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 2);
+			//[ RWIS OUTPUT
+			//  {
+			//    "datetime": "2010-01-01 00:00:00",
+			//    "value": "11169400",
+			//    "flag": ""
+			//  },...
+			//]
+			// REQUIRED INPUT
+           //[
+           //  [1,10,100],
+           //  [2,20,80],
+           //  [3,50,60],
+           //  [4,70,80]
+           //],	
+    // Transform JSON string to DyGraph input...
+	graphData = graphData.replaceAll(/,\r?\n|\r/g, ", ");
+	graphData = graphData.replaceAll(/[\}],\s+[\{]\r?\n/g, "");
+	graphData = graphData.replaceAll(/[\{]\r?\n|\r/g, "");
+	graphData = graphData.replaceAll(/[\}]\r?\n|\r/g, "");
+	graphData = graphData.replaceAll(/,\s+0/g, ", 0],");
+	graphData = graphData.replaceAll("\"datetime\": ", "  [ ");
+	graphData = graphData.replaceAll("\"value\": ", " ");
+	graphData = graphData.replaceAll(/\s+00:00:00[\"],\s+[\"]/g, "\", ");
+	graphData = graphData.replaceAll(/[\"],\s+[\"]/g, "\"), ");
+	graphData = graphData.replaceAll("-","/");
+	graphData = graphData.replaceAll("\"), flag\": \"\""," ],");
+	graphData = graphData.replaceAll(/[\]],\r\n[\]]/g, "");
+	graphData = graphData.slice(0, graphData.length - 5) + graphData.slice(graphData.length - 4);
+	//graphdiv1.innerText = graphData;
+	new Dygraph(document.getElementById("graphdiv2"),
+				graphData, 
+				{ 	
+					labels: [ "Date", "Value", "B" ],
+					ylabel: 'Value',
+					fillGraph: true,
+					color: '#244A9F',
+					highlightCircleSize: 5, 
+					pointSize: 1.5, 
+					strokeWidth: 1.5
 
-	
+				}
+			 );
+	var fillVal = JSON.stringify(data["Lake Mead"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0].value, null, 4).replaceAll("\"","");
+	var config1 = liquidFillGaugeDefaultSettings();
+    config1.circleColor = "#244A9F";
+    config1.textColor = "#CB9F5B";
+    config1.waveTextColor = "#CB9F5B";
+    config1.waveColor = "#244A9F";
+    config1.circleThickness = 0.2;
+    config1.textVertPosition = 0.2;
+    config1.waveAnimateTime = 1000;
+    var gauge1 = loadLiquidFillGauge("fillgauge1", fillVal/15, config1);
 }, function(status) { //error detection....
   alert('Something went wrong.');
-});
-  
-</script>
-
- <!-- Responsive Video Plugin -->
-<script src="http://www.usbr.gov/js/lib/jquery.fitvids.min.js"></script>
-<script>
-  $(".fluid-video").fitVids();
+});  
 </script>
  
 
