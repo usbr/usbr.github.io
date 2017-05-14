@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!-- template-v2015  -->
+<!--[if lte IE 7]><html class="no-js old-ie lte-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 8]><html class="no-js old-ie lte-ie8 lte-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en" dir="ltr"><!--<![endif]-->
+<head>
+  <!-- Head Content  -->
+<meta charset="utf-8">
+
+<!--[if gt IE 8 ]--><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><!--<![endif]-->
+<title>Lower Colorado River Operations | Lower Colorado Region | Bureau of Reclamation</title>
+<meta name="Description" content="Bureau of Reclamation, Lower Colorado Region." />
+<meta name="Keywords" content="Department of the Interior, Bureau of Reclamation, Lower Colorado Region, Lower Colorado River, Colorado River, Hoover Dam, Phoenix, Yuma, Temecula, Area Offices" />
+<meta name="author" content="Bureau of Reclamation, Lower Colorado Region Web Team" />
+<meta name="publisher" content="Bureau of Reclamation, Lower Colorado Region" />
+<meta name="created" content="20150101" />
+<meta name="expires" content="Never" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://www.usbr.gov/img/favicon.ico">
+
+<!-- Stylesheets for visualizations -->
+<link rel="stylesheet" href="https://www.usbr.gov/css/main.min.css" />
+<link rel="stylesheet" href="dygraph.css" />  
+<link rel="stylesheet" href="leaflet.0.7.3.css"/>
+<style>
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.link:hover {
+  stroke-opacity: .5;
+}
+</style>
+
+<!-- Modernizr -->
+<script src="https://www.usbr.gov/js/lib/modernizr.js"></script>
+  
+</head>
+<body>
+  <div class="MainContainer">
+    <!-- Skip Links (only visible to screen readers) -->
+<div id="SkipLinks" class="SkipLinks">
+  <ul>
+    <li><a href="#Nav">Skip to Primary Navigation</a></li>
+    <li><a href="#Main">Skip to Main Content</a></li>
+    <li><a href="#Footer">Skip to Footer</a></li>
+  </ul>
+</div><!-- #BeginLibraryItem "library/topnav.lbi" --><!-- Header -->
+<div class="Header" id="top" role="banner">
+  <div class="Header-wrap container">
+
+    <!-- Logo -->
+    <a class="Header-logo" href="https://www.usbr.gov" title="Reclamation Home"><img src="https://www.usbr.gov/img/logo-white.png" alt="U.S. Bureau of Reclamation: Managing Water in the West"></a> 
+
+     <div class="Header-social">
+      <span class="Header-social-label">Share</span>
+      <ul>
+        <li>
+          <a class="critical-icon" title="Share on Facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={url}">
+            <span class="icon-facebook" aria-hidden="true"></span>
+            <span class="fallback">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Twitter" target="_blank" href="https://twitter.com/share?url={url}&text={title}&via={via}&hashtags={hashtags}">
+            <span class="icon-twitter" aria-hidden="true"></span>
+            <span class="fallback">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Tumblr" target="_blank" href="http://www.tumblr.com/share/link?url={url}&name={title}&description={desc}">
+            <span class="icon-tumblr" aria-hidden="true"></span>
+            <span class="fallback">Tumblr</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Pinterest" target="_blank" href="https://pinterest.com/pin/create/bookmarklet/?media={img}&url={url}&is_video={is_video}&description={title}">
+            <span class="icon-pinterest" aria-hidden="true"></span>
+            <span class="fallback">Pinterest</span>
+          </a>
+        </li>
+      </ul>
+    </div><!-- end Header-social -->
+
+  </div><!-- end container -->
+</div><!-- end Header -->
+
+<!-- Nav Menu -->
+<div class="Nav" id="Nav">
+  <div class="Nav-wrap">
+    <!-- Navigation -->
+    <ol class="Nav-list resetList" role="navigation" aria-label="Primary Navigation">
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Water &amp; Power</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/dams.jsp" class="Nav-sublist-link">Dams</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/powerplants.jsp" class="Nav-sublist-link">Powerplants</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/projects.jsp" class="Nav-sublist-link">Projects</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/agrihydro.html" class="Nav-sublist-link">Agrimet/Hydromet</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/water/" class="Nav-sublist-link">Water Operations</a></li>
+         </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Resources &amp; Research</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+           <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/programs/" class="Nav-sublist-link">Programs</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/tsc/" class="Nav-sublist-link">Technical Service Center</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/research/" class="Nav-sublist-link">Research &amp; Development</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/recman/" class="Nav-sublist-link">Reclamation Manual</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/environmental/" class="Nav-sublist-link">Environmental Resources/Reports</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/library/" class="Nav-sublist-link">Library</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">About Us</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+          <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/about/mission.html" class="Nav-sublist-link">Mission/Vision</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/about/fact.html" class="Nav-sublist-link">Fact Sheet</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/bios/biosdetail.cfm?recordid=1" class="Nav-sublist-link">Commissioner</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/offices.html" class="Nav-sublist-link">Addresses/Contacts</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/images/br_org_chart.pdf" class="Nav-sublist-link">Organizational Chart</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/bios/bios.cfm" class="Nav-sublist-link">Leadership Bios</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/hr/" class="Nav-sublist-link">Employment</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/comments.cfm/" class="Nav-sublist-link">Contact</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Recreation &amp; Public Use</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+          <li class="Nav-sublist-item"><a href="https://www.usbr.gov/recreation/" class="Nav-sublist-link">Find Recreation</a></li>
+         <li class="Nav-sublist-item"><a href="http://www.recreation.gov/" class="Nav-sublist-link">Recreation.gov</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/lands/" class="Nav-sublist-link">Public Use</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">News &amp; Multimedia</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/newsrelease/" class="Nav-sublist-link">News Releases</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/stories/" class="Nav-sublist-link">News Stories</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/speech/" class="Nav-sublist-link">Speeches</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/testimony/" class="Nav-sublist-link">Congressional Testimony</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/factsheet/" class="Nav-sublist-link">Fact Sheets</a></li>
+                  <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#photos" class="Nav-sublist-link">Photos</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#video" class="Nav-sublist-link">Multimedia</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#social" class="Nav-sublist-link">Social Media</a></li>
+        </ol>
+      </li>
+    </ol>
+
+    <!-- Search -->
+    <div class="Header-search" id="recSearch">
+       <form method="get" action=" http://search.usa.gov/search" role="search">
+        <input type="hidden" name="affiliate" value="Reclamation" />
+        <label class="visuallyhidden" for="query">Search</label>
+        <input type="text" name="query" id="query" placeholder="Search" />
+        <button type="submit" id="search">Search</button>
+      </form>
+    </div>
+  </div>
+</div><!-- #EndLibraryItem --><!-- Update inline style to change banner image -->
+<div class="Main" id="Main" role="main" style="background-image: url('https://www.usbr.gov/img/bg-banner.jpg')">
+      <!-- Additional wrapper for bottom background image -->
+      <div class="Main-wrap" style="background-image: url('https://www.usbr.gov/img/bg-footer.jpg')">
+        <!-- Banner -->
+        <div class="Banner Banner--full">
+          <div class="Banner-content">
+            <div class="container">
+              <h1>RWIS Data Service Test</h1>
+           
+            </div>
+          </div>
+        </div><!-- end Banner -->
+
+        <div class="Main-content container">
+          <!-- Breadcrumbs -->
+<div class="Breadcrumbs">
+  <div class="container">
+    <ul class="resetList">
+    <li><a href="https://www.usbr.gov">Reclamation Home</a></li>      
+    </ul>
+  </div>
+</div>
+
+<div class="Main-well">
+            <div align="left">
+              <table border="0" cellpadding="2" cellspacing="10" width="100%">
+                <tbody>
+                  <tr bgcolor="ffffff" align="left">
+<br>				  
+
+<!-- MAIN CONTENT GOES HERE -->
+
+<strong>TEST RWIS Visualization<br><br>
+This page is generated with metadata from the <a href="https://water.usbr.gov/">RWIS Data Service</a> as of 14MAY2017. The Sankey chart below shows the distribution of the observed data that are currently in the RWIS DB.
+<br><br>
+
+<p id="chart">
+
+	
+                </tr>
+                </tbody>
+              </table>
+            </div>
+		</div><!-- end Main-well -->
+	</div><!-- end Main-content -->    
+</div><!-- end Main-wrap -->
+</div><!-- end Main -->
+
+<div><!-- #BeginLibraryItem "/library/footer.lbi" -->
+<!-- Footer -->
+<div class="Footer" id="Footer" role="contentinfo">
+  <div class="container">
+
+    <h2 class="visuallyhidden">More Information about the U.S. Bureau of Reclamation</h2>
+
+    <!-- Social Links -->
+    <div class="Footer-social">
+      <h2>Stay in Touch</h2>
+      <ul>
+        <li>
+          <a href="http://www.facebook.com/bureau.of.reclamation" target="new" class="critical-icon">
+            <span class="icon-facebook" aria-hidden="true"></span>
+            <span class="fallback">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://twitter.com/usbr" class="critical-icon" target="new">
+            <span class="icon-twitter" aria-hidden="true"></span>
+            <span class="fallback">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.youtube.com/user/reclamation" class="critical-icon" target="new">
+            <span class="icon-youtube" aria-hidden="true"></span>
+            <span class="fallback">YouTube</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.flickr.com/photos/usbr/" class="critical-icon" target="new">
+            <span class="icon-flickr" aria-hidden="true"></span>
+            <span class="fallback">Flickr</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://usbr.tumblr.com/" class="critical-icon" target="new">
+            <span class="icon-tumblr" aria-hidden="true"></span>
+            <span class="fallback">Tumblr</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.pinterest.com/usbrgov/" class="critical-icon" target="new">
+            <span class="icon-pinterest" aria-hidden="true"></span>
+            <span class="fallback">Pinterest</span>
+          </a>
+        </li>
+        <li>
+          <a href="http://instagram.com/bureau_of_reclamation" class="critical-icon" target="new">
+            <span class="icon-instagram" aria-hidden="true"></span>
+            <span class="fallback">Instagram</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.usbr.gov/newsroom/rssxml/rssfeeds.html" class="critical-icon" target="new">
+            <span class="icon-rss" aria-hidden="true"></span>
+            <span class="fallback">RSS</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Site Links -->
+    <div class="Footer-links">
+      <ul>
+        <li><a href="https://www.usbr.gov/main/comments.cfm">Contact Us</a></li>
+        <li><a href="https://www.usbr.gov/main/index/">Site Index</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://www.usbr.gov/main/access.html">Accessibility</a></li>
+        <li><a href="https://www.usbr.gov/main/disclaimer.html">Disclaimer</a></li>
+        <li><a href="http://www.doi.gov/" target="new"><abbr title="Department of the Interior">DOI</abbr></a></li>
+       
+        <li><a href="https://www.usbr.gov/foia/">FOIA</a></li>
+        <li><a href="http://www.doi.gov/pmb/eeo/no-fear-act.cfm">No Fear Act</a></li>
+        <li><a href="https://www.usbr.gov/main/notices.html">Notices</a></li>
+         <li><a href="https://www.usbr.gov/main/privacy.html">Privacy Policy</a></li>
+        <li><a href="https://www.usbr.gov/main/qoi/">Quality of Information</a></li>
+        <li><a href="http://www.recreation.gov/" target="new">Recreation.gov</a></li>
+        <li><a href="http://www.usa.gov/" target="new">USA.gov</a></li>
+       
+      </ul>
+    </div>
+    
+
+    <!-- Logo -->
+    <a class="Footer-logo" href="https://www.usbr.gov"><img src="https://www.usbr.gov/img/seal-white.png" alt="U.S. Department of the Interior-Bureau of Reclamation"></a>
+
+  </div>
+</div>
+
+ <!-- #EndLibraryItem --></div> 
+
+ <!-- JS libraries for visualizations -->
+<script src="https://www.usbr.gov/js/lib/jquery.js"></script>
+<script src="d3.v3.min.js"></script>
+<script src="sankey.js"></script>
+
+<!-- JS for generating visualizations -->
+<script>
+	
+var units = "Widgets";
+
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+    width = 900 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
+
+var formatNumber = d3.format(",.0f"),    // zero decimal places
+    format = function(d) { return formatNumber(d) + " " + units; },
+    color = d3.scale.category20();
+
+// append the svg canvas to the page
+var svg = d3.select("#chart").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Set the sankey diagram properties
+var sankey = d3.sankey()
+    .nodeWidth(36)
+    .nodePadding(40)
+    .size([width, height]);
+
+var path = sankey.link();
+
+// load the data
+d3.json("rwis-sankey-formatted.json", function(error, graph) {
+
+  sankey
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .layout(32);
+
+// add in the links
+  var link = svg.append("g").selectAll(".link")
+      .data(graph.links)
+    .enter().append("path")
+      .attr("class", "link")
+      .attr("d", path)
+      .style("stroke-width", function(d) { return Math.max(1, d.dy); })
+      .sort(function(a, b) { return b.dy - a.dy; });
+
+// add the link titles
+  link.append("title")
+        .text(function(d) {
+    		return d.source.name + " ? " + 
+                d.target.name + "\n" + format(d.value); });
+
+// add in the nodes
+  var node = svg.append("g").selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { 
+		  return "translate(" + d.x + "," + d.y + ")"; })
+    .call(d3.behavior.drag()
+      .origin(function(d) { return d; })
+      .on("dragstart", function() { 
+		  this.parentNode.appendChild(this); })
+      .on("drag", dragmove));
+
+// add the rectangles for the nodes
+  node.append("rect")
+      .attr("height", function(d) { return d.dy; })
+      .attr("width", sankey.nodeWidth())
+      .style("fill", function(d) { 
+		  return d.color = color(d.name.replace(/ .*/, "")); })
+      .style("stroke", function(d) { 
+		  return d3.rgb(d.color).darker(2); })
+    .append("title")
+      .text(function(d) { 
+		  return d.name + "\n" + format(d.value); });
+
+// add in the title for the nodes
+  node.append("text")
+      .attr("x", -6)
+      .attr("y", function(d) { return d.dy / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .attr("transform", null)
+      .text(function(d) { return d.name; })
+    .filter(function(d) { return d.x < width / 2; })
+      .attr("x", 6 + sankey.nodeWidth())
+      .attr("text-anchor", "start");
+
+// the function for moving the nodes
+  function dragmove(d) {
+    d3.select(this).attr("transform", 
+        "translate(" + d.x + "," + (
+                d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))
+            ) + ")");
+    sankey.relayout();
+    link.attr("d", path);
+  }
+});
+
+</script>
+   
+<!-- Outlines -->
+<script src="https://www.usbr.gov/js/components/outlines.js"></script>
+
+<!-- Mobile Navigation -->
+<script src="https://www.usbr.gov/js/components/navigation.js"></script>
+
+<!-- Responsive Tabs -->
+<script src="https://www.usbr.gov/js/lib/responsive-tabs.js"></script>
+<script src="https://www.usbr.gov/js/components/tabs.js"></script>
+
+<!-- Explore Accordion -->
+<script src="https://www.usbr.gov/js/components/explore.js"></script>
+
+<!-- Carousel -->
+<script src="https://www.usbr.gov/js/lib/carousel.js"></script>
+<script src="https://www.usbr.gov/js/components/carousel.js"></script>
+
+<!-- Left Navigation -->
+<script src="https://www.usbr.gov/js/components/left-nav.js"></script>
+
+</body>
+</html>
