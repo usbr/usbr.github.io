@@ -4,6 +4,8 @@ This repository contains files that show snippets for how to request and use Rec
 
 Available Pages:
 
+Service: NA (Direct Connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
+
 Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sample: https://usbr.github.io/rwis/
 
 Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sankey Chart: https://usbr.github.io/rwisSankey/
