@@ -6,7 +6,7 @@ Available Pages:
 
 Service: NA (Direct Connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
 
-Service: TBD - Sample: https://usbr.github.io/yaodashboard/
+Service: TBD - Sample: https://usbr.github.io/yaoDashboard/
 
 Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sample: https://usbr.github.io/rwis/
 
