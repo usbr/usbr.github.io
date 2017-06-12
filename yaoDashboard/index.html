@@ -287,9 +287,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						</div>
 					</fieldset>
 					<fieldset class="fieldset-auto-width">
-						<legend><strong>YTD Groundwater To:</strong></legend>
+						<legend><strong>YTD Flow Totals</strong></legend>
+						<strong>Groundwater to: </strong><br>
 						<strong>River: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
 						<strong>MODE: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
+						<br>
+						<strong>SIB: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
 					</fieldset>
 				</td>				
 				</tr>
@@ -310,49 +313,49 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<div id="legend"><h3>Legend</h3></div>				
 				<!--JR Scripts that run the Dashboard Map-->
 				<script>	
-				var info = [];
 				var gages = [
-					['DPOC 2', 32.709631, -114.534195, Math.random() * 100],
-					['DPOC 3', 32.719226, -114.505325, Math.random() * 100],
-					['Collector 1', 32.711696, -114.652562, Math.random() * 100],
-					['Collector 2', 32.692990, -114.654005, Math.random() * 100],
-					['Collector 3', 32.675981, -114.658769, Math.random() * 100],
-					['Collector 4', 32.667839, -114.657036, Math.random() * 100],
-					['SIB', 32.487782, -114.789686, Math.random() * 100],
-					['Mode @ SIB', 32.494024, -114.811614, Math.random() * 100],
-					['242 Well Field', 32.472673, -114.692034, Math.random() * 100],
-					['NIB', 32.718848, -114.719698, Math.random() * 100],
-					['Pilot Knob', 32.736939, -114.718731, Math.random() * 100],
-					['Gila River', 32.753430, -114.432971, Math.random() * 100],
-					['Below Laguna', 32.813008, -114.514278, Math.random() * 100],
-					['Station 60', 32.873491, -114.478011, Math.random() * 100],
-					['GGMC', 32.879169, -114.460063, Math.random() * 100],
-					['Imperial Dam', 32.882410, -114.467367, Math.random() * 100],
-					['Cal. Wasteway', 32.736177, -114.623754, Math.random() * 100],
-					['CR Siphon', 32.730654, -114.620090, Math.random() * 100],
-					['Yuma Gage', 32.729104, -114.623521, Math.random() * 100],
-					['DPOC 1', 32.713153, -114.554260, Math.random() * 100]
+					//[SITENAME,LAT,LON,SITETYPE,VALUE]
+					['DPOC 1', 32.713153, -114.554260, 'pump', Math.random() * 100],
+					['DPOC 2', 32.709631, -114.534195, 'pump', Math.random() * 100],
+					['DPOC 3', 32.719226, -114.505325, 'pump', Math.random() * 100],
+					['Collector 1', 32.711696, -114.652562, 'pump', Math.random() * 100],
+					['Collector 2', 32.692990, -114.654005, 'pump', Math.random() * 100],
+					['Collector 3', 32.675981, -114.658769, 'pump', Math.random() * 100],
+					['Collector 4', 32.667839, -114.657036, 'pump', Math.random() * 100],
+					['SIB', 32.487782, -114.789686, 'strm', Math.random() * 100],
+					['Mode @ SIB', 32.494024, -114.811614, 'strm', Math.random() * 100],
+					['242 Well Field', 32.472673, -114.692034, 'strm', Math.random() * 100],
+					['NIB', 32.718848, -114.719698, 'strm', Math.random() * 100],
+					['Pilot Knob', 32.736939, -114.718731, 'strm', Math.random() * 100],
+					['Gila River', 32.753430, -114.432971, 'strm', Math.random() * 100],
+					['Below Laguna', 32.813008, -114.514278, 'strm', Math.random() * 100],
+					['Station 60', 32.873491, -114.478011, 'strm', Math.random() * 100],
+					['GGMC', 32.879169, -114.460063, 'strm', Math.random() * 100],
+					['Imperial Dam', 32.882410, -114.467367, 'strm', Math.random() * 100],
+					['Cal. Wasteway', 32.736177, -114.623754, 'strm', Math.random() * 100],
+					['CR Siphon', 32.730654, -114.620090, 'strm', Math.random() * 100],
+					['Yuma Gage', 32.729104, -114.623521, 'strm', Math.random() * 100]
 					];
 				var areas = [
-					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV042017.pdf'],					
-					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA122016.pdf'],
-					['South Gila Valley Groundwater', 32.719916, -114.522424, 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG042017.pdf']
+					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV042017.pdf'],					
+					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA122016.pdf'],
+					['South Gila Valley Groundwater', 32.719916, -114.522424, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG042017.pdf']
 					];
 
 				function buildMap() {
-					var yaoArea = {lat: 32.5927, lng: -114.6277};
+					var yaoArea = {lat: 32.713153, lng: -114.554260};
 					var map = new google.maps.Map(document.getElementById('map'), 
 						{
 							zoom: 10, 
 							maxZoom:13,
 							minZoom:9,
 							center: yaoArea,
-							zoomControl: false,
+							zoomControl: true,
 							mapTypeControl: true,
-							scaleControl: false,
+							scaleControl: true,
 							streetViewControl: false,
 							rotateControl: false,
-							fullscreenControl: false,
+							fullscreenControl: true,
 							mapTypeControlOptions: {
 								mapTypeIds: ['terrain', 'roadmap', 'hybrid']
 							}						
@@ -360,14 +363,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					);
 					
 					var icons = {
-						gage: {
-							name: 'Gaging Station',
-							color: "#244A9F"
-						},
-						area: {
-							name: 'Groundwater Area',
-							color: "#CB9F5B"
-						}
+						strm: { name: 'Gaging Station', color: '#244A9F' },
+						pump: { name: 'Pump', color: '#CB9F5B' },
+						area: { name: 'Groundwater Area', color: '#FC7C00' }
 					};
 					
 					var legend = document.getElementById('legend');
@@ -380,100 +378,77 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						legend.appendChild(div);
 					}
 					
-					map.controls[google.maps.ControlPosition.RIGHT_TOP].push(legend);
-					setAreaMarkers(map,areas);
+					map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+					setGageMarkers(map,areas);
 					setGageMarkers(map,gages);
 					map.setMapTypeId('terrain');
+					map.setCenter(yaoArea);
 				}
 				
 				function setGageMarkers(map,gages){
 					var marker, i
 					for (i = 0; i < gages.length; i++) {  
-						var site = gages[i][0]
-						var lat = gages[i][1]
-						var long = gages[i][2]
-						var val =  gages[i][3]
+						var site = gages[i][0];
+						var lat = gages[i][1];
+						var lon = gages[i][2];
+						var sType = gages[i][3];
+						var val =  gages[i][4];
 
-						latlngset = new google.maps.LatLng(lat, long);
-	
+						latlngset = new google.maps.LatLng(lat, lon);
+		
+						var sColor;
+						var mapIcon = 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z';
+						var content = "Site: " + site +  '<br>';
+						var iconScale = .5;
+						switch(sType) 
+						{
+							case 'strm':
+								sColor = '#244A9F';		
+								content = content + 'Value: ' + val + ' cfs'; 	
+								break;   
+							case 'pump': 
+								sColor = '#CB9F5B';
+								content = content + 'Value: ' + val + ' cfs'; 	
+								break;   
+							case 'area': 
+								sColor = '#FC7C00';
+								mapIcon = 'M-24-48h48v48h-48z';
+								content = content + '<a href="' + val + '">Link to PDF Report</a><br>';
+								iconScale = 1;
+								break;   
+							default:     
+								sColor = '#244A9F';
+								content = content + 'Value: ' + val + ' cfs'; 	
+						}
+						
 						var marker = new google.maps.Marker({  
 							map: map, 
 							title: site, 
 							position: latlngset,
 							icon: {
-								path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-							    fillColor: "#244A9F",
-								fillOpacity: 0.8,
-								scale: 4,
-								strokeWeight: 1,
+								path: mapIcon,
+							    fillColor: sColor,
+								fillOpacity: .7,
+								scale: iconScale,
+								strokeWeight: 1.5,
 								strokeColor: "#FFFFFF"
 							}
-						});
-						map.setCenter(marker.getPosition())
-						var content = "Site: " + site +  '<br>' + "Value: " + val + " cfs"     					
-						var infowindow = new google.maps.InfoWindow()
+						});			
+						var infowindow = new google.maps.InfoWindow();
 						
-						google.maps.event.addListener(marker,'mouseover', (function(marker,content,infowindow){ 
+						google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
 							return function() {						
 								infowindow.setContent(content);
-								infowindow.open(map,marker);				
-							};
-						})(marker,content,infowindow)); 
-						
-						google.maps.event.addListener(marker,'mouseout', (function(marker,content,infowindow){ 
-							return function() {
-								infowindow.close();		
+								infowindow.open(map,marker);
+								google.maps.event.addListener(map,'click', function()
+								{ 
+									infowindow.close();
+								}); 					
 							};
 						})(marker,content,infowindow)); 
 					}
 				}
-								
-				function setAreaMarkers(map,areas){
-					var marker, i
-					for (i = 0; i < areas.length; i++) {  
-						var site = areas[i][0]
-						var lat = areas[i][1]
-						var long = areas[i][2]
-						var val =  areas[i][3]
-
-						latlngset = new google.maps.LatLng(lat, long);
-	
-						var marker = new google.maps.Marker({  
-							map: map, 
-							title: site, 
-							url: val,
-							position: latlngset,
-							icon: {
-								path: google.maps.SymbolPath.CIRCLE,
-							    fillColor: "#CB9F5B",
-								fillOpacity: 0.5,
-								scale: 20,
-								strokeWeight: 1,
-								strokeColor: "#FFFFFF"
-							}
-						});
-						map.setCenter(marker.getPosition())
-						var content = "Area: " + site +  "<br>" + "Link: " + val +  "<br> Click to open this link"     					
-						var infowindow = new google.maps.InfoWindow()
-						
-						google.maps.event.addListener(marker,'mouseover', (function(marker,content,infowindow){ 
-							return function() {								
-								infowindow.setContent(content);
-								infowindow.open(map,marker);			
-							};
-						})(marker,content,infowindow)); 
-						
-						google.maps.event.addListener(marker,'mouseout', (function(marker,content,infowindow){ 
-							return function() {
-								infowindow.close();		
-							};
-						})(marker,content,infowindow)); 
-						
-						google.maps.event.addListener(marker, 'click', function() {
-							window.open(this.url);							
-						});
-					}
-				}
+				
 				</script>
 				<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCQDeQUpjqumnTIJmrzSy2ItBr73ABTIs&callback=buildMap"> </script>				
 				</td></tr>
@@ -515,12 +490,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Period: </p>
 				<select id="selectDataPeriod" style="width:100%" onchange="GetReport();">
 					<option value="null"></option>
+					<option value="CurrentYear_Daily">Year to Date - Daily</option>
 					<option value="CurrentDay_Hourly">Current Day - Hourly</option>
 					<option value="LastSevenDays_Hourly">Last Seven Days - Hourly</option>
 					<option value="LastSevenDays_Daily">Last Seven Days - Daily</option>
 					<option value="CurrentMonth_Daily">Current Month - Daily</option>
 					<option value="LastMonth_Daily">Last Month - Daily</option>
-					<option value="CurrentYear_Daily">Year to Date - Daily</option>
 					<option value="LastYear_Daily">Last Year - Daily</option>
 				</select>	
 				</td>
