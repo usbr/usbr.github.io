@@ -173,14 +173,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<svg id="brockGauge" width="150" height="150"></svg>
 					<br><br>
 					<strong>Depth in feet: </strong><br>
-					&nbsp;&nbsp;&nbsp;Cell 1 - XX.XX' (as of 01/01/17 - 08:00)<br>
-					&nbsp;&nbsp;&nbsp;Cell 2 - XX.XX' (as of 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;Cell 1 - XX.XX' (as of 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;Cell 2 - XX.XX' (as of 1/1/2017 12:00 PM)<br>
 					<strong>Storage Volume (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 1/1/2017 12:00 PM)<br>
 					<strong>Total Capacity (Cells 1 + 2): </strong><br>
 					&nbsp;&nbsp;&nbsp;8440 AF<br>
 					<strong>Volume Stored YTD (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (through 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;XXXX.XX (through 1/1/2017 12:00 PM)<br>
 				</td>
 				<td width="50%" valign="top">
 					<strong>Senator Wash Reservoir</strong>
@@ -188,13 +188,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<svg id="washGauge" width="150" height="150"></svg>
 					<br><br>
 					<strong>Elevation AMSL (FT): </strong><br>
-					&nbsp;&nbsp;&nbsp;XX.XX' (as of 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;XX.XX' (as of 1/1/2017 12:00 PM)<br>
 					<strong>Storage Volume (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 1/1/2017 12:00 PM)<br>
 					<strong>Total Capacity: </strong><br>
 					&nbsp;&nbsp;&nbsp;9144 AF<br>
 					<strong>Volume Stored YTD (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (through 01/01/17 - 08:00)<br>
+					&nbsp;&nbsp;&nbsp;XXXX.XX (through 1/1/2017 12:00 PM)<br>
 				</td>
 				</tr>
 				</table>
@@ -223,28 +223,28 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<legend><strong>Yuma Mesa Conduit Valves</strong></legend>
 						<div class="switch-toggle switch-3 switch-ios">
 							<input id="nm4" type="radio" disabled> <label for="nm4" onclick="">1: </label>	
-							<input id="on4" type="radio" disabled> <label for="on4" onclick="">River</label>				
+							<input id="on4" type="radio" disabled> <label for="on4" onclick="">Conduit</label>				
 							<input id="na4" type="radio" disabled checked> <label for="na4" onclick="">Off</label>				
 							<input id="of4" type="radio" disabled> <label for="of4" onclick="">SIB</label>
 							<a></a>
 						</div>
 						<div class="switch-toggle switch-3 switch-ios">
 							<input id="nm5" type="radio" disabled> <label for="nm5" onclick="">2: </label>	
-							<input id="on5" type="radio" disabled checked> <label for="on5" onclick="">River</label>				
+							<input id="on5" type="radio" disabled checked> <label for="on5" onclick="">Conduit</label>				
 							<input id="na5" type="radio" disabled> <label for="na5" onclick="">Off</label>				
 							<input id="of5" type="radio" disabled> <label for="of5" onclick="">SIB</label>	
 							<a></a>						
 						</div>
 						<div class="switch-toggle switch-3 switch-ios">
 							<input id="nm6" type="radio" disabled> <label for="nm6" onclick="">3: </label>	
-							<input id="on6" type="radio" disabled> <label for="on6" onclick="">River</label>				
+							<input id="on6" type="radio" disabled> <label for="on6" onclick="">Conduit</label>				
 							<input id="na6" type="radio" disabled> <label for="na6" onclick="">Off</label>				
 							<input id="of6" type="radio" disabled checked> <label for="of6" onclick="">SIB</label>	
 							<a></a>			
 						</div>
 						<div class="switch-toggle switch-3 switch-ios">
 							<input id="nm7" type="radio" disabled> <label for="nm7" onclick="">4: </label>	
-							<input id="on7" type="radio" disabled> <label for="on7" onclick="">River</label>				
+							<input id="on7" type="radio" disabled> <label for="on7" onclick="">Conduit</label>				
 							<input id="na7" type="radio" disabled> <label for="na7" onclick="">Off</label>				
 							<input id="of7" type="radio" disabled checked> <label for="of7" onclick="">SIB</label>	
 							<a></a>			
@@ -260,8 +260,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							<a></a>
 						</div>
 					</fieldset>	
-				</td>				
-				<td width="50%" valign="top">
 					<fieldset class="fieldset-auto-width">
 						<legend><strong>Gila Valley DPOCs</strong></legend>
 						<div class="switch-toggle switch-3 switch-ios">
@@ -286,13 +284,32 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 							<a></a>			
 						</div>
 					</fieldset>
+				</td>				
+				<td width="50%" valign="top">
 					<fieldset class="fieldset-auto-width">
-						<legend><strong>YTD Flow Totals</strong></legend>
-						<strong>Groundwater to: </strong><br>
-						<strong>River: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
-						<strong>MODE: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
+						<legend><strong>Pilot Knob</strong></legend>
+						<div class="switch-toggle switch-3 switch-ios">
+							<input id="nm9" type="radio" disabled> <label for="nm9" onclick="">Status: </label>	
+							<input id="on9" type="radio" disabled checked> <label for="on9" onclick="">On</label>				
+							<input id="na9" type="radio" disabled> <label for="na9" onclick="">Off</label>	
+							<a></a>
+						</div>
+					</fieldset>	
+					<fieldset class="fieldset-auto-width">
+						<legend><strong>YTD Totals</strong></legend>
+						<strong>Groundwater: </strong><br>
+						<strong>To River: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
+						<strong>To MODE: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
 						<br>
-						<strong>SIB: </strong> XXXXX AF (as of 01/01/17 - 08:00)<br>
+						<strong>Flows: </strong><br>
+						<strong>At SIB: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
+						<strong>To Mexico Excess: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
+						<br>
+						<strong>Salinity: </strong><br>
+						<strong>At Imperial Dam: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
+						<strong>Total at NIB: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
+						<strong>Differential: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
+						<strong><font color="#CB9F5B">EOY Projection: </font></strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
 					</fieldset>
 				</td>				
 				</tr>
@@ -314,27 +331,27 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<!--JR Scripts that run the Dashboard Map-->
 				<script>	
 				var gages = [
-					//[SITENAME,LAT,LON,SITETYPE,VALUE]
-					['DPOC 1', 32.713153, -114.554260, 'pump', Math.random() * 100],
-					['DPOC 2', 32.709631, -114.534195, 'pump', Math.random() * 100],
-					['DPOC 3', 32.719226, -114.505325, 'pump', Math.random() * 100],
-					['Collector 1', 32.711696, -114.652562, 'pump', Math.random() * 100],
-					['Collector 2', 32.692990, -114.654005, 'pump', Math.random() * 100],
-					['Collector 3', 32.675981, -114.658769, 'pump', Math.random() * 100],
-					['Collector 4', 32.667839, -114.657036, 'pump', Math.random() * 100],
-					['SIB', 32.487782, -114.789686, 'strm', Math.random() * 100],
-					['Mode @ SIB', 32.494024, -114.811614, 'strm', Math.random() * 100],
-					['242 Well Field', 32.472673, -114.692034, 'strm', Math.random() * 100],
-					['NIB', 32.718848, -114.719698, 'strm', Math.random() * 100],
-					['Pilot Knob', 32.736939, -114.718731, 'strm', Math.random() * 100],
-					['Gila River', 32.753430, -114.432971, 'strm', Math.random() * 100],
-					['Below Laguna', 32.813008, -114.514278, 'strm', Math.random() * 100],
-					['Station 60', 32.873491, -114.478011, 'strm', Math.random() * 100],
-					['GGMC', 32.879169, -114.460063, 'strm', Math.random() * 100],
-					['Imperial Dam', 32.882410, -114.467367, 'strm', Math.random() * 100],
-					['Cal. Wasteway', 32.736177, -114.623754, 'strm', Math.random() * 100],
-					['CR Siphon', 32.730654, -114.620090, 'strm', Math.random() * 100],
-					['Yuma Gage', 32.729104, -114.623521, 'strm', Math.random() * 100]
+					//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
+					['DPOC 1', 32.713153, -114.554260, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['DPOC 2', 32.709631, -114.534195, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['DPOC 3', 32.719226, -114.505325, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 1', 32.711696, -114.652562, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 2', 32.692990, -114.654005, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 3', 32.675981, -114.658769, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 4', 32.667839, -114.657036, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['SIB', 32.487782, -114.789686, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Mode @ SIB', 32.494024, -114.811614, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['242 Well Field', 32.472673, -114.692034, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['NIB', 32.718848, -114.719698, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Pilot Knob', 32.736939, -114.718731, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Gila River', 32.753430, -114.432971, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Below Laguna', 32.813008, -114.514278, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Station 60', 32.873491, -114.478011, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['GGMC', 32.879169, -114.460063, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Imperial Dam', 32.882410, -114.467367, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Cal. Wasteway', 32.736177, -114.623754, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['CR Siphon', 32.730654, -114.620090, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Yuma Gage', 32.729104, -114.623521, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html']
 					];
 				var areas = [
 					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV042017.pdf'],					
@@ -404,11 +421,13 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						{
 							case 'strm':
 								sColor = '#244A9F';		
-								content = content + 'Value: ' + val + ' cfs'; 	
+								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
+								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 								break;   
 							case 'pump': 
 								sColor = '#CB9F5B';
-								content = content + 'Value: ' + val + ' cfs'; 	
+								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
+								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 								break;   
 							case 'area': 
 								sColor = '#FC7C00';
@@ -418,7 +437,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 								break;   
 							default:     
 								sColor = '#244A9F';
-								content = content + 'Value: ' + val + ' cfs'; 	
+								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
+								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 						}
 						
 						var marker = new google.maps.Marker({  
@@ -454,99 +474,101 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</td></tr>
 				</table>
 				
-				<!--Data Viewer-->	
-				<p style="font-size:15px">
-				Note: Select a dataset and a time period from the drop-down boxes below.
-				</p>
-				<table border="0" cellpadding="2" cellspacing="10" width="100%">				
-				<tr bgcolor="ffffff" align="left">	
-				<td width="50%" valign="top">					
-				<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Dataset: </p>
-				<select id="selectSite" style="width:100%" onchange="GetReport();">
-					<option value="sImperial">Imperial Reservoir</option>
-					<option value="sSenator">Senator Wash Reservoir</option>
-					<option value="sBrock">Brock Reservoir</option>
-					<option value="sLaguna">Laguna Dam</option>
-					<option value="sParker">Parker Releases</option>
-					<option value="sBelowIntBridge">Below Interstate Bridge</option>
-					<option value="sBelowMcintPark">Below Mcintyre Park</option>
-					<option value="sBelowOxbBridge">Below Oxbow Bridge</option>
-					<option value="sPicacho">Picacho Park Gage</option>
-					<option value="sImperial">Arriving at Imperial</option>
-					<option value="sGGMC" >Gila Gravity Canal</option>
-					<option value="sStation60">Station 60</option>
-					<option value="sLaguna">Below Laguna Dam</option>
-					<option value="sWasteway">California Wasteway</option>
-					<option value="sSiphon">CO Siphon (COY, YCWUA - Daily)</option>
-					<option value="sYumaGage">Yuma Gage</option>
-					<option value="sPilotKnob">Pilot Knob</option>
-					<option value="sNIB">N.Int.Boundary (NIB)</option>
-					<option value="sSIB">S.Int.Boundary (Sanchez Mejorada)</option>
-					<option value="sSIBMode">S.Int.Boundary - MODE (Daily Only)</option>
-					<option value="sGilaGage">Gila River @ Dome Gage</option>
-				</select>
-				</td>
-				<td width="50%" valign="top">	
-				<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Period: </p>
-				<select id="selectDataPeriod" style="width:100%" onchange="GetReport();">
-					<option value="CurrentYear_Daily">Year to Date - Daily</option>
-					<option value="CurrentDay_Hourly">Current Day - Hourly</option>
-					<option value="LastSevenDays_Hourly">Last Seven Days - Hourly</option>
-					<option value="LastSevenDays_Daily">Last Seven Days - Daily</option>
-					<option value="CurrentMonth_Daily">Current Month - Daily</option>
-					<option value="LastMonth_Daily">Last Month - Daily</option>
-					<option value="LastYear_Daily">Last Year - Daily</option>
-				</select>	
-				</td>
-				</tr>
-				</table>
-
-				<div align="left">
-				<div id="status" style="width:1000px; font-size:0.8em; padding-top:5px;"></div>
-				<br>
-				<div id="graphdiv"></div>
-				</div>
-
 				
-				<!--JR Scripts that run the data viewer-->
 				<script>
-				var data = function() {
-					var zp = function(x) { if (x < 10) return "0"+x; else return x; };
-					var r = "date,Selected Gage\n";
-					for (var i=1; i<=31; i++) {
-					r += "200610" + zp(i);
-					r += "," + 10*(125 + 125 * Math.random(0.3*i));
-					r += "\n";
-					}
-					return r;
-				};
-			
-				g1 = new Dygraph(
-				document.getElementById("graphdiv"), data,
-				{
-					fillGraph: true, showRangeSelector: true, legend: 'always'
-					, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
-					, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
-					, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
-					, color: '#244A9F', height: 400
-                
-				});		
-				
-				function GetReport()
-				{			
-					var randData = data();
-					g1 = new Dygraph(
-						document.getElementById("graphdiv"), randData,
-						{
-							fillGraph: true, showRangeSelector: true, legend: 'always'
-							, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
-							, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
-							, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
-							, color: '#244A9F', height: 400
-
-						}
-					);
-				};
+				//<!--Data Viewer-->	
+				//<p style="font-size:15px">
+				//Note: Select a dataset and a time period from the drop-down boxes below.
+				//</p>
+				//<table border="0" cellpadding="2" cellspacing="10" width="100%">				
+				//<tr bgcolor="ffffff" align="left">	
+				//<td width="50%" valign="top">					
+				//<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Dataset: </p>
+				//<select id="selectSite" style="width:100%" onchange="GetReport();">
+				//	<option value="sImperial">Imperial Reservoir</option>
+				//	<option value="sSenator">Senator Wash Reservoir</option>
+				//	<option value="sBrock">Brock Reservoir</option>
+				//	<option value="sLaguna">Laguna Dam</option>
+				//	<option value="sParker">Parker Releases</option>
+				//	<option value="sBelowIntBridge">Below Interstate Bridge</option>
+				//	<option value="sBelowMcintPark">Below Mcintyre Park</option>
+				//	<option value="sBelowOxbBridge">Below Oxbow Bridge</option>
+				//	<option value="sPicacho">Picacho Park Gage</option>
+				//	<option value="sImperial">Arriving at Imperial</option>
+				//	<option value="sGGMC" >Gila Gravity Canal</option>
+				//	<option value="sStation60">Station 60</option>
+				//	<option value="sLaguna">Below Laguna Dam</option>
+				//	<option value="sWasteway">California Wasteway</option>
+				//	<option value="sSiphon">CO Siphon (COY, YCWUA - Daily)</option>
+				//	<option value="sYumaGage">Yuma Gage</option>
+				//	<option value="sPilotKnob">Pilot Knob</option>
+				//	<option value="sNIB">N.Int.Boundary (NIB)</option>
+				//	<option value="sSIB">S.Int.Boundary (Sanchez Mejorada)</option>
+				//	<option value="sSIBMode">S.Int.Boundary - MODE (Daily Only)</option>
+				//	<option value="sGilaGage">Gila River @ Dome Gage</option>
+				//</select>
+				//</td>
+				//<td width="50%" valign="top">	
+				//<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Period: </p>
+				//<select id="selectDataPeriod" style="width:100%" onchange="GetReport();">
+				//	<option value="CurrentYear_Daily">Year to Date - Daily</option>
+				//	<option value="CurrentDay_Hourly">Current Day - Hourly</option>
+				//	<option value="LastSevenDays_Hourly">Last Seven Days - Hourly</option>
+				//	<option value="LastSevenDays_Daily">Last Seven Days - Daily</option>
+				//	<option value="CurrentMonth_Daily">Current Month - Daily</option>
+				//	<option value="LastMonth_Daily">Last Month - Daily</option>
+				//	<option value="LastYear_Daily">Last Year - Daily</option>
+				//</select>	
+				//</td>
+				//</tr>
+				//</table>
+                //
+				//<div align="left">
+				//<div id="status" style="width:1000px; font-size:0.8em; padding-top:5px;"></div>
+				//<br>
+				//<div id="graphdiv"></div>
+				//</div>
+                //
+				//
+				//<!--JR Scripts that run the data viewer-->
+				//<script>
+				//var data = function() {
+				//	var zp = function(x) { if (x < 10) return "0"+x; else return x; };
+				//	var r = "date,Selected Gage\n";
+				//	for (var i=1; i<=31; i++) {
+				//	r += "200610" + zp(i);
+				//	r += "," + 10*(125 + 125 * Math.random(0.3*i));
+				//	r += "\n";
+				//	}
+				//	return r;
+				//};
+			    //
+				//g1 = new Dygraph(
+				//document.getElementById("graphdiv"), data,
+				//{
+				//	fillGraph: true, showRangeSelector: true, legend: 'always'
+				//	, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
+				//	, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
+				//	, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
+				//	, color: '#244A9F', height: 400
+                //
+				//});		
+				//
+				//function GetReport()
+				//{			
+				//	var randData = data();
+				//	g1 = new Dygraph(
+				//		document.getElementById("graphdiv"), randData,
+				//		{
+				//			fillGraph: true, showRangeSelector: true, legend: 'always'
+				//			, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
+				//			, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
+				//			, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
+				//			, color: '#244A9F', height: 400
+                //
+				//		}
+				//	);
+				//};
 
 				</script>
 				
