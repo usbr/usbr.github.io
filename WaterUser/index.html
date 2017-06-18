@@ -223,74 +223,74 @@ Note: The hydrologic data on this website are provisional records collected by a
 <!-- MAIN CONTENT GOES HERE -->
 <br>
 <br>
-<strong>REPORT LAST UPDATED ON: 06/16/2017 05:15 AM</strong><br>
+<strong>REPORT LAST UPDATED ON: 01/01/2017 00:00 AM</strong><br>
 <strong>WATER USER: IMPERIAL IRRIGATION DISTRICT</strong><br>
 
 
 <!-- Call DyGraphs JavaScript Reference -->
-<script type="text/javascript"  src="dygraphs/dygraph-combined.js"></script>
+<script type="text/javascript"  src="dygraphs/dygraph.min.js"></script>
+<link rel="stylesheet" href="dygraphs/dygraph.css" />
 <div align="left">
 
 <h2>Current Year Use Data</h2>
 <!-- Place Summary Chart -->
-<div id="status" style="width:1000px; font-size:0.8em; padding-top:5px;"></div>
-<div id="graphdiv"></div>
+<div id="status" style="width:100%; font-size:0.8em; padding-top:5px;"></div>
+<div id="graphdiv" ></div>
 </div>
 
 <!-- Build Summary Chart -->
 <script type="text/javascript">
 g = new Dygraph(
-document.getElementById("graphdiv"),
-
-"Date,Diversion,Consumptive Use,Returns,Unmeasured Returns\n " +
-"2017-01,198,84 ,45,69\n" +
-"2017-02,178,80 ,36,62\n" +
-"2017-03,187,73 ,49,65\n" +
-"2017-04,158,78 ,25,55\n" +
-"2017-05,198,86 ,43,69\n" +
-"2017-06,170,77 ,33,60\n" +
-"2017-07,NaN,NaN,NaN,NaN\n" +
-"2017-08,NaN,NaN,NaN,NaN\n" +
-"2017-09,NaN,NaN,NaN,NaN\n" +
-"2017-10,NaN,NaN,NaN,NaN\n" +
-"2017-11,NaN,NaN,NaN,NaN\n" +
-"2017-12,NaN,NaN,NaN,NaN\n"
-, 
-{stepPlot: false, fillGraph: true, showRangeSelector: false, legend: 'always'
-, xlabel: 'Date'
-, ylabel: 'Volume (AF)', labelsSeparateLines: false
-, labelsDiv: document.getElementById('status')
-, axisLabelWidth: 75
-, highlightCircleSize: 5, pointSize: 2
-, height: 300
-, axes: {
-        x: {
-          axisLabelFormatter: function(d) { return (d.getMonth()+1) + "-" + d.getFullYear(); }
-		  , valueFormatter: function (ms) { return new Date(ms).toLocaleDateString().replace('/1/', '-'); }
-        }
-  },
-  series: {
-    'Diversion': {
-      strokeWidth: 3.0, color: '#CB9F5B'
+  document.getElementById("graphdiv"),  
+  "Date,Diversion,Consumptive Use,Returns,Unmeasured Returns\n " +
+  "2017-01-01,198,84 ,45,69\n" +
+  "2017-02-01,178,80 ,36,62\n" +
+  "2017-03-01,187,73 ,49,65\n" +
+  "2017-04-01,158,78 ,25,55\n" +
+  "2017-05-01,198,86 ,43,69\n" +
+  "2017-06-01,170,77 ,33,60\n" +
+  "2017-07-01,NaN,NaN,NaN,NaN\n" +
+  "2017-08-01,NaN,NaN,NaN,NaN\n" +
+  "2017-09-01,NaN,NaN,NaN,NaN\n" +
+  "2017-10-01,NaN,NaN,NaN,NaN\n" +
+  "2017-11-01,NaN,NaN,NaN,NaN\n" +
+  "2017-12-01,NaN,NaN,NaN,NaN\n"
+  , 
+  {
+    showRangeSelector: false, 
+    legend: 'always', 
+    fillGraph: true, 
+    xlabel: 'Date', 
+    ylabel: 'Volume (AF)', 
+    labelsSeparateLines: false, 
+    labelsDiv: document.getElementById('status'), 
+    axisLabelWidth: 75, 
+    highlightCircleSize: 5, 
+    pointSize: 2, 
+    height: 300, 
+    axes: 
+    {
+      x: 
+      {
+        axisLabelFormatter: function(d) { return (d.getMonth()+1) + "-" + d.getFullYear(); }, 
+        valueFormatter: function (ms) { return new Date(ms).toLocaleDateString().replace('/1/', '-'); }
+      }
     },
-    'Returns': {
-      strokeWidth: 1.0, color: '#FC7C00', strokePattern: [2,2], fillGraph: false
-    },
-    'Unmeasured Returns': {
-      strokeWidth: 1.0, color: '#23A491', strokePattern: [2,2], fillGraph: false
-    },
-    'Consumptive Use': {
-      strokeWidth: 3.0, color: '#244A9F'
+    series: 
+    {
+      'Diversion': { strokeWidth: 3.0, color: '#CB9F5B' },
+      'Returns': { strokeWidth: 1.0, color: '#6A9913', strokePattern: [2,2], fillGraph: false },
+      'Unmeasured Returns': { strokeWidth: 1.0, color: '#23A491', strokePattern: [2,2], fillGraph: false },
+      'Consumptive Use': { strokeWidth: 3.0, color: '#244A9F' }
     }
   }
-}
 );
 
 </script>
 
 
 <!-- DATA TABLE CONTENT GOES HERE -->
-<h2 id="rawDataToggle"><img class="DisplayControl" id="rawDataToggleImage" src="dygraphs/TriangleRight.png" width="20" height="20" border="0" alt="Control Display Icon" onclick="javascript:toggleDisplay('rawDataTble', 'rawDataToggleImage')"></img> Show/Hide Data</h2>
+<h2 id="rawDataToggle"><img class="DisplayControl" id="rawDataToggleImage" src="dygraphs/TriangleRight.png" width="20" height="20" border="0" alt="Control Display Icon" onclick="toggleDisplay('rawDataTble', 'rawDataToggleImage')"></img> Show/Hide Data</h2>
 
 <TABLE id="rawDataTble" style="display:none">
 <TR><TH>      Date</TH><TH>Diversion</TH><TH>Returns</TH><TH>Unmeasured Returns</TH><TH>Consumptive Use</TH></TR>
@@ -320,54 +320,51 @@ Lorem ipsum dolor sit amet, sollicitudin fusce, tellus pretium eu luctus feugiat
 <!-- Build Forecast Chart -->
 <script type="text/javascript">
 g2 = new Dygraph(
-document.getElementById("graphdiv2"),
+  document.getElementById("graphdiv2"),
 
-"Date,Observed,Scheduled,Min,Max,Approved\n " +
-"2017-01,73 ,NaN,NaN,NaN,920   \n" +
-"2017-02,129,NaN,NaN,NaN,920  \n" +
-"2017-03,195,NaN,NaN,NaN,920  \n" +
-"2017-04,285,NaN,NaN,NaN,920  \n" +
-"2017-05,361,NaN,NaN,NaN,920  \n" +
-"2017-06,427,427,427,427,920  \n" +
-"2017-07,NaN,510,484,553,920  \n" +
-"2017-08,NaN,588,534,688,920  \n" +
-"2017-09,NaN,678,587,810,920  \n" +
-"2017-10,NaN,775,635,921,920  \n" +
-"2017-11,NaN,869,674,1041,920 \n" +
-"2017-12,NaN,960,709,1155,920 \n"
-, 
-{stepPlot: false, fillGraph: false, showRangeSelector: false, legend: 'always'
-//, title: 'Water Use Forecast'
-, xlabel: 'Date'
-, ylabel: 'Cumulative Volume (AF)', labelsSeparateLines: false
-, labelsDiv: document.getElementById('status2')
-, axisLabelWidth: 75
-, highlightCircleSize: 5, pointSize: 2
-, height: 300
-, axes: {
-        x: {
-          axisLabelFormatter: function(d) { return (d.getMonth()+1) + "-" + d.getFullYear(); }
-		  , valueFormatter: function (ms) { return new Date(ms).toLocaleDateString().replace('/1/', '-'); }
-        }
-  },
-  series: {
-    'Observed': {
-      strokeWidth: 5.0, color: '#244A9F'
+  "Date,Observed,Scheduled,Min,Max,Approved\n " +
+  "2017-01-01,73 ,NaN,NaN,NaN,920   \n" +
+  "2017-02-01,129,NaN,NaN,NaN,920  \n" +
+  "2017-03-01,195,NaN,NaN,NaN,920  \n" +
+  "2017-04-01,285,NaN,NaN,NaN,920  \n" +
+  "2017-05-01,361,NaN,NaN,NaN,920  \n" +
+  "2017-06-01,427,427,427,427,920  \n" +
+  "2017-07-01,NaN,510,484,553,920  \n" +
+  "2017-08-01,NaN,588,534,688,920  \n" +
+  "2017-09-01,NaN,678,587,810,920  \n" +
+  "2017-10-01,NaN,775,635,921,920  \n" +
+  "2017-11-01,NaN,869,674,1041,920 \n" +
+  "2017-12-01,NaN,960,709,1155,920 \n"
+  , 
+  {
+    stepPlot: false, 
+    fillGraph: false, 
+    showRangeSelector: false, 
+    legend: 'always', 
+    xlabel: 'Date', 
+    ylabel: 'Cumulative Volume (AF)', labelsSeparateLines: false, 
+    labelsDiv: document.getElementById('status2'), 
+    axisLabelWidth: 75, 
+    highlightCircleSize: 5, 
+    pointSize: 2, 
+    height: 300, 
+    axes: 
+    {
+      x: 
+      {
+        axisLabelFormatter: function(d) { return (d.getMonth()+1) + "-" + d.getFullYear(); }, 
+        valueFormatter: function (ms) { return new Date(ms).toLocaleDateString().replace('/1/', '-'); }
+      }
     },
-    'Min': {
-      strokeWidth: 2.0, color: '#C7B7D9', strokePattern: [2,2]
-    },
-    'Max': {
-      strokeWidth: 2.0, color: '#DE8C6D', strokePattern: [2,2]
-    },
-    'Scheduled': {
-      strokeWidth: 3.0, color: '#244A9F', strokePattern: [2,2]
-    },
-    'Approved': {
-      strokeWidth: 3.0, color: '#FFD600', strokePattern: [2,2]
+    series: 
+    {
+      'Observed': { strokeWidth: 5.0, color: '#244A9F' },
+      'Min': { strokeWidth: 2.0, color: '#FC7C00', strokePattern: [2,2] },
+      'Max': { strokeWidth: 2.0, color: '#B50C00', strokePattern: [2,2] },
+      'Scheduled': { strokeWidth: 3.0, color: '#244A9F', strokePattern: [2,2] },
+      'Approved': { strokeWidth: 3.0, color: '#FFD600', strokePattern: [2,2] }
     }
   }
-}
 );
 
 </script>
@@ -426,47 +423,48 @@ function barChartPlotter(e) {
 
 
 g3 = new Dygraph(
-        document.getElementById("graphdiv3"),
-"Date,Observed,Approved,Min,Max\n " +
-"2007-01,2295,2126,2077,2470\n" +
-"2008-01,2360,2126,2077,2470\n" +
-"2009-01,2077,2126,2077,2470\n" +
-"2010-01,2431,2126,2077,2470\n" +
-"2011-01,2429,2126,2077,2470\n" +
-"2012-01,2214,2126,2077,2470\n" +
-"2013-01,2470,2126,2077,2470\n" +
-"2014-01,2309,2126,2077,2470\n" +
-"2015-01,2286,2126,2077,2470\n" +
-"2016-01,2173,2126,2077,2470\n"
-, 
+  document.getElementById("graphdiv3"),
+    "Date,Observed,Approved,Min,Max\n " +
+    "2007-01-01,2295,2126,2077,2470\n" +
+    "2008-01-01,2360,2126,2077,2470\n" +
+    "2009-01-01,2077,2126,2077,2470\n" +
+    "2010-01-01,2431,2126,2077,2470\n" +
+    "2011-01-01,2429,2126,2077,2470\n" +
+    "2012-01-01,2214,2126,2077,2470\n" +
+    "2013-01-01,2470,2126,2077,2470\n" +
+    "2014-01-01,2309,2126,2077,2470\n" +
+    "2015-01-01,2286,2126,2077,2470\n" +
+    "2016-01-01,2173,2126,2077,2470\n"
+    , 
+  {
+    legend: 'always',
+    includeZero: false, 
+    xlabel: 'Date', 
+    ylabel: 'Historical Volume (AF)', 
+    labelsSeparateLines: false, 
+    labelsDiv: document.getElementById('status3'), 
+    axisLabelWidth: 75, 
+    highlightCircleSize: 5, 
+    pointSize: 2, 
+    height: 300, 
+    dateWindow: [ Date.parse("2006/06/01 12:00:00"), Date.parse("2016/06/01 12:00:00") ], 
+    axes: 
+    {
+      x: 
         {
-		legend: 'always',includeZero: true, xlabel: 'Date'
-, ylabel: 'Historical Volume (AF)', labelsSeparateLines: false
-, labelsDiv: document.getElementById('status3')
-, axisLabelWidth: 75
-, highlightCircleSize: 5, pointSize: 2
-, height: 300
-, axes: {
-        x: {
-          axisLabelFormatter: function(d) { return (d.getMonth()+1) + "-" + d.getFullYear(); }
-		  , valueFormatter: function (ms) { return new Date(ms).toLocaleDateString().replace('/1/', '-'); }
+          axisLabelFormatter: function(d) { return d.getFullYear(); },
+          valueFormatter: function (ms) { return 'CY' + new Date(ms).toLocaleDateString().slice(-4); }
         }
-  },
-          series: {
-            "Approved": {
-				strokeWidth: 3.0, color: '#FFD600', strokePattern: [2,2]
-            },
-            "Min": {
-				strokeWidth: 2.0, color: '#C7B7D9', strokePattern: [2,2]
-            },
-            "Max": {
-				strokeWidth: 2.0, color: '#DE8C6D', strokePattern: [2,2]
-            },
-            "Observed": {
-              plotter: barChartPlotter, color: '#244A9F'
-            }
-          }
-        });
+    },
+    series: 
+    {
+      "Approved": { strokeWidth: 3.0, color: '#FFD600', strokePattern: [2,2] },
+      "Min": { strokeWidth: 2.0, color: '#FC7C00', strokePattern: [2,2] },
+      "Max": { strokeWidth: 2.0, color: '#B50C00', strokePattern: [2,2] },
+      "Observed": { plotter: barChartPlotter, color: '#244A9F' }
+    }
+  }
+);
 </script>
 <br>
 <p>Please contact XXXXX via e-mail at <a href="mailto:XXXXX@usbr.gov"> XXXXX@usbr.gov</a> or via phone at (702) 293-XXXX for additional questions or information.</p>
