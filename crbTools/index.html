@@ -377,7 +377,7 @@ String.prototype.replaceAll = function(search, replace) {
     return this.split(search).join(replace);
 }
 // Main script that does all the work
-getJSON('test.json').then(function(data) {
+getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/DSET-72.RSET-OBSERVED-HOURLY-2101.json').then(function(data) {
     //alert('Your Json result is:  ' + JSON.stringify(data["DATA"], null, 2));  
 	
 	// ACCESSING JSON OUTPUTS WITH JS
