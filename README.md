@@ -6,7 +6,7 @@ Available Pages:
 
 Service: NA (Direct Connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
 
-Service: TBD - Sample: [Yuma Area Office Operations Dashboard](https://usbr.github.io/yaoDashboard/)
+Service: TBD - Sample: Yuma Area Office Operations Dashboard [V1](https://usbr.github.io/yaoDashboard/index.html) [V2](https://usbr.github.io/yaoDashboard/index2.html)
 
 Service: TBD - Sample: [Water User Report](https://usbr.github.io/WaterUser/)
 
