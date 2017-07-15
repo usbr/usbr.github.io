@@ -211,14 +211,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				config1.waveAnimateTime = 1500;
 				var gauge1 = loadLiquidFillGauge("brockGauge", Math.floor(brockVal), config1);				
 				var gauge2 = loadLiquidFillGauge("washGauge", Math.floor(washVal), config1);
-				document.getElementById("brockElev1").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("brockElev2").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("brockStor").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("brockYtd").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("washElev").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("washStor").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("washYtd").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("washYtd").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
 				</script>			
 				
 				<!--WELL & CONDUIT INDICATORS SWITCHES-->
@@ -331,16 +323,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					]);
 					var chart = new google.visualization.Gauge(document.getElementById('PilotKnobGen'));
 					chart.draw(data, options);
-				}				
-								
-				document.getElementById("gwRiver").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("gwMode").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("qSib").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("qMex").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("salImp").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("salNib").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("salDif").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
-				document.getElementById("salProj").innerHTML = 'XX.XX (as of 1/1/2017 12:00 PM)';
+				}												
 				</script>
 				
 				<!--MAP-->
@@ -356,32 +339,32 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<script>	
 				var gages = [
 					//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
-					['DPOC 1', 32.713153, -114.554260, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['DPOC 2', 32.709631, -114.534195, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['DPOC 3', 32.719226, -114.505325, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 1', 32.711696, -114.652562, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 2', 32.692990, -114.654005, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 3', 32.675981, -114.658769, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 4', 32.667839, -114.657036, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['SIB', 32.487782, -114.789686, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Mode @ SIB', 32.494024, -114.811614, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['242 Well Field', 32.472673, -114.692034, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['NIB', 32.718848, -114.719698, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Pilot Knob', 32.736939, -114.718731, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Gila River', 32.753430, -114.432971, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Below Laguna', 32.813008, -114.514278, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Station 60', 32.873491, -114.478011, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['GGMC', 32.879169, -114.460063, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Imperial Dam', 32.882410, -114.467367, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Cal. Wasteway', 32.736177, -114.623754, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['CR Siphon', 32.730654, -114.620090, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Yuma Gage', 32.729104, -114.623521, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html']
+					['DPOC 1', 		32.713153, -114.554260, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['DPOC 2', 		32.709631, -114.534195, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['DPOC 3', 		32.719226, -114.505325, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 1', 32.711696, -114.652562, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 2', 32.692990, -114.654005, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 3', 32.675981, -114.658769, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Collector 4', 32.667839, -114.657036, 'pump', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['SIB', 		32.487782, -114.789686, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Mode @ SIB', 	32.494024, -114.811614, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['242 Wells', 	32.472673, -114.692034, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['NIB', 		32.718848, -114.719698, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Pilot Knob', 	32.736939, -114.718731, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Gila River', 	32.753430, -114.432971, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Blw Laguna', 	32.813008, -114.514278, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Station 60', 	32.873491, -114.478011, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['GGMC', 		32.879169, -114.460063, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Imperial', 	32.882410, -114.467367, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Cal. WWay', 	32.736177, -114.623754, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['CR Siphon', 	32.730654, -114.620090, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
+					['Yuma Gage', 	32.729104, -114.623521, 'strm', 'XX as of 1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html']
 					];
 				var areas = [
-					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV042017.pdf'],					
-					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA122016.pdf'],
-					['South Gila Valley Groundwater', 32.719916, -114.522424, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG042017.pdf'],
-					['Bard District', 32.772710, -114.589484, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/RD062017.pdf']
+					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV.pdf'],					
+					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA.pdf'],
+					['South Gila Valley Groundwater', 32.719916, -114.522424, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG.pdf'],
+					['Bard District', 32.772710, -114.589484, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/RD.pdf']
 					];
 
 				function buildMap() {
@@ -446,24 +429,24 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						{
 							case 'strm':
 								sColor = '#244A9F';		
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 								break;   
 							case 'pump': 
 								sColor = '#CB9F5B';
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 								break;   
 							case 'area': 
 								sColor = '#FC7C00';
 								mapIcon = 'M-24-48h48v48h-48z';
-								content = content + '<a href="' + val + '">Link to PDF Report</a><br>';
+								content = content + '<a href="' + val + '">Link to most recent PDF Report</a><br>';
 								iconScale = 1;
 								break;   
 							default:     
 								sColor = '#244A9F';
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
 						}
 						
 						var marker = new google.maps.Marker({  
@@ -578,6 +561,45 @@ if ( Modernizr.touch ) {
   $(".fluid-video").fitVids();
 </script> 
 
+<script>
+// Function to fetch JSON output
+var getJSON = function(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status);
+      }
+    };
+    xhr.send();
+  });
+};
+
+getJSON('yaoDashboard.json').then(function(data) {
+    //alert('Your Json result is:  ' + JSON.stringify(data["brockElev1"], null, 2));  
+	
+	document.getElementById("brockElev1").innerHTML = 	data["brockElev1"];  
+	document.getElementById("brockElev2").innerHTML = 	data["brockElev2"];  
+	document.getElementById("brockStor").innerHTML = 	data["brockStor"];  
+	document.getElementById("brockYtd").innerHTML = 	data["brockYtd"];  
+	document.getElementById("washElev").innerHTML = 	data["washElev"];  
+	document.getElementById("washStor").innerHTML = 	data["washStor"];  
+	document.getElementById("washYtd").innerHTML = 		data["washYtd"];  
+	document.getElementById("gwRiver").innerHTML = 		data["gwRiver"];  
+	document.getElementById("gwMode").innerHTML = 		data["gwMode"];  
+	document.getElementById("qSib").innerHTML = 		data["qSib"];  
+	document.getElementById("qMex").innerHTML = 		data["qMex"];  
+	document.getElementById("salImp").innerHTML = 		data["salImp"];  
+	document.getElementById("salNib").innerHTML = 		data["salNib"];  
+	document.getElementById("salDif").innerHTML = 		data["salDif"];  
+	document.getElementById("salProj").innerHTML = 		data["salProj"];  
+});
+</script>
 
 <!-- Outlines -->
 <script src="https://www.usbr.gov/js/components/outlines.js"></script>
