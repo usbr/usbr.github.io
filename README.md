@@ -4,9 +4,9 @@ This repository contains files that show snippets for how to request and use Rec
 
 Available Pages:
 
-Service: NA (Direct Connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
+Service: NA (Text built via program with direct connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
 
-Service: TBD - Sample: Yuma Area Office Operations Dashboard [V1](https://usbr.github.io/yaoDashboard/index.html) [V2](https://usbr.github.io/yaoDashboard/index2.html)
+Service: NA (JSON built via program with direct connection to HDB) - [Yuma Area Office Operations Dashboard](https://usbr.github.io/yaoDashboard/)
 
 Service: TBD - Sample: [Water User Report](https://usbr.github.io/WaterUser/)
 

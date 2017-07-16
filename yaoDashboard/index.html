@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!-- template-v2015  -->
 <!--[if lte IE 7]><html class="no-js old-ie lte-ie7" lang="en" dir="ltr"><![endif]-->
@@ -7,7 +6,9 @@
 <head>
   <!-- Head Content  -->
 <meta charset="utf-8">
-<meta HTTP-EQUIV="refresh" CONTENT="3540">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta HTTP-EQUIV="refresh" CONTENT="3600">
 
 <!--[if gt IE 8 ]--><meta http-equiv="X-UA-Compatible" content="IE=Edge" /><!--<![endif]-->
 <title>Yuma Area Office | Lower Colorado Region | Bureau of Reclamation</title>
@@ -16,9 +17,6 @@
 <meta name="author" content="Bureau of Reclamation, Lower Colorado Region Web Team" />
 <meta name="publisher" content="Bureau of Reclamation, Lower Colorado Region" />
 <meta name="created" content="20150101" />
-<meta name="expires" content="Never" />
-
-
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 
@@ -63,10 +61,72 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 <!-- JS libraries for visualizations -->
 <script src="https://www.usbr.gov/js/lib/jquery.js"></script>
-<script src="src/d3.v3.min.js" language="JavaScript"></script>
-<script src="src/dygraph.min.js"></script>
+<script src="src/d3.v3.min.js"></script>
 <script src="src/liquidFillGauge.js"></script>
-  
+<script type="text/javascript" src="src/loader.js"></script>
+
+
+<script>
+// Function to fetch JSON output
+var getJSON = function(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status);
+      }
+    };
+    xhr.send();
+  });
+};
+var gageGroup1;
+var gageGroup2;
+var gageGroup3;
+jsonFileName = 'yaoDashboard.json?v=' + Math.random();
+getJSON(jsonFileName).then(function(data) {
+    //alert('Your Json result is:  ' + JSON.stringify(data["brockElev1"], null, 2));  
+	// POPULATE VALUES IN THE WEB PAGE BODY
+	document.getElementById("brockElev1").innerHTML = 	data["brockElev1"];  
+	document.getElementById("brockElev2").innerHTML = 	data["brockElev2"];  
+	document.getElementById("brockStor").innerHTML = 	data["brockStor"];  
+	document.getElementById("brockYtd").innerHTML = 	data["brockYtd"];  
+	document.getElementById("washElev").innerHTML = 	data["washElev"];  
+	document.getElementById("washStor").innerHTML = 	data["washStor"];  
+	document.getElementById("washYtd").innerHTML = 		data["washYtd"];  
+	document.getElementById("gwRiver").innerHTML = 		data["gwRiver"];  
+	document.getElementById("gwMode").innerHTML = 		data["gwMode"];  
+	document.getElementById("qSib").innerHTML = 		data["qSib"];  
+	document.getElementById("qMex").innerHTML = 		data["qMex"];  
+	document.getElementById("salImp").innerHTML = 		data["salImp"];  
+	document.getElementById("salNib").innerHTML = 		data["salNib"];  
+	document.getElementById("salDif").innerHTML = 		data["salDif"];  
+	document.getElementById("salProj").innerHTML = 		data["salProj"];  
+	// BUILD DATA ARRAYS NEEDED BY THE INDICATOR GAUGES
+	gageGroup1 = [
+		['Label', 'Value'],
+		['Valve 1', 	{v:parseInt(data["ggeCol1"].split("|",2)[0]), f:data["ggeCol1"].split("|",2)[1]}],
+		['Collector 2', {v:parseInt(data["ggeCol2"].split("|",2)[0]), f:data["ggeCol2"].split("|",2)[1]}],
+		['Collector 3', {v:parseInt(data["ggeCol3"].split("|",2)[0]), f:data["ggeCol3"].split("|",2)[1]}],
+		['Collector 4', {v:parseInt(data["ggeCol4"].split("|",2)[0]), f:data["ggeCol4"].split("|",2)[1]}]
+	];
+	gageGroup2 = [
+		['Label', 'Value'],
+		['Yuma Mesa', 	{v:parseInt(data["ggeYuma"].split("|",2)[0]), f:data["ggeYuma"].split("|",2)[1]}],
+		['DPOC 1', 	 	{v:parseInt(data["ggeDpoc1"].split("|",2)[0]), f:data["ggeDpoc1"].split("|",2)[1]}],
+		['DPOC 2', 	 	{v:parseInt(data["ggeDpoc2"].split("|",2)[0]), f:data["ggeDpoc2"].split("|",2)[1]}],
+		['DPOC 3', 	 	{v:parseInt(data["ggeDpoc3"].split("|",2)[0]), f:data["ggeDpoc3"].split("|",2)[1]}]
+	];
+	gageGroup3 = [
+		['Label', 'Value'],
+		['Pilot Knob', 	{v:parseInt(data["ggePilot"].split("|",2)[0]), f:data["ggePilot"].split("|",2)[1]}]
+	];	
+});
+</script>
 </head>
 <body>
   <div class="MainContainer">
@@ -88,14 +148,12 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
        <ul>
         <li>
           <a href="https://www.facebook.com/bureau.of.reclamation" class="critical-icon, tooltip-ng2" title="Facebook" target="new">
-            <span class="icon-facebook" aria-hidden="true"></span>
-            
+            <span class="icon-facebook" aria-hidden="true"></span>            
           </a>
         </li>
         <li>
           <a href="https://twitter.com/usbr" class="critical-icon, tooltip-ng2" title="Twitter" target="new">
-            <span class="icon-twitter" aria-hidden="true"></span>
-            
+            <span class="icon-twitter" aria-hidden="true"></span>            
           </a>
         </li>
         <li>
@@ -154,15 +212,45 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<ul class="resetList">
 				<li><a href="https://www.usbr.gov">Reclamation Home</a></li>
 				<li><a href="https://www.usbr.gov/lc/">Lower Colorado Region</a></li>
-				<li><a href="index.html">Yuma Area Office</a></li>
+				<li><a href="https://www.usbr.gov/lc/yuma/">Yuma Area Office</a></li>
 				
 				</ul>
 			</div>
 			</div>
 			
+			<div class="Main-nav">
+            <div class="LeftNav" role="navigation"> <span class="LeftNav-title">LOWER COLORADO REGION</span>
+              <ul class="LeftNav-list">
+                <li><a href="../index.html">LC Region Home</a></li>
+                <li><a href="../area.html">Area Offices</a></li>
+                <li class="-active"><a href="../yuma/index.html">Yuma Area Office</a>
+                  <ul>
+                    <li><a href="about_us/aboutus.html">Yuma Area Office About Us</a></li>
+                    
+                   
+                    <li><a href="programs/programs_activities.html">Yuma Area Office Programs &amp; Activities</a></li>
+                    <li><a href="facilities/yao_facilities.html">Yuma Facilities</a></li>
+                    <li><a href="environmental_docs/environ_docs.html">Yuma Environmental Documents</a>
+                    <li>                    
+                  </ul>
+                </li>
+                <li><a href="../aboutus.html">About Us</a></li>
+                <li><a href="../pgmasst.html">Programs & Activities</a></li>
+                <li><a href="../riverops.html">Water Operations</a></li>
+                <li><a href="../projects.html">Facilities</a></li>
+                <li><a href="../news.html">Photos & Features</a></li>
+                <li><a href="../fedjobs.html">Employment</a></li>
+                <li><a href="../links.html">Links</a></li>
+                <li><a href="../siteindx.html">Site Index</a></li>
+                <li><a href="../main/comments.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+
+			
 			<div class="Main-well">
 				<h1 align="center"><strong><font color="red"> DRAFT </font></strong>Yuma Water Operations Dashboard<strong><font color="red"> DRAFT </font></strong></h2>
-				<h3 align="center">Real-time water operations at a glance</h3>
+				<h3 align="center">Real-time<a href="#disclaimer">*</a> water operations at a glance</h3>
 				
 				<!--RESERVOIR SECTION-->
 				<table border="0" cellpadding="2" cellspacing="10" width="100%">				
@@ -172,15 +260,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<br><br>
 					<svg id="brockGauge" width="150" height="150"></svg>
 					<br><br>
-					<strong>Depth in feet: </strong><br>
-					&nbsp;&nbsp;&nbsp;Cell 1 - XX.XX' (as of 1/1/2017 12:00 PM)<br>
-					&nbsp;&nbsp;&nbsp;Cell 2 - XX.XX' (as of 1/1/2017 12:00 PM)<br>
+					<strong>Depth (FT): </strong><br>
+					&nbsp;&nbsp;&nbsp;Cell 1 - <span id=brockElev1></span><br>
+					&nbsp;&nbsp;&nbsp;Cell 2 - <span id=brockElev2></span><br>
 					<strong>Storage Volume (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;<span id=brockStor></span><br>
 					<strong>Total Capacity (Cells 1 + 2): </strong><br>
 					&nbsp;&nbsp;&nbsp;8440 AF<br>
 					<strong>Volume Stored YTD (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (through 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;<span id=brockYtd></span><br>
+					<br>
 				</td>
 				<td width="50%" valign="top">
 					<strong>Senator Wash Reservoir</strong>
@@ -188,135 +277,129 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<svg id="washGauge" width="150" height="150"></svg>
 					<br><br>
 					<strong>Elevation AMSL (FT): </strong><br>
-					&nbsp;&nbsp;&nbsp;XX.XX' (as of 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;<span id=washElev></span><br>
 					<strong>Storage Volume (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (as of 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;<span id=washStor></span><br>
 					<strong>Total Capacity: </strong><br>
 					&nbsp;&nbsp;&nbsp;9144 AF<br>
 					<strong>Volume Stored YTD (AF): </strong><br>
-					&nbsp;&nbsp;&nbsp;XXXX.XX (through 1/1/2017 12:00 PM)<br>
+					&nbsp;&nbsp;&nbsp;<span id=washYtd></span><br>
 				</td>
 				</tr>
 				</table>
 				
 				<!--JR Scripts that run the Reservoir Gauges-->
-				<script>				
-				var brockVal = Math.random() * 100;//JSON.stringify(data["DATA"][0].VALUE, null, 4).replaceAll("\"","");
-				var washVal = Math.random() * 100;//JSON.stringify(data["DATA"][0].VALUE, null, 4).replaceAll("\"","");
-				var config1 = liquidFillGaugeDefaultSettings();
-				config1.circleColor = "#244A9F";
-				config1.textColor = "#CB9F5B";
-				config1.waveTextColor = "#CB9F5B";
-				config1.waveColor = "#244A9F";
-				config1.circleThickness = 0.2;
-				config1.textVertPosition = 0.2;
-				config1.waveAnimateTime = 1500;
-				var gauge1 = loadLiquidFillGauge("brockGauge", Math.floor(brockVal), config1);
-				var gauge2 = loadLiquidFillGauge("washGauge", Math.floor(washVal), config1);
+				<script>	
+				getJSON('yaoDashboard.json').then(function(data) {
+					var brockVal = data["brockStor"].split("(",1);
+					var washVal = data["washStor"].split("(",1);
+					var config1 = liquidFillGaugeDefaultSettings();
+					config1.circleColor = "#244A9F";
+					config1.textColor = "#CB9F5B";
+					config1.waveTextColor = "#CB9F5B";
+					config1.waveColor = "#244A9F";
+					config1.circleThickness = 0.2;
+					config1.textVertPosition = 0.2;
+					config1.waveAnimateTime = 1500;
+					var gauge1 = loadLiquidFillGauge("brockGauge", Math.floor(100*brockVal/8440), config1);				
+					var gauge2 = loadLiquidFillGauge("washGauge", Math.floor(100*washVal/9144), config1);
+				});				
 				</script>			
 				
 				<!--WELL & CONDUIT INDICATORS SWITCHES-->
 				<table border="0" cellpadding="2" cellspacing="10" width="100%">				
-				<tr bgcolor="FFFFFF" align="left">				
-				<td width="50%" valign="top">			
-					<fieldset class="fieldset-auto-width">
-						<legend><strong>Yuma Mesa Conduit Valves</strong></legend>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm4" type="radio" disabled> <label for="nm4" onclick="">1: </label>	
-							<input id="on4" type="radio" disabled> <label for="on4" onclick="">Conduit</label>				
-							<input id="na4" type="radio" disabled checked> <label for="na4" onclick="">Off</label>				
-							<input id="of4" type="radio" disabled> <label for="of4" onclick="">SIB</label>
-							<a></a>
-						</div>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm5" type="radio" disabled> <label for="nm5" onclick="">2: </label>	
-							<input id="on5" type="radio" disabled checked> <label for="on5" onclick="">Conduit</label>				
-							<input id="na5" type="radio" disabled> <label for="na5" onclick="">Off</label>				
-							<input id="of5" type="radio" disabled> <label for="of5" onclick="">SIB</label>	
-							<a></a>						
-						</div>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm6" type="radio" disabled> <label for="nm6" onclick="">3: </label>	
-							<input id="on6" type="radio" disabled> <label for="on6" onclick="">Conduit</label>				
-							<input id="na6" type="radio" disabled> <label for="na6" onclick="">Off</label>				
-							<input id="of6" type="radio" disabled checked> <label for="of6" onclick="">SIB</label>	
-							<a></a>			
-						</div>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm7" type="radio" disabled> <label for="nm7" onclick="">4: </label>	
-							<input id="on7" type="radio" disabled> <label for="on7" onclick="">Conduit</label>				
-							<input id="na7" type="radio" disabled> <label for="na7" onclick="">Off</label>				
-							<input id="of7" type="radio" disabled checked> <label for="of7" onclick="">SIB</label>	
-							<a></a>			
-						</div>
-					</fieldset>
-					<fieldset class="fieldset-auto-width">
-						<legend><strong>Yuma Mesa Conduit</strong></legend>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm8" type="radio" disabled> <label for="nm8" onclick="">1: </label>	
-							<input id="on8" type="radio" disabled checked> <label for="on8" onclick="">River</label>				
-							<input id="na8" type="radio" disabled> <label for="na8" onclick="">Off</label>				
-							<input id="of8" type="radio" disabled> <label for="of8" onclick="">Mode</label>
-							<a></a>
-						</div>
-					</fieldset>	
-					<fieldset class="fieldset-auto-width">
-						<legend><strong>Gila Valley DPOCs</strong></legend>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm1" type="radio" disabled> <label for="nm1" onclick="">1: </label>	
-							<input id="on1" type="radio" disabled> <label for="on1" onclick="">River</label>				
-							<input id="na1" type="radio" disabled checked> <label for="na1" onclick="">Off</label>				
-							<input id="of1" type="radio" disabled> <label for="of1" onclick="">Mode</label>
-							<a></a>
-						</div>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm2" type="radio" disabled> <label for="nm2" onclick="">2: </label>	
-							<input id="on2" type="radio" disabled checked> <label for="on2" onclick="">River</label>				
-							<input id="na2" type="radio" disabled> <label for="na2" onclick="">Off</label>				
-							<input id="of2" type="radio" disabled> <label for="of2" onclick="">Mode</label>	
-							<a></a>						
-						</div>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm3" type="radio" disabled> <label for="nm3" onclick="">3: </label>	
-							<input id="on3" type="radio" disabled> <label for="on3" onclick="">River</label>				
-							<input id="na3" type="radio" disabled> <label for="na3" onclick="">Off</label>				
-							<input id="of3" type="radio" disabled checked> <label for="of3" onclick="">Mode</label>	
-							<a></a>			
-						</div>
-					</fieldset>
-				</td>				
-				<td width="50%" valign="top">
-					<fieldset class="fieldset-auto-width">
+				<tr bgcolor="FFFFFF" align="middle">				
+					
+					<strong>Yuma Mesa Conduit Valves</strong><br><br>
+					<div id="ConduitSibValves" style="width: 90%; height: 200px;"></div>
+					
+					<strong>Yuma Mesa Conduit & Gila Valley DPOCs</strong><br><br>
+					<div id="RiverModeValves" style="width: 90%; height: 150px;"></div>
+				</tr>						
+				<tr bgcolor="FFFFFF" align="left">	
+					<td width="50%" valign="top">
+						<strong>YTD Totals</strong>
+						<blockquote>
+						<strong>Groundwater (AF): </strong><br>
+						<blockquote>
+						To River: <span id=gwRiver></span><br>
+						To MODE: <span id=gwMode></span><br>
+						</blockquote>
+						<strong>Flows (AF): </strong><br>
+						<blockquote>
+						At SIB: <span id=qSib></span><br>
+						To Mexico Excess: <span id=qMex></span><br>
+						</blockquote>
+						<strong>Salinity (PPM): </strong><br>
+						<blockquote>
+						At Imperial Dam: <span id=salImp></span><br>
+						Total at NIB: <span id=salNib></span><br>
+						Differential: <span id=salDif></span><br>
+						<font color="#CB9F5B">EOY Projection: </font><span id=salProj></span><br>
+						</blockquote>
+						</blockquote>		
+					</td>
+					<td width="50%" valign="middle">
 						<legend><strong>Pilot Knob</strong></legend>
-						<div class="switch-toggle switch-3 switch-ios">
-							<input id="nm9" type="radio" disabled> <label for="nm9" onclick="">Status: </label>	
-							<input id="on9" type="radio" disabled checked> <label for="on9" onclick="">On</label>				
-							<input id="na9" type="radio" disabled> <label for="na9" onclick="">Off</label>	
-							<a></a>
-						</div>
-					</fieldset>	
-					<fieldset class="fieldset-auto-width">
-						<legend><strong>YTD Totals</strong></legend>
-						<strong>Groundwater: </strong><br>
-						<strong>To River: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
-						<strong>To MODE: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
-						<br>
-						<strong>Flows: </strong><br>
-						<strong>At SIB: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
-						<strong>To Mexico Excess: </strong> XXXXX AF (as of 1/1/2017 12:00 PM)<br>
-						<br>
-						<strong>Salinity: </strong><br>
-						<strong>At Imperial Dam: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
-						<strong>Total at NIB: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
-						<strong>Differential: </strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
-						<strong><font color="#CB9F5B">EOY Projection: </font></strong> XXXXX ppm (as of 1/1/2017 12:00 PM)<br>
-					</fieldset>
-				</td>				
+						<div id="PilotKnobGen" style="width: 90%; height: 200px;"></div>			
+					</td>						
 				</tr>
 				</table>
 				
-				<!--JR Scripts that run the indicator switches-->
-				<script>				
+				<!--JR Scripts that run the indicator Gages-->
+				<script>			
+				google.charts.load('current', {'packages':['gauge']});
+				google.charts.setOnLoadCallback(drawChart);
+			
+				function drawChart() {
+					//////////////////////////////////////////////////////////////////
+					// CONDUIT-SIB VALVES
+					var options = {
+						max: 6,
+						width: 600, height: 200,
+						greenColor: '#CB9F5B',
+						greenFrom: 0, greenTo: 2,
+						yellowColor: '#244A9F',
+						yellowFrom:4, yellowTo: 6,
+						minorTicks: 0,
+						majorTicks: ['Conduit','Off','SIB']
+					};		
+					var data = google.visualization.arrayToDataTable(gageGroup1);
+					var chart = new google.visualization.Gauge(document.getElementById('ConduitSibValves'));
+					chart.draw(data, options);
+					
+					//////////////////////////////////////////////////////////////////
+					// RIVER-MODE VALVES
+					var options = {
+						max: 6,
+						width: 600, height: 200,
+						greenColor: '#CB9F5B',
+						greenFrom: 0, greenTo: 2,
+						yellowColor: '#244A9F',
+						yellowFrom:4, yellowTo: 6,
+						minorTicks: 0,
+						majorTicks: ['Mode','Off','River']
+					};							
+					var data = google.visualization.arrayToDataTable(gageGroup2);
+					var chart = new google.visualization.Gauge(document.getElementById('RiverModeValves'));
+					chart.draw(data, options);
+					
+					//////////////////////////////////////////////////////////////////
+					// PILOT KNOB
+					var options = {
+						max: 6,
+						width: 600, height: 200,
+						greenColor: '#CB9F5B',
+						greenFrom: 0, greenTo: 3,
+						yellowColor: '#244A9F',
+						yellowFrom:3, yellowTo: 6,
+						minorTicks: 0,
+						majorTicks: ['Off','On']
+					};
+					var data = google.visualization.arrayToDataTable(gageGroup3);
+					var chart = new google.visualization.Gauge(document.getElementById('PilotKnobGen'));
+					chart.draw(data, options);
+				}												
 				</script>
 				
 				<!--MAP-->
@@ -324,39 +407,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				<tr bgcolor="F2F2F2" align="left">	
 				<td width="100%" valign="top">	
 				<p style="font-size:15px">
-				Note: Hover and/or click on each <strong>marker</strong> to view real-time data at each location or to open PDF reports containing groundwater elevation maps for each area.
+				Note: Hover and/or click on each marker to view real-time data at each location or to open PDF reports containing groundwater elevation maps for each area.
 				</p>
 				<div id="map"></div>
 				<div id="legend"><h3>Legend</h3></div>				
 				<!--JR Scripts that run the Dashboard Map-->
 				<script>	
-				var gages = [
-					//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
-					['DPOC 1', 32.713153, -114.554260, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['DPOC 2', 32.709631, -114.534195, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['DPOC 3', 32.719226, -114.505325, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 1', 32.711696, -114.652562, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 2', 32.692990, -114.654005, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 3', 32.675981, -114.658769, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Collector 4', 32.667839, -114.657036, 'pump', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['SIB', 32.487782, -114.789686, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Mode @ SIB', 32.494024, -114.811614, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['242 Well Field', 32.472673, -114.692034, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['NIB', 32.718848, -114.719698, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Pilot Knob', 32.736939, -114.718731, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Gila River', 32.753430, -114.432971, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Below Laguna', 32.813008, -114.514278, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Station 60', 32.873491, -114.478011, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['GGMC', 32.879169, -114.460063, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Imperial Dam', 32.882410, -114.467367, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Cal. Wasteway', 32.736177, -114.623754, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['CR Siphon', 32.730654, -114.620090, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-					['Yuma Gage', 32.729104, -114.623521, 'strm', Math.random() * 100, '1/1/2017 12:00 PM','https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html']
-					];
 				var areas = [
-					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV042017.pdf'],					
-					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA122016.pdf'],
-					['South Gila Valley Groundwater', 32.719916, -114.522424, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG042017.pdf']
+					['Yuma Valley North & South Groundwater', 32.646084, -114.721069, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YV.pdf'],					
+					['Yuma Valley Area Including 242 Groundwater', 32.479416, -114.719696, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/YA.pdf'],
+					['South Gila Valley Groundwater', 32.719916, -114.522424, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/SG.pdf'],
+					['Bard District', 32.772710, -114.589484, 'area', 'https://www.usbr.gov/lc/yuma/programs/YAWMS/Groundwater/RD.pdf']
 					];
 
 				function buildMap() {
@@ -396,8 +457,36 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					}
 					
 					map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
-					setGageMarkers(map,areas);
-					setGageMarkers(map,gages);
+					setGageMarkers(map,areas);					
+					
+					getJSON(jsonFileName).then(function(data) {
+						// BUILD DATA ARRAY FOR THE MAP
+						mapGages = [
+							//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
+							['DPOC 1', 		32.713153, -114.554260, 'pump', data["mapDpoc1"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC1_QD_LastSevenDays_Hourly.html'],
+							['DPOC 2', 		32.709631, -114.534195, 'pump', data["mapDpoc2"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC2_QD_LastSevenDays_Hourly.html'],
+							['DPOC 3', 		32.719226, -114.505325, 'pump', data["mapDpoc3"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC3_QD_LastSevenDays_Hourly.html'],
+							['Collector 1', 32.711696, -114.652562, 'pump', data["mapCol1"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT1_QD_LastSevenDays_Hourly.html'],
+							['Collector 2', 32.692990, -114.654005, 'pump', data["mapCol2"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT2_QD_LastSevenDays_Hourly.html'],
+							['Collector 3', 32.675981, -114.658769, 'pump', data["mapCol3"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT3_QD_LastSevenDays_Hourly.html'],
+							['Collector 4', 32.667839, -114.657036, 'pump', data["mapCol4"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT4_QD_LastSevenDays_Hourly.html'],
+							['SIB', 		32.487782, -114.789686, 'strm', data["mapSib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSIB_QD_LastSevenDays_Hourly.html'],
+							['Mode @ SIB', 	32.494024, -114.811614, 'strm', data["mapMode"],	'https://www.usbr.gov/lc/region/g4000/riverops/MODE_QD_LastSevenDays_Hourly.html'],
+							['242 Wells', 	32.472673, -114.692034, 'strm', data["map242"],		'https://www.usbr.gov/lc/region/g4000/riverops/W242_QD_LastSevenDays_Hourly.html'],
+							['NIB', 		32.718848, -114.719698, 'strm', data["mapNib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CNIB_QD_LastSevenDays_Hourly.html'],
+							['Pilot Knob', 	32.736939, -114.718731, 'strm', data["mapPlt"],		'https://www.usbr.gov/lc/region/g4000/riverops/PLTK_QD_LastSevenDays_Hourly.html'],
+							['Gila River', 	32.753430, -114.432971, 'strm', data["mapGila"],	'https://www.usbr.gov/lc/region/g4000/riverops/GILA_QD_LastSevenDays_Hourly.html'],
+							['Blw Laguna', 	32.813008, -114.514278, 'strm', data["mapLag"],		'https://www.usbr.gov/lc/region/g4000/riverops/BLAG_QD_LastSevenDays_Hourly.html'],
+							['Station 60', 	32.873491, -114.478011, 'strm', data["mapS60"],		'https://www.usbr.gov/lc/region/g4000/riverops/ST60_QD_LastSevenDays_Hourly.html'],
+							['GGMC', 		32.879169, -114.460063, 'strm', data["mapGmc"],		'https://www.usbr.gov/lc/region/g4000/riverops/GGMC_QD_LastSevenDays_Hourly.html'],
+							['Imperial', 	32.882410, -114.467367, 'strm', data["mapImp"],		'https://www.usbr.gov/lc/region/g4000/riverops/IMP_QD_LastSevenDays_Hourly.html'],
+							['Cal. WWay', 	32.736177, -114.623754, 'strm', data["mapCal"],		'https://www.usbr.gov/lc/region/g4000/riverops/CWWY_QD_LastSevenDays_Hourly.html'],
+							['CR Siphon', 	32.730654, -114.620090, 'strm', data["mapSif"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSYF_QD_LastSevenDays_Hourly.html'],
+							['Yuma Gage', 	32.729104, -114.623521, 'strm', data["mapYuma"],	'https://www.usbr.gov/lc/region/g4000/riverops/CYMA_QD_LastSevenDays_Hourly.html']
+						];
+						setGageMarkers(map,mapGages);
+					});
+					
 					map.setMapTypeId('terrain');
 					map.setCenter(yaoArea);
 				}
@@ -421,24 +510,24 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						{
 							case 'strm':
 								sColor = '#244A9F';		
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
 								break;   
 							case 'pump': 
 								sColor = '#CB9F5B';
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
 								break;   
 							case 'area': 
 								sColor = '#FC7C00';
 								mapIcon = 'M-24-48h48v48h-48z';
-								content = content + '<a href="' + val + '">Link to PDF Report</a><br>';
+								content = content + '<a href="' + val + '">Link to most recent PDF Report</a><br>';
 								iconScale = 1;
 								break;   
 							default:     
 								sColor = '#244A9F';
-								content = content + Math.round(val) + ' cfs @ ' + gages[i][5] + '<br>'; 
-								content = content + '<a href="' + gages[i][6] + '">Link to Data Report -PLACEHOLDER-</a><br>';	
+								content = content + val + '<br>'; 
+								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
 						}
 						
 						var marker = new google.maps.Marker({  
@@ -474,106 +563,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 				</td></tr>
 				</table>
 				
-				
-				<script>
-				//<!--Data Viewer-->	
-				//<p style="font-size:15px">
-				//Note: Select a dataset and a time period from the drop-down boxes below.
-				//</p>
-				//<table border="0" cellpadding="2" cellspacing="10" width="100%">				
-				//<tr bgcolor="ffffff" align="left">	
-				//<td width="50%" valign="top">					
-				//<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Dataset: </p>
-				//<select id="selectSite" style="width:100%" onchange="GetReport();">
-				//	<option value="sImperial">Imperial Reservoir</option>
-				//	<option value="sSenator">Senator Wash Reservoir</option>
-				//	<option value="sBrock">Brock Reservoir</option>
-				//	<option value="sLaguna">Laguna Dam</option>
-				//	<option value="sParker">Parker Releases</option>
-				//	<option value="sBelowIntBridge">Below Interstate Bridge</option>
-				//	<option value="sBelowMcintPark">Below Mcintyre Park</option>
-				//	<option value="sBelowOxbBridge">Below Oxbow Bridge</option>
-				//	<option value="sPicacho">Picacho Park Gage</option>
-				//	<option value="sImperial">Arriving at Imperial</option>
-				//	<option value="sGGMC" >Gila Gravity Canal</option>
-				//	<option value="sStation60">Station 60</option>
-				//	<option value="sLaguna">Below Laguna Dam</option>
-				//	<option value="sWasteway">California Wasteway</option>
-				//	<option value="sSiphon">CO Siphon (COY, YCWUA - Daily)</option>
-				//	<option value="sYumaGage">Yuma Gage</option>
-				//	<option value="sPilotKnob">Pilot Knob</option>
-				//	<option value="sNIB">N.Int.Boundary (NIB)</option>
-				//	<option value="sSIB">S.Int.Boundary (Sanchez Mejorada)</option>
-				//	<option value="sSIBMode">S.Int.Boundary - MODE (Daily Only)</option>
-				//	<option value="sGilaGage">Gila River @ Dome Gage</option>
-				//</select>
-				//</td>
-				//<td width="50%" valign="top">	
-				//<p style="color: #ffffff; background-color: #213f8c; text-align: left; font-size:120%">Select a Period: </p>
-				//<select id="selectDataPeriod" style="width:100%" onchange="GetReport();">
-				//	<option value="CurrentYear_Daily">Year to Date - Daily</option>
-				//	<option value="CurrentDay_Hourly">Current Day - Hourly</option>
-				//	<option value="LastSevenDays_Hourly">Last Seven Days - Hourly</option>
-				//	<option value="LastSevenDays_Daily">Last Seven Days - Daily</option>
-				//	<option value="CurrentMonth_Daily">Current Month - Daily</option>
-				//	<option value="LastMonth_Daily">Last Month - Daily</option>
-				//	<option value="LastYear_Daily">Last Year - Daily</option>
-				//</select>	
-				//</td>
-				//</tr>
-				//</table>
-                //
-				//<div align="left">
-				//<div id="status" style="width:1000px; font-size:0.8em; padding-top:5px;"></div>
-				//<br>
-				//<div id="graphdiv"></div>
-				//</div>
-                //
-				//
-				//<!--JR Scripts that run the data viewer-->
-				//<script>
-				//var data = function() {
-				//	var zp = function(x) { if (x < 10) return "0"+x; else return x; };
-				//	var r = "date,Selected Gage\n";
-				//	for (var i=1; i<=31; i++) {
-				//	r += "200610" + zp(i);
-				//	r += "," + 10*(125 + 125 * Math.random(0.3*i));
-				//	r += "\n";
-				//	}
-				//	return r;
-				//};
-			    //
-				//g1 = new Dygraph(
-				//document.getElementById("graphdiv"), data,
-				//{
-				//	fillGraph: true, showRangeSelector: true, legend: 'always'
-				//	, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
-				//	, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
-				//	, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
-				//	, color: '#244A9F', height: 400
-                //
-				//});		
-				//
-				//function GetReport()
-				//{			
-				//	var randData = data();
-				//	g1 = new Dygraph(
-				//		document.getElementById("graphdiv"), randData,
-				//		{
-				//			fillGraph: true, showRangeSelector: true, legend: 'always'
-				//			, xlabel: '', ylabel: 'FEET', labelsSeparateLines: true
-				//			, labelsDiv: document.getElementById('status'), axisLabelWidth: 75
-				//			, highlightCircleSize: 5, pointSize: 1.5, strokeWidth: 1.5
-				//			, color: '#244A9F', height: 400
-                //
-				//		}
-				//	);
-				//};
-
-				</script>
-				
-				<br>
-				<p><strong>Contact us: <br></strong>
+				<p><span id="disclaimer"><strong>Data Disclaimer: </strong></span><br>
+				The data and information shown on this page are collected by an automated process and are provisional in nature. 
+				Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences.
+				Information concerning the accuracy and appropriate uses of these data and information may be obtained by contacting the office shown below:
+				<br><br>
 				Yuma Area Office<br>
 				7301 Calle Agua Salada<br>
 				Yuma, AZ 85364<br>
@@ -650,7 +644,6 @@ if ( Modernizr.touch ) {
 <script>
   $(".fluid-video").fitVids();
 </script> 
-
 
 <!-- Outlines -->
 <script src="https://www.usbr.gov/js/components/outlines.js"></script>
