@@ -212,15 +212,45 @@ getJSON(jsonFileName).then(function(data) {
 				<ul class="resetList">
 				<li><a href="https://www.usbr.gov">Reclamation Home</a></li>
 				<li><a href="https://www.usbr.gov/lc/">Lower Colorado Region</a></li>
-				<li><a href="index.html">Yuma Area Office</a></li>
+				<li><a href="https://www.usbr.gov/lc/yuma/">Yuma Area Office</a></li>
 				
 				</ul>
 			</div>
 			</div>
 			
+			<div class="Main-nav">
+            <div class="LeftNav" role="navigation"> <span class="LeftNav-title">LOWER COLORADO REGION</span>
+              <ul class="LeftNav-list">
+                <li><a href="../index.html">LC Region Home</a></li>
+                <li><a href="../area.html">Area Offices</a></li>
+                <li class="-active"><a href="../yuma/index.html">Yuma Area Office</a>
+                  <ul>
+                    <li><a href="about_us/aboutus.html">Yuma Area Office About Us</a></li>
+                    
+                   
+                    <li><a href="programs/programs_activities.html">Yuma Area Office Programs &amp; Activities</a></li>
+                    <li><a href="facilities/yao_facilities.html">Yuma Facilities</a></li>
+                    <li><a href="environmental_docs/environ_docs.html">Yuma Environmental Documents</a>
+                    <li>                    
+                  </ul>
+                </li>
+                <li><a href="../aboutus.html">About Us</a></li>
+                <li><a href="../pgmasst.html">Programs & Activities</a></li>
+                <li><a href="../riverops.html">Water Operations</a></li>
+                <li><a href="../projects.html">Facilities</a></li>
+                <li><a href="../news.html">Photos & Features</a></li>
+                <li><a href="../fedjobs.html">Employment</a></li>
+                <li><a href="../links.html">Links</a></li>
+                <li><a href="../siteindx.html">Site Index</a></li>
+                <li><a href="../main/comments.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+
+			
 			<div class="Main-well">
 				<h1 align="center"><strong><font color="red"> DRAFT </font></strong>Yuma Water Operations Dashboard<strong><font color="red"> DRAFT </font></strong></h2>
-				<h3 align="center">Real-time water operations at a glance</h3>
+				<h3 align="center">Real-time<a href="#disclaimer">*</a> water operations at a glance</h3>
 				
 				<!--RESERVOIR SECTION-->
 				<table border="0" cellpadding="2" cellspacing="10" width="100%">				
@@ -239,6 +269,7 @@ getJSON(jsonFileName).then(function(data) {
 					&nbsp;&nbsp;&nbsp;8440 AF<br>
 					<strong>Volume Stored YTD (AF): </strong><br>
 					&nbsp;&nbsp;&nbsp;<span id=brockYtd></span><br>
+					<br>
 				</td>
 				<td width="50%" valign="top">
 					<strong>Senator Wash Reservoir</strong>
@@ -277,17 +308,17 @@ getJSON(jsonFileName).then(function(data) {
 				
 				<!--WELL & CONDUIT INDICATORS SWITCHES-->
 				<table border="0" cellpadding="2" cellspacing="10" width="100%">				
-				<tr bgcolor="FFFFFF" align="left">				
+				<tr bgcolor="FFFFFF" align="middle">				
 					
-					<legend><strong>Yuma Mesa Conduit Valves</strong></legend>
+					<strong>Yuma Mesa Conduit Valves</strong><br><br>
 					<div id="ConduitSibValves" style="width: 90%; height: 200px;"></div>
 					
-					<legend><strong>Yuma Mesa Conduit & Gila Valley DPOCs</strong></legend>
-					<div id="RiverModeValves" style="width: 90%; height: 200px;"></div>
+					<strong>Yuma Mesa Conduit & Gila Valley DPOCs</strong><br><br>
+					<div id="RiverModeValves" style="width: 90%; height: 150px;"></div>
 				</tr>						
 				<tr bgcolor="FFFFFF" align="left">	
 					<td width="50%" valign="top">
-						<legend><strong>YTD Totals</strong></legend>
+						<strong>YTD Totals</strong>
 						<blockquote>
 						<strong>Groundwater (AF): </strong><br>
 						<blockquote>
@@ -376,7 +407,7 @@ getJSON(jsonFileName).then(function(data) {
 				<tr bgcolor="F2F2F2" align="left">	
 				<td width="100%" valign="top">	
 				<p style="font-size:15px">
-				Note: Hover and/or click on each <strong>marker</strong> to view real-time data at each location or to open PDF reports containing groundwater elevation maps for each area.
+				Note: Hover and/or click on each marker to view real-time data at each location or to open PDF reports containing groundwater elevation maps for each area.
 				</p>
 				<div id="map"></div>
 				<div id="legend"><h3>Legend</h3></div>				
@@ -432,26 +463,26 @@ getJSON(jsonFileName).then(function(data) {
 						// BUILD DATA ARRAY FOR THE MAP
 						mapGages = [
 							//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
-							['DPOC 1', 		32.713153, -114.554260, 'pump', data["mapDpoc1"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['DPOC 2', 		32.709631, -114.534195, 'pump', data["mapDpoc2"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['DPOC 3', 		32.719226, -114.505325, 'pump', data["mapDpoc3"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Collector 1', 32.711696, -114.652562, 'pump', data["mapCol1"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Collector 2', 32.692990, -114.654005, 'pump', data["mapCol2"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Collector 3', 32.675981, -114.658769, 'pump', data["mapCol3"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Collector 4', 32.667839, -114.657036, 'pump', data["mapCol4"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['SIB', 		32.487782, -114.789686, 'strm', data["mapSib"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Mode @ SIB', 	32.494024, -114.811614, 'strm', data["mapMode"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['242 Wells', 	32.472673, -114.692034, 'strm', data["map242"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['NIB', 		32.718848, -114.719698, 'strm', data["mapNib"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Pilot Knob', 	32.736939, -114.718731, 'strm', data["mapPlt"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Gila River', 	32.753430, -114.432971, 'strm', data["mapGila"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Blw Laguna', 	32.813008, -114.514278, 'strm', data["mapLag"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Station 60', 	32.873491, -114.478011, 'strm', data["mapS60"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['GGMC', 		32.879169, -114.460063, 'strm', data["mapGmc"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Imperial', 	32.882410, -114.467367, 'strm', data["mapImp"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Cal. WWay', 	32.736177, -114.623754, 'strm', data["mapCal"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['CR Siphon', 	32.730654, -114.620090, 'strm', data["mapSif"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html'],
-							['Yuma Gage', 	32.729104, -114.623521, 'strm', data["mapYuma"],'https://www.usbr.gov/lc/region/g4000/riverops/CMTZ_QD_LastSevenDays_Hourly.html']
+							['DPOC 1', 		32.713153, -114.554260, 'pump', data["mapDpoc1"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC1_QD_LastSevenDays_Hourly.html'],
+							['DPOC 2', 		32.709631, -114.534195, 'pump', data["mapDpoc2"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC2_QD_LastSevenDays_Hourly.html'],
+							['DPOC 3', 		32.719226, -114.505325, 'pump', data["mapDpoc3"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC3_QD_LastSevenDays_Hourly.html'],
+							['Collector 1', 32.711696, -114.652562, 'pump', data["mapCol1"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT1_QD_LastSevenDays_Hourly.html'],
+							['Collector 2', 32.692990, -114.654005, 'pump', data["mapCol2"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT2_QD_LastSevenDays_Hourly.html'],
+							['Collector 3', 32.675981, -114.658769, 'pump', data["mapCol3"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT3_QD_LastSevenDays_Hourly.html'],
+							['Collector 4', 32.667839, -114.657036, 'pump', data["mapCol4"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT4_QD_LastSevenDays_Hourly.html'],
+							['SIB', 		32.487782, -114.789686, 'strm', data["mapSib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSIB_QD_LastSevenDays_Hourly.html'],
+							['Mode @ SIB', 	32.494024, -114.811614, 'strm', data["mapMode"],	'https://www.usbr.gov/lc/region/g4000/riverops/MODE_QD_LastSevenDays_Hourly.html'],
+							['242 Wells', 	32.472673, -114.692034, 'strm', data["map242"],		'https://www.usbr.gov/lc/region/g4000/riverops/W242_QD_LastSevenDays_Hourly.html'],
+							['NIB', 		32.718848, -114.719698, 'strm', data["mapNib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CNIB_QD_LastSevenDays_Hourly.html'],
+							['Pilot Knob', 	32.736939, -114.718731, 'strm', data["mapPlt"],		'https://www.usbr.gov/lc/region/g4000/riverops/PLTK_QD_LastSevenDays_Hourly.html'],
+							['Gila River', 	32.753430, -114.432971, 'strm', data["mapGila"],	'https://www.usbr.gov/lc/region/g4000/riverops/GILA_QD_LastSevenDays_Hourly.html'],
+							['Blw Laguna', 	32.813008, -114.514278, 'strm', data["mapLag"],		'https://www.usbr.gov/lc/region/g4000/riverops/BLAG_QD_LastSevenDays_Hourly.html'],
+							['Station 60', 	32.873491, -114.478011, 'strm', data["mapS60"],		'https://www.usbr.gov/lc/region/g4000/riverops/ST60_QD_LastSevenDays_Hourly.html'],
+							['GGMC', 		32.879169, -114.460063, 'strm', data["mapGmc"],		'https://www.usbr.gov/lc/region/g4000/riverops/GGMC_QD_LastSevenDays_Hourly.html'],
+							['Imperial', 	32.882410, -114.467367, 'strm', data["mapImp"],		'https://www.usbr.gov/lc/region/g4000/riverops/IMP_QD_LastSevenDays_Hourly.html'],
+							['Cal. WWay', 	32.736177, -114.623754, 'strm', data["mapCal"],		'https://www.usbr.gov/lc/region/g4000/riverops/CWWY_QD_LastSevenDays_Hourly.html'],
+							['CR Siphon', 	32.730654, -114.620090, 'strm', data["mapSif"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSYF_QD_LastSevenDays_Hourly.html'],
+							['Yuma Gage', 	32.729104, -114.623521, 'strm', data["mapYuma"],	'https://www.usbr.gov/lc/region/g4000/riverops/CYMA_QD_LastSevenDays_Hourly.html']
 						];
 						setGageMarkers(map,mapGages);
 					});
@@ -532,8 +563,11 @@ getJSON(jsonFileName).then(function(data) {
 				</td></tr>
 				</table>
 				
-				<br>
-				<p><strong>Contact us: <br></strong>
+				<p><span id="disclaimer"><strong>Data Disclaimer: </strong></span><br>
+				The data and information shown on this page are collected by an automated process and are provisional in nature. 
+				Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences.
+				Information concerning the accuracy and appropriate uses of these data and information may be obtained by contacting the office shown below:
+				<br><br>
 				Yuma Area Office<br>
 				7301 Calle Agua Salada<br>
 				Yuma, AZ 85364<br>
