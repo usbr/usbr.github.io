@@ -463,15 +463,14 @@ getJSON(jsonFileName).then(function(data) {
 						// BUILD DATA ARRAY FOR THE MAP
 						mapGages = [
 							//[SITENAME,LAT,LON,SITETYPE,VALUE,DATETIME,LINK]
-							['DPOC 1', 		32.713153, -114.554260, 'pump', data["mapDpoc1"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC1_QD_LastSevenDays_Hourly.html'],
-							['DPOC 2', 		32.709631, -114.534195, 'pump', data["mapDpoc2"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC2_QD_LastSevenDays_Hourly.html'],
-							['DPOC 3', 		32.719226, -114.505325, 'pump', data["mapDpoc3"],	'https://www.usbr.gov/lc/region/g4000/riverops/DPOC3_QD_LastSevenDays_Hourly.html'],
-							['Collector 1', 32.711696, -114.652562, 'pump', data["mapCol1"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT1_QD_LastSevenDays_Hourly.html'],
-							['Collector 2', 32.692990, -114.654005, 'pump', data["mapCol2"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT2_QD_LastSevenDays_Hourly.html'],
-							['Collector 3', 32.675981, -114.658769, 'pump', data["mapCol3"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT3_QD_LastSevenDays_Hourly.html'],
-							['Collector 4', 32.667839, -114.657036, 'pump', data["mapCol4"],	'https://www.usbr.gov/lc/region/g4000/riverops/CLCT4_QD_LastSevenDays_Hourly.html'],
+							['DPOC 1', 		32.713153, -114.554260, 'pump', data["mapDpoc1"],	''],
+							['DPOC 2', 		32.709631, -114.534195, 'pump', data["mapDpoc2"],	''],
+							['DPOC 3', 		32.719226, -114.505325, 'pump', data["mapDpoc3"],	''],
+							['Collector 1', 32.711696, -114.652562, 'pump', data["mapCol1"],	''],
+							['Collector 2', 32.692990, -114.654005, 'pump', data["mapCol2"],	''],
+							['Collector 3', 32.675981, -114.658769, 'pump', data["mapCol3"],	''],
+							['Collector 4', 32.667839, -114.657036, 'pump', data["mapCol4"],	''],
 							['SIB', 		32.487782, -114.789686, 'strm', data["mapSib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSIB_QD_LastSevenDays_Hourly.html'],
-							['Mode @ SIB', 	32.494024, -114.811614, 'strm', data["mapMode"],	'https://www.usbr.gov/lc/region/g4000/riverops/MODE_QD_LastSevenDays_Hourly.html'],
 							['242 Wells', 	32.472673, -114.692034, 'strm', data["map242"],		'https://www.usbr.gov/lc/region/g4000/riverops/W242_QD_LastSevenDays_Hourly.html'],
 							['NIB', 		32.718848, -114.719698, 'strm', data["mapNib"],		'https://www.usbr.gov/lc/region/g4000/riverops/CNIB_QD_LastSevenDays_Hourly.html'],
 							['Pilot Knob', 	32.736939, -114.718731, 'strm', data["mapPlt"],		'https://www.usbr.gov/lc/region/g4000/riverops/PLTK_QD_LastSevenDays_Hourly.html'],
@@ -479,10 +478,7 @@ getJSON(jsonFileName).then(function(data) {
 							['Blw Laguna', 	32.813008, -114.514278, 'strm', data["mapLag"],		'https://www.usbr.gov/lc/region/g4000/riverops/BLAG_QD_LastSevenDays_Hourly.html'],
 							['Station 60', 	32.873491, -114.478011, 'strm', data["mapS60"],		'https://www.usbr.gov/lc/region/g4000/riverops/ST60_QD_LastSevenDays_Hourly.html'],
 							['GGMC', 		32.879169, -114.460063, 'strm', data["mapGmc"],		'https://www.usbr.gov/lc/region/g4000/riverops/GGMC_QD_LastSevenDays_Hourly.html'],
-							['Imperial', 	32.882410, -114.467367, 'strm', data["mapImp"],		'https://www.usbr.gov/lc/region/g4000/riverops/IMP_QD_LastSevenDays_Hourly.html'],
-							['Cal. WWay', 	32.736177, -114.623754, 'strm', data["mapCal"],		'https://www.usbr.gov/lc/region/g4000/riverops/CWWY_QD_LastSevenDays_Hourly.html'],
-							['CR Siphon', 	32.730654, -114.620090, 'strm', data["mapSif"],		'https://www.usbr.gov/lc/region/g4000/riverops/CSYF_QD_LastSevenDays_Hourly.html'],
-							['Yuma Gage', 	32.729104, -114.623521, 'strm', data["mapYuma"],	'https://www.usbr.gov/lc/region/g4000/riverops/CYMA_QD_LastSevenDays_Hourly.html']
+							['Imperial', 	32.882410, -114.467367, 'strm', data["mapImp"],		'https://www.usbr.gov/lc/region/g4000/riverops/IMP_QD_LastSevenDays_Hourly.html']							
 						];
 						setGageMarkers(map,mapGages);
 					});
