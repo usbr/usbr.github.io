@@ -38,7 +38,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 <!-- Styles -->
 <link rel="stylesheet" href="https://www.usbr.gov/css/main.min.css" />
-<link rel="stylesheet" href="src/toggleSwitch.css" />
 
 <style>
 #map { height: 500px; width: 100%; }
@@ -61,9 +60,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 <!-- JS libraries for visualizations -->
 <script src="https://www.usbr.gov/js/lib/jquery.js"></script>
-<script src="src/d3.v3.min.js"></script>
-<script src="src/liquidFillGauge.js"></script>
-<script type="text/javascript" src="src/loader.js"></script>
+<script src="https://www.usbr.gov/js/waterops/d3.v3.min.js"></script>
+<script src="https://www.usbr.gov/js/waterops/liquidFillGauge.js"></script>
+<script type="text/javascript" src="https://www.usbr.gov/js/waterops/loader.js"></script>
 
 
 <script>
@@ -290,7 +289,7 @@ getJSON(jsonFileName).then(function(data) {
 				
 				<!--JR Scripts that run the Reservoir Gauges-->
 				<script>	
-				getJSON('yaoDashboard.json').then(function(data) {
+				getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/yaoDashboard.json').then(function(data) {
 					var brockVal = data["brockStor"].split("(",1);
 					var washVal = data["washStor"].split("(",1);
 					var config1 = liquidFillGaugeDefaultSettings();
@@ -302,7 +301,7 @@ getJSON(jsonFileName).then(function(data) {
 					config1.textVertPosition = 0.2;
 					config1.waveAnimateTime = 1500;
 					var gauge1 = loadLiquidFillGauge("brockGauge", Math.floor(100*brockVal/8440), config1);				
-					var gauge2 = loadLiquidFillGauge("washGauge", Math.floor(100*washVal/9144), config1);
+					var gauge2 = loadLiquidFillGauge("washGauge", Math.floor(100*(washVal-1852)/(9144-1852)), config1);
 				});				
 				</script>			
 				
@@ -507,23 +506,24 @@ getJSON(jsonFileName).then(function(data) {
 							case 'strm':
 								sColor = '#244A9F';		
 								content = content + val + '<br>'; 
-								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
+								content = content + '<a href="' + gages[i][5] + '">Open Data Page</a><br>';	
 								break;   
 							case 'pump': 
 								sColor = '#CB9F5B';
 								content = content + val + '<br>'; 
-								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
+								// [JR] COMMENTED OUT PUMP TS DATA NOT YET AVAILABLE
+								//content = content + '<a href="' + gages[i][5] + '">Open Data Page</a><br>';	
 								break;   
 							case 'area': 
 								sColor = '#FC7C00';
 								mapIcon = 'M-24-48h48v48h-48z';
-								content = content + '<a href="' + val + '">Link to most recent PDF Report</a><br>';
+								content = content + '<a href="' + val + '">Open most recent PDF Report</a><br>';
 								iconScale = 1;
 								break;   
 							default:     
 								sColor = '#244A9F';
 								content = content + val + '<br>'; 
-								content = content + '<a href="' + gages[i][5] + '">Link to Data Report</a><br>';	
+								content = content + '<a href="' + gages[i][5] + '">Open Data Page</a><br>';	
 						}
 						
 						var marker = new google.maps.Marker({  

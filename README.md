@@ -6,7 +6,7 @@ Available Pages:
 
 Service: NA (Text built via program with direct connection to HDB) - Sample: https://usbr.github.io/dataQualityMatrix/
 
-Service: NA (JSON built via program with direct connection to HDB) - [Yuma Area Office Operations Dashboard](https://usbr.github.io/yaoDashboard/)
+Service: [JSON File](https://www.usbr.gov/lc/region/g4000/riverops/webreports/yaoDashboard.json) - [Yuma Area Office Operations Dashboard](https://usbr.github.io/yaoDashboard/)
 
 Service: TBD - Sample: [Water User Report](https://usbr.github.io/WaterUser/)
 
