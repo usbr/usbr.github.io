@@ -414,6 +414,53 @@ getJSON('X').then(function(data)
 		</td>	
 		
 	</tr>
+	
+	<tr bgcolor="ffffff" align="left">
+	
+		<td width="50%" valign="top">
+		<strong>Excel Macro</strong>
+		<br><br>
+		</td>
+		
+		<td width="50%" valign="top">
+		<strong>Excel VBA Code</strong>
+<pre>
+Sub RWIS_Query()
+&#9;
+&#9;' Build RWIS URL
+&#9;' Template: https://water.usbr.gov/api/web/app.php/api/series?
+&#9;'&#9;sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet&
+&#9;'&#9;start=2017-01-01&end=2017-08-03&format=csv
+&#9;tStart = "2017-01-01"
+&#9;tEnd = "2017-07-01"
+&#9;rwisUrl = "URL;https://water.usbr.gov/api/web/app.php/api/series?" & _
+&#9;&#9;"sites=hdmlc&parameters=Day.Inst.ReservoirElevation.feet" & _
+&#9;&#9;"&start=" & tStart & "&end=" & tEnd & "&format=csv"
+&#9;
+&#9;' Place data in sheet
+&#9;Sheets("Sheet1").UsedRange.ClearContents
+&#9;With ActiveSheet.QueryTables.Add(Connection:=rwisUrl, Destination:=Range("A1"))
+&#9;&#9;.BackgroundQuery = True
+&#9;&#9;.TablesOnlyFromHTML = True
+&#9;&#9;.Refresh BackgroundQuery = True
+&#9;&#9;.SaveData = True
+&#9;End With
+&#9;
+&#9;' Split values using a comma delimiter
+&#9;Columns("A:A").Select
+&#9;Selection.TextToColumns Destination:=Range("A1"), DataType:=xlDelimited, _
+&#9;&#9;TextQualifier:=xlDoubleQuote, ConsecutiveDelimiter:=False, Tab:=True, _
+&#9;&#9;Semicolon:=False, Comma:=True, Space:=False, Other:=False, FieldInfo _
+&#9;&#9;:=Array(Array(1, 1), Array(2, 1), Array(3, 1), Array(4, 1), Array(5, 1), Array(6, 1), _
+&#9;&#9;Array(7, 1), Array(8, 1), Array(9, 1), Array(10, 1), Array(11, 1), Array(12, 1), Array(13, 1 _
+&#9;&#9;), Array(14, 1), Array(15, 1), Array(16, 1), Array(17, 1)), TrailingMinusNumbers:= _
+&#9;&#9;True
+End Sub
+</pre>
+	
+		</td>	
+		
+	</tr>
 
 
 
