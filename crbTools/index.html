@@ -377,7 +377,7 @@ String.prototype.replaceAll = function(search, replace) {
     return this.split(search).join(replace);
 }
 // Main script that does all the work
-getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/DSET-72.RSET-OBSERVED-HOURLY-2101.json').then(function(data) {
+getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/DSET-6.RSET-MODELED4-DAILY-2146.json').then(function(data) {
     //alert('Your Json result is:  ' + JSON.stringify(data["DATA"], null, 2));  
 	
 	// ACCESSING JSON OUTPUTS WITH JS
@@ -438,7 +438,7 @@ getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/DSET-72.RSET-O
     config1.circleThickness = 0.2;
     config1.textVertPosition = 0.2;
     config1.waveAnimateTime = 1000;
-    var gauge1 = loadLiquidFillGauge("fillgauge1", Math.floor(fillVal/20), config1);
+    var gauge1 = loadLiquidFillGauge("fillgauge1", Math.floor(fillVal/200), config1);
 	
 	// MAPPING EXAMPLE USING LEAFLET
 	var dataLat = JSON.stringify(data["RECORDMETADATA"].LATITUDE, null, 4).replaceAll("\"","");
