@@ -410,15 +410,15 @@ config1.waveAnimateTime = 1000;
 // Sample for binding D3 Liquid Fill Gage to Leaflet pop-up
 // https://stackoverflow.com/questions/33259552/adding-a-d3-js-liquid-fill-gauge-in-a-leaflet-popup
 // BIND LIQUID FILL GAGE TO LEAFLET POP-UP
-var content1 = '<svg id="gauge1" width="125" height="125" ></svg>';
-var content2 = '<svg id="gauge2" width="125" height="125" ></svg>';
-var content3 = '<svg id="gauge3" width="125" height="125" ></svg>';
-var content4 = '<svg id="gauge4" width="125" height="125" ></svg>';
-var content5 = '<svg id="gauge5" width="125" height="125" ></svg>';
-var content6 = '<svg id="gauge6" width="125" height="125" ></svg>';
-var content7 = '<svg id="gauge7" width="125" height="125" ></svg>';
-var content8 = '<svg id="gauge8" width="125" height="125" ></svg>';
-var content9 = '<svg id="gauge9" width="125" height="125" ></svg>';
+var content1 = '<svg id="gauge1" width="200" height="200" ></svg>';//mead
+var content2 = '<svg id="gauge2" width="75" height="75" ></svg>';//havasu
+var content3 = '<svg id="gauge3" width="125" height="125" ></svg>';//mohave
+var content4 = '<svg id="gauge4" width="200" height="200" ></svg>';//powell
+var content5 = '<svg id="gauge5" width="150" height="150" ></svg>';//flaming gorge
+var content6 = '<svg id="gauge6" width="75" height="75" ></svg>';//morrow point
+var content7 = '<svg id="gauge7" width="75" height="75" ></svg>';//fontenelle
+var content8 = '<svg id="gauge8" width="75" height="75" ></svg>';//blue mesa
+var content9 = '<svg id="gauge9" width="125" height="125" ></svg>';//navajo
 map.on('tooltipopen', function (e) {
 	if (e.tooltip.options.text == 1) {
 		loadLiquidFillGauge('gauge1', e.tooltip.options.value, config1);
@@ -494,12 +494,6 @@ getJSON(rwisURL).then(function(data) {
 	// Bind Leaflet tooltips
 	new L.Marker(
 		[
-			JSON.stringify(data["Lake Mead"].latitude, null, 4).replaceAll("\"",""), 
-			JSON.stringify(data["Lake Mead"].longitude, null, 4).replaceAll("\"","")
-		]).bindTooltip('<strong>Lake Mead / Hoover Dam</strong><br><br>' + content1 + '<br>As of: ' + meadT + '<br>Storage: ' + parseInt(meadVal/1000) + ' KAF<br>', 
-		{permanent: true, direction: 'right', 'value': parseInt(100*meadVal/26120000), 'text':1}).addTo(map);
-	new L.Marker(
-		[
 			JSON.stringify(data["Lake Havasu"].latitude, null, 4).replaceAll("\"",""), 
 			JSON.stringify(data["Lake Havasu"].longitude, null, 4).replaceAll("\"","")
 		]).bindTooltip('<strong>Lake Havasu / Parker Dam</strong><br><br>' + content2 + '<br>As of: ' + havasuT + '<br>Storage: ' + parseInt(havasuVal/1000) + ' KAF<br>', 
@@ -545,7 +539,13 @@ getJSON(rwisURL).then(function(data) {
 			JSON.stringify(data["LAKE POWELL"].latitude, null, 4).replaceAll("\"",""), 
 			JSON.stringify(data["LAKE POWELL"].longitude, null, 4).replaceAll("\"","")
 		]).bindTooltip('<strong>Lake Powell / Glen Canyon Dam </strong><br><br>' + content4 + '<br>As of: ' + powellT + '<br>Storage: ' + parseInt(powellVal/1000) + ' KAF<br>', 
-		{permanent: true, direction: 'right', 'value': parseInt(100*powellVal/24322000), 'text':4}).addTo(map);
+		{permanent: true, direction: 'bottom', 'value': parseInt(100*powellVal/24322000), 'text':4}).addTo(map);
+	new L.Marker(
+		[
+			JSON.stringify(data["Lake Mead"].latitude, null, 4).replaceAll("\"",""), 
+			JSON.stringify(data["Lake Mead"].longitude, null, 4).replaceAll("\"","")
+		]).bindTooltip('<strong>Lake Mead / Hoover Dam</strong><br><br>' + content1 + '<br>As of: ' + meadT + '<br>Storage: ' + parseInt(meadVal/1000) + ' KAF<br>', 
+		{permanent: true, direction: 'top', 'value': parseInt(100*meadVal/26120000), 'text':1}).addTo(map);
 }, function(status) { //error detection....
   alert('Something went wrong.');
 });  
