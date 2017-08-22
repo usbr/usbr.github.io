@@ -36,7 +36,7 @@
    integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA=="
    crossorigin=""></script>
 <style>
-    #map{ width: 100%; height: 800px; }
+    #map{ width: 100%; height: 750px; }
 </style>
 
 
@@ -218,7 +218,7 @@
 Note: This web page shows a teacup diagram of reservoir storage contents and storage capacity for some of the Colorado River reservoirs. 
 The graphic shown below is a snapshot of conditions for the most recent data in RWIS. The hydrologic data on this website are 
 provisional records collected by an automated process and are subject to change
-<br><br><br>
+<br><br>
 
 
 <div id="map"></div>
@@ -386,7 +386,7 @@ String.prototype.replaceAll = function(search, replace) {
     return this.split(search).join(replace);
 }
 // BUILD MAP USING LEAFLET
-var dataLat = 38.5;
+var dataLat = 38;
 var dataLon = -112;
 var map = L.map('map').setView([dataLat, dataLon], 6);	
 // load a tile layer
@@ -489,12 +489,12 @@ getJSON(rwisURL).then(function(data) {
 			JSON.stringify(data["FONTENELLE RESERVOIR"].latitude, null, 4).replaceAll("\"",""), 
 			JSON.stringify(data["FONTENELLE RESERVOIR"].longitude, null, 4).replaceAll("\"","")
 		]).bindTooltip('<strong>Fontenelle Reservoir</strong><br><br>' + content7 + '<br>As of: ' + fontenelleT + '<br>Storage: ' + parseInt(fontenelleVal/1000) + ' KAF<br>', 
-		{permanent: true, direction: 'top', 'value': parseInt(100*fontenelleVal/344800), 'text':7}).addTo(map);
+		{permanent: true, direction: 'right', 'value': parseInt(100*fontenelleVal/344800), 'text':7}).addTo(map);
 	new L.Marker(
 		[
 			JSON.stringify(data["FLAMING GORGE RESERVOIR"].latitude, null, 4).replaceAll("\"",""), 
 			JSON.stringify(data["FLAMING GORGE RESERVOIR"].longitude, null, 4).replaceAll("\"","")
-		]).bindTooltip('<strong>Flaming Gorge Resrovoir</strong><br><br>' + content5 + '<br>As of: ' + fGorgeT + '<br>Storage: ' + parseInt(fGorgeVal/1000) + ' KAF<br>', 
+		]).bindTooltip('<strong>Flaming Gorge Reservoir</strong><br><br>' + content5 + '<br>As of: ' + fGorgeT + '<br>Storage: ' + parseInt(fGorgeVal/1000) + ' KAF<br>', 
 		{permanent: true, direction: 'left', 'value': parseInt(100*fGorgeVal/3749000), 'text':5}).addTo(map);
 	new L.Marker(
 		[
