@@ -10,7 +10,7 @@ Service: [JSON File](https://www.usbr.gov/lc/region/g4000/riverops/webreports/ya
 
 Service: TBD - Sample: [Water User Report](https://usbr.github.io/WaterUser/)
 
-Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sample: https://usbr.github.io/rwis/
+Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sample: https://usbr.github.io/rwis/ https://usbr.github.io/rwis/rwisTeacupDiagram.html
 
 Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sankey Chart: https://usbr.github.io/rwisSankey/
 
