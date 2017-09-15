@@ -93,7 +93,7 @@ getJSON(jsonFileName).then(function(data) {
 	document.getElementById("brockElev1").innerHTML = 	data["brockElev1"];  
 	document.getElementById("brockElev2").innerHTML = 	data["brockElev2"];  
 	document.getElementById("brockStor").innerHTML = 	data["brockStor"];  
-	document.getElementById("brockYtd").innerHTML = 	data["brockYtd"];  
+	//document.getElementById("brockYtd").innerHTML = 	data["brockYtd"];  
 	document.getElementById("washElev").innerHTML = 	data["washElev"];  
 	document.getElementById("washStor").innerHTML = 	data["washStor"];  
 	document.getElementById("washYtd").innerHTML = 		data["washYtd"];  
@@ -104,7 +104,7 @@ getJSON(jsonFileName).then(function(data) {
 	document.getElementById("salImp").innerHTML = 		data["salImp"];  
 	document.getElementById("salNib").innerHTML = 		data["salNib"];  
 	document.getElementById("salDif").innerHTML = 		data["salDif"];  
-	document.getElementById("salProj").innerHTML = 		data["salProj"];  
+	//document.getElementById("salProj").innerHTML = 		data["salProj"];  
 	// BUILD DATA ARRAYS NEEDED BY THE INDICATOR GAUGES
 	gageGroup1 = [
 		['Label', 'Value'],
@@ -266,8 +266,10 @@ getJSON(jsonFileName).then(function(data) {
 					&nbsp;&nbsp;&nbsp;<span id=brockStor></span><br>
 					<strong>Total Capacity (Cells 1 + 2): </strong><br>
 					&nbsp;&nbsp;&nbsp;8440 AF<br>
+					<!--
 					<strong>Volume Stored YTD (AF): </strong><br>
 					&nbsp;&nbsp;&nbsp;<span id=brockYtd></span><br>
+					-->
 					<br>
 				</td>
 				<td width="50%" valign="top">
@@ -334,7 +336,9 @@ getJSON(jsonFileName).then(function(data) {
 						At Imperial Dam: <span id=salImp></span><br>
 						Total at NIB: <span id=salNib></span><br>
 						Differential: <span id=salDif></span><br>
+						<!--
 						<font color="#CB9F5B">EOY Projection: </font><span id=salProj></span><br>
+						-->
 						</blockquote>
 						</blockquote>		
 					</td>
