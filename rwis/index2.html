@@ -317,7 +317,7 @@ src="https://www.usbr.gov/js/waterops/liquidFillGauge.js"
 
 getJSON('X').then(function(data) 
 {	
-&#9;var fillVal = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters[
+&#9;var fillVal = JSON.stringify(data["and"].parameters[
 &#9;&#9;"Day.Inst.ReservoirElevation.feet"]["timeinterval"]
 &#9;&#9;["Daily"][0].value, null, 4).replaceAll("\"","");
 &#9;var config1 = liquidFillGaugeDefaultSettings();
@@ -359,17 +359,17 @@ src="https://www.usbr.gov/js/lib/jquery.js"
 
 getJSON('X').then(function(data) 
 {	
-&#9;jsonName.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].description, 
+&#9;jsonName.innerText = JSON.stringify(data["and"].description, 
 &#9;&#9;null, 4);
-&#9;jsonType.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].type, 
+&#9;jsonType.innerText = JSON.stringify(data["and"].type, 
 &#9;&#9;null, 4);
-&#9;jsonData.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters[
+&#9;jsonData.innerText = JSON.stringify(data["and"].parameters[
 &#9;&#9;"Day.Inst.ReservoirElevation.feet"]["timeinterval"]
-&#9;&#9;["Daily"][0], null, 4) + "," + JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].
+&#9;&#9;["Daily"][0], null, 4) + "," + JSON.stringify(data["and"].
 &#9;&#9;parameters[Day.Inst.ReservoirElevation.feet"]["timeinterval"]
 &#9;&#9;["Daily"][1], null, 4) + ", ..., " + JSON.stringify(data[
-&#9;&#9;"Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]
-&#9;&#9;["timeinterval"]["Daily"][data["Anderson Ranch Dam and Reservoir; ID"].parameters[
+&#9;&#9;"and"].parameters["Day.Inst.ReservoirElevation.feet"]
+&#9;&#9;["timeinterval"]["Daily"][data["and"].parameters[
 &#9;&#9;"Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"]
 &#9;&#9;.length - 1], null, 4);
 });
@@ -395,9 +395,9 @@ script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"
 
 getJSON('X').then(function(data) 
 {	
-&#9;var dataLat = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].latitude, null, 4)
+&#9;var dataLat = JSON.stringify(data["and"].latitude, null, 4)
 &#9;&#9;.replaceAll("\"","");
-&#9;var dataLon = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].longitude, null, 4)
+&#9;var dataLon = JSON.stringify(data["and"].longitude, null, 4)
 &#9;&#9;.replaceAll("\"","");
 &#9;mapLatLon.innerText = "JSON coordinates: " + dataLat + ", " + dataLon;
 &#9;var map = L.map('map').setView([dataLat, dataLon], 13);	
@@ -604,16 +604,16 @@ String.prototype.replaceAll = function(search, replace) {
 // Main script that does all the work
 getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=and&parameters=Day.Inst.ReservoirElevation.feet&start=2016-01-01&end=2017-07-01').then(function(data) {	
 	// ACCESSING JSON OUTPUTS WITH JS
-	jsonName.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].description, null, 4);
-	jsonType.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].type, null, 4);
-	jsonData.innerText = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0], null, 4) + "," + 
-						JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][1], null, 4) + ", ..., " + 
-						JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][
-							data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"].length - 1
+	jsonName.innerText = JSON.stringify(data["and"].description, null, 4);
+	jsonType.innerText = JSON.stringify(data["and"].type, null, 4);
+	jsonData.innerText = JSON.stringify(data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0], null, 4) + "," + 
+						JSON.stringify(data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][1], null, 4) + ", ..., " + 
+						JSON.stringify(data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][
+							data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"].length - 1
 						], null, 4);
 	
 	// TIMESERIES CHART USING DYGRAPHS
-	var graphData = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 2);
+	var graphData = JSON.stringify(data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"], null, 2);
     // Transform JSON string to DyGraph input...
 	graphData = graphData.replaceAll(/,\r?\n|\r/g, ", ");
 	graphData = graphData.replaceAll(/[\}],\s+[\{]\r?\n/g, "");
@@ -643,7 +643,7 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=and&parameters=
 			 );
 	
 	// FILL GAUGE USING D3
-	var fillVal = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0].value, null, 4).replaceAll("\"","");
+	var fillVal = JSON.stringify(data["and"].parameters["Day.Inst.ReservoirElevation.feet"]["timeinterval"]["Daily"][0].value, null, 4).replaceAll("\"","");
 	var config1 = liquidFillGaugeDefaultSettings();
     config1.circleColor = "#244A9F";
     config1.textColor = "#CB9F5B";
@@ -655,8 +655,8 @@ getJSON('https://water.usbr.gov/api/web/app.php/api/series?sites=and&parameters=
     var gauge1 = loadLiquidFillGauge("fillgauge1", Math.floor(fillVal/150), config1);
 	
 	// MAPPING EXAMPLE USING LEAFLET
-	var dataLat = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].latitude, null, 4).replaceAll("\"","");
-	var dataLon = JSON.stringify(data["Anderson Ranch Dam and Reservoir; ID"].longitude, null, 4).replaceAll("\"","");
+	var dataLat = JSON.stringify(data["and"].latitude, null, 4).replaceAll("\"","");
+	var dataLon = JSON.stringify(data["and"].longitude, null, 4).replaceAll("\"","");
 	mapLatLon.innerText = "JSON coordinates: " + dataLat + ", " + dataLon;
 	// initialize the map
 	var map = L.map('map').setView([dataLat, dataLon], 13);	
