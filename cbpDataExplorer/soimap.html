@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!-- template-v2015  -->
+<!--[if lte IE 7]><html class="no-js old-ie lte-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if lte IE 8]><html class="no-js old-ie lte-ie8 lte-ie7" lang="en" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
+<head>
+<!-- Head Content  -->
+<meta charset="utf-8">
+
+<!--[if gt IE 8 ]-->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<!--<![endif]-->
+<title>CBP Data Explorer | Pacific Northwest Region | Bureau of Reclamation</title>
+<meta name="description" content="Hydromet, Pacific Northwest Region, Bureau of Reclamation - Managing water and power in the West" />
+<meta name="keywords" content="Hydromet, Pacific Northwest Region, Department of the Interior, Bureau of Reclamation, Water, Dams, Dam, Projects &amp; Facilties, Hydromet, Agrimet, hydropower" />
+<meta name="author" content="Bureau of Reclamation" />
+<meta name="publisher" content="Bureau of Reclamation" />
+<meta name="created" content="20150101" />
+<meta name="expires" content="Never" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://www.usbr.gov/img/favicon.ico">
+<script type="text/javascript"> 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-17251781-1']);
+_gaq.push(['_anonymizeIp']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOI&subagency=usbr" id="_fed_an_ua_tag"></script>
+
+<!-- Styles -->
+<link rel="stylesheet" href="https://www.usbr.gov/css/main.min.css" />
+<link rel="stylesheet" href="https://www.usbr.gov/pn/stylesheets/main.pn.css" />
+
+<style>
+#map { height: 750px; width: 100%; }
+.fieldset-auto-width { display: inline-block; width: 100%;}
+
+#legend {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  opacity: 0.8;
+  padding: 10px;
+  margin: 10px;
+  border: 3px solid #000;
+}
+#legend h3 { margin-top: 0; }
+#legend img { vertical-align: middle; }
+</style>
+
+<!-- JS --> 
+<script src="https://www.usbr.gov/js/lib/jquery.js"></script> 
+
+<!-- Modernizr -->
+<script src="https://www.usbr.gov/js/lib/modernizr.js"></script>
+		
+</head>
+<body>
+<div class="MainContainer"> 
+  <!-- Skip Links (only visible to screen readers) -->
+  <div id="SkipLinks" class="SkipLinks">
+    <ul>
+      <li><a href="#Nav">Skip to Primary Navigation</a></li>
+      <li><a href="#Main">Skip to Main Content</a></li>
+      <li><a href="#Footer">Skip to Footer</a></li>
+    </ul>
+  </div>
+  <!-- #BeginLibraryItem "/Library/topnav.lbi" --><!-- Header -->
+<div class="Header" id="top" role="banner">
+  <div class="Header-wrap container"> 
+
+    <!-- Logo -->
+    <a class="Header-logo" href="https://www.usbr.gov" title="Reclamation Home"><img src="https://www.usbr.gov/img/logo-white.png" alt="Bureau of Reclamation: Managing Water in the West"></a> 
+
+     <div class="Header-social">
+      <span class="Header-social-label">Share</span> 
+      <ul>
+        <li>
+          <a class="critical-icon" title="Share on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={url}">
+            <span class="icon-facebook" aria-hidden="true"></span>
+            <span class="fallback">Facebook</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Twitter" target="_blank" href="https://twitter.com/share?url={url}&text={title}&via={via}&hashtags={hashtags}">
+            <span class="icon-twitter" aria-hidden="true"></span>
+            <span class="fallback">Twitter</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Tumblr" target="_blank" href="https://www.tumblr.com/share/link?url={url}&name={title}&description={desc}">
+            <span class="icon-tumblr" aria-hidden="true"></span>
+            <span class="fallback">Tumblr</span>
+          </a>
+        </li>
+        <li>
+          <a class="critical-icon" title="Share on Pinterest" target="_blank" href="https://pinterest.com/pin/create/bookmarklet/?media={img}&url={url}&is_video={is_video}&description={title}">
+            <span class="icon-pinterest" aria-hidden="true"></span>
+            <span class="fallback">Pinterest</span>
+          </a>
+        </li>
+      </ul>
+    </div><!-- end Header-social -->
+
+  </div><!-- end container -->
+</div><!-- end Header -->
+
+<!-- Nav Menu -->
+<div class="Nav" id="Nav">
+  <div class="Nav-wrap">
+    <!-- Navigation -->
+    <ol class="Nav-list resetList" role="navigation" aria-label="Primary Navigation">
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Water &amp; Power</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/facilities.php?type=Dam" class="Nav-sublist-link">Dams</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/facilities.php?type=Powerplant" class="Nav-sublist-link">Powerplants</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/projects/facilities.php?type=Project" class="Nav-sublist-link">Projects</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/agrihydro.html" class="Nav-sublist-link">Agrimet/Hydromet</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/water/" class="Nav-sublist-link">Water Operations</a></li>
+         </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Resources &amp; Research</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+           <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/programs/" class="Nav-sublist-link">Programs</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/tsc/" class="Nav-sublist-link">Technical Service Center</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/research/" class="Nav-sublist-link">Research &amp; Development</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/recman/" class="Nav-sublist-link">Reclamation Manual</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/environmental/" class="Nav-sublist-link">Environmental Resources/Reports</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/library/" class="Nav-sublist-link">Library</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">About Us</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+          <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/about/mission.html" class="Nav-sublist-link">Mission/Vision</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/about/fact.html" class="Nav-sublist-link">Fact Sheet</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/bios/detail.cfm?recordid=1" class="Nav-sublist-link">Commissioner</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/offices.html" class="Nav-sublist-link">Addresses/Contacts</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/images/br_org_chart.pdf" class="Nav-sublist-link">Organizational Chart</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/bios/bios.cfm" class="Nav-sublist-link">Leadership Bios</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/hr/" class="Nav-sublist-link">Employment</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/comments.cfm" class="Nav-sublist-link">Contact</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">Recreation &amp; Public Use</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+          <li class="Nav-sublist-item"><a href="https://www.usbr.gov/recreation/" class="Nav-sublist-link">Find Recreation</a></li>
+         <li class="Nav-sublist-item"><a href="http://www.recreation.gov" class="Nav-sublist-link">Recreation.gov</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/lands/" class="Nav-sublist-link">Public Use</a></li>
+        </ol>
+      </li>
+      <li class="Nav-item">
+        <a class="Nav-item-link" href="#">News &amp; Multimedia</a>
+        <ol class="Nav-sublist resetList" aria-label="submenu">
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/newsrelease/" class="Nav-sublist-link">News Releases</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/stories/" class="Nav-sublist-link">News Stories</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/speech/" class="Nav-sublist-link">Speeches</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/testimony/" class="Nav-sublist-link">Congressional Testimony</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/newsroom/presskit/factsheet/" class="Nav-sublist-link">Fact Sheets</a></li>
+                  <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#photos" class="Nav-sublist-link">Photos</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#video" class="Nav-sublist-link">Multimedia</a></li>
+         <li class="Nav-sublist-item"><a href="https://www.usbr.gov/main/multimedia/index.html#social" class="Nav-sublist-link">Social Media</a></li>
+        </ol>
+      </li>
+    </ol>
+
+    <!-- Search -->
+    <div class="Header-search" id="recSearch">
+       <form method="get" action=" https://search.usa.gov/search" role="search">
+        <input type="hidden" name="affiliate" value="Reclamation" />
+        <label class="visuallyhidden" for="query">Search</label>
+        <input type="text" name="query" id="query" placeholder="Search" />
+        <button type="submit" id="search">Search</button>
+      </form>
+    </div>
+  </div>
+</div><!-- #EndLibraryItem -->
+  
+  
+  <!-- Update inline style to change banner image -->
+  <div class="Main" id="Main" role="main" style="background-image: url(https://www.usbr.gov/pn/images/snake3.jpg)"> 
+    <!-- Additional wrapper for bottom background image -->
+    <div class="Main-wrap" style="background-image: url('https://www.usbr.gov/img/bg-footer.jpg')"> 
+      <!-- Banner -->
+      <div class="Banner Banner--full">
+        <div class="Banner-content">
+          <div class="container">
+            <h1>Pacific Northwest Region</h1>
+            <p>Columbia River Basin in Idaho, Oregon, Washington,<br>
+              Montana & Wyoming</p>
+          </div>
+        </div>
+      </div>
+      <!-- end Banner -->
+      
+      <div class="Main-content container"> 
+        <!-- Breadcrumbs -->
+        <div class="Breadcrumbs">
+          <div class="container">
+            <ul class="resetList">
+              <li><a href="https://www.usbr.gov/" target="_blank">Reclamation</a></li>
+              <li><a href="https://www.usbr.gov/pn/">Pacific Northwest Region</a></li>
+              <li><a href="https://www.usbr.gov/pn/hydromet/">Hydromet</a></li>
+              <li>CBP Map Interface</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Left Navigation --><!-- #BeginLibraryItem "/Library/hydrometnav.lbi" -->
+        <div class="Main-nav">
+          <div class="LeftNav" role="navigation"> <span class="LeftNav-title">PN Region</span>
+            <ul class="LeftNav-list">
+              <li><a href="https://www.usbr.gov/pn/">Home</a></li>
+              <li><a href="https://www.usbr.gov/pn/about/index.html">About Us</a></li>
+              <li><a href="https://www.usbr.gov/pn/about/hr/emp.html">Employment</a></li>
+              <li><a href="https://www.usbr.gov/pn/ccao/index.html">Columbia-Cascades Area Office</a></li>
+              <li><a href="https://www.usbr.gov/pn/grandcoulee/index.html">Grand Coulee Dam</a></li>
+              <li><a href="https://www.usbr.gov/pn/snakeriver/index.html">Snake River Area Office</a></li>
+              <li><a href="https://www.usbr.gov/pn/contracts/index.html">Contracting Opportunities</a></li>
+              <li><a href="https://www.usbr.gov/pn/programs/index.html">Programs & Activities</a></li>
+              <li><a href="https://www.usbr.gov/pn/programs/envirodocs.html">Enviromental Documents</a></li>
+              <li><a href="https://www.usbr.gov/pn/watops/index.html">Water Operations</a></li>
+              <li><a href="https://www.usbr.gov/pn/agrimet/">AgriMet</a></li>
+              <li class="-active"><a href="https://www.usbr.gov/pn/hydromet/">Hydromet</a>
+                <ul>
+                  <li><a href="https://www.usbr.gov/pn/hydromet/select.html">Reservoir Storage</a></li>
+                  <li><a href="https://www.usbr.gov/pn/hydromet/ramps/">Boat Ramps</a></li>
+                  <li><a href="https://www.usbr.gov/pn/hydromet/realtime.html">Current Data</a></li>
+                  <li><a href="https://www.usbr.gov/pn/hydromet/arcread.html">Historical Data</a></li>
+                </ul>
+              </li>
+              <li><a href="https://www.usbr.gov/pn/recreation/index.html">Recreation</a></li>
+              <li><a href="https://www.usbr.gov/pn/site_map.html">Site Index</a></li>
+              <li><a href="https://www.usbr.gov/pn/contact_pn.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- #EndLibraryItem --><!-- end Main-nav -->
+        
+    <div class="Main-well">
+		<h2 class="h1">Columbia Basin Project Data Mapper</h2>
+		This interface allows users to map Columbia Basin Project monitoring locations. 
+		This interface complements the <a href="soigraphs.html">Data Explorer</a> which is the main interface for querying data.
+		<br><br>
+		  
+				<div id="map"></div>
+				<div id="legend"><h3>Legend</h3></div>	
+
+<!--JR Scripts that run the Map-->
+<script>
+//////////////////////////////////////////////////////////////////
+// SCRIPTS FOR WEBPAGE PROCESSES	
+function buildMap() {
+	var cbpArea = {lat: 47.0, lng: -119.4};
+	var map = new google.maps.Map(document.getElementById('map'), 
+		{
+			zoom: 9, 
+			maxZoom:13,
+			minZoom:8,
+			center: cbpArea,
+			zoomControl: true,
+			mapTypeControl: true,
+			scaleControl: true,
+			streetViewControl: false,
+			rotateControl: false,
+			fullscreenControl: true,
+			mapTypeControlOptions: 
+			{
+				mapTypeIds: ['terrain', 'roadmap', 'hybrid']
+			}						
+		}
+	);
+	map.setMapTypeId('terrain');					
+					
+	// Build Legend
+	var icons = 
+	{
+		res: { name: 'USBR', color: '#244A9F' },
+		usbr: { name: 'Power Plant', color: '#B50C00' },
+		qcbid: { name: 'East CBID', color: '#775BA9' },
+		ecbid: { name: 'South CBID', color: '#23A491' },
+		scbid: { name: 'Quincy CBID', color: '#6A9913' }
+	};
+	
+	var legend = document.getElementById('legend');
+	for (var key in icons) 
+	{
+		var type = icons[key];
+		var tName = type.name;
+		var tColor = type.color;
+		var div = document.createElement('div');
+		div.innerHTML = '<strong><font size="2px" color="'+ tColor + '">' + tName + '</font></strong>';
+		legend.appendChild(div);
+	}
+	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);		
+					
+	// Load GeoJSON data
+	map.data.loadGeoJson('soimap.json?_='+ new Date().getTime());
+			
+	// Set the icon from the "type" property in the geoJson
+	map.data.setStyle(function(feature) 
+	{
+		var icon = null;
+		var sColor = '#244A9F';
+		if (feature.getProperty('district')) 
+		{
+			var sType = feature.getProperty('district');
+			switch(sType) 
+			{
+				case 'Power Plant':
+					sColor = '#B50C00';		
+					break;   
+				case 'East CBID': 
+					sColor = '#775BA9';
+					break;  
+				case 'South CBID': 
+					sColor = '#23A491';
+					break;    
+				case 'Quincy CBID': 
+					sColor = '#6A9913';	
+					break; 
+				default:     
+					sColor = '#244A9F';
+			}
+		}
+		return ({
+			icon: 
+			{
+				path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
+				fillOpacity: .7,
+				scale: .5,
+				strokeWeight: 1.5,
+				strokeColor: "#FFFFFF",
+				fillColor: sColor
+			}
+		});
+	});
+	
+	// Infowindow
+	var infowindow = new google.maps.InfoWindow();
+	map.data.addListener('click', function(event) 
+	{
+		var myHTML = 'Site: ' + event.feature.getProperty("sitename") + '<br>' 
+			+ event.feature.getProperty("siteinfo") + '<br>'
+			+ '<a href="soigraphs.html?group=' + event.feature.getProperty("groupnum") + '" target="_blank">Select site on Data Explorer</a><br>';
+				
+		infowindow.setContent("<div>"+myHTML+"</div>");
+		infowindow.setPosition(event.feature.getGeometry().get());
+		infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+		infowindow.open(map);
+	});
+}		
+</script>
+		
+		<!-- <script async defer src="https://maps-api-ssl.google.com/maps/api/js?client=gme-usgovdeptoftheinterior&sensor=false&v=3&callback=buildMap"> </script>-->
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCQDeQUpjqumnTIJmrzSy2ItBr73ABTIs&callback=buildMap"> </script>					
+		
+		<br><br>
+		This system uses data stored in the Hydromet databases. Columbia Basin Project (CBP) data in Hydromet is copied directly from the CBP SCADA system at regular intervals. Data edits and modifications within the CBP internal databases may not be reflected in the Hydromet databases and would therefore not be reflected on this system. Official and operational data are solely contained within the CBP internal databases. Contact the Ephrata Field Office for questions regarding official CBP data.
+		<br><br>
+		The data and information shown on this page are collected by an automated process and are provisional in nature. 
+		Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences.
+		Information concerning the accuracy and appropriate uses of these data and information may be obtained by contacting the office shown below:
+		<br><br>
+		Ephrata Field Office<br>
+		32 C Street NW<br>
+		Ephrata, WA 98823<br>
+		Phone: (509)754-0260<br>
+		
+          <!-- #EndLibraryItem -->
+	</div>
+        <!-- end Main-well -->         
+      <!-- end Main-content --> 
+      
+    </div>
+    <!-- end Main-wrap --> 
+    
+  </div>
+  <!-- end Main -->
+  <div> <!-- #BeginLibraryItem "/lib/footer.lbi" --> 
+    <!-- Footer -->
+    <div class="Footer" id="Footer" role="contentinfo">
+      <div class="container">
+        <h2 class="visuallyhidden">More Information about the U.S. Bureau of Reclamation</h2>
+        <!-- Social Links -->
+        <div class="Footer-social">
+          <h2>Stay in Touch</h2>
+          <ul>
+            <li> <a href="http://www.facebook.com/bureau.of.reclamation" target="new" class="critical-icon"> <span class="icon-facebook" aria-hidden="true"></span> <span class="fallback">Facebook</span> </a> </li>
+            <li> <a href="http://twitter.com/usbr" class="critical-icon" target="new"> <span class="icon-twitter" aria-hidden="true"></span> <span class="fallback">Twitter</span> </a> </li>
+            <li> <a href="http://www.youtube.com/user/reclamation" class="critical-icon" target="new"> <span class="icon-youtube" aria-hidden="true"></span> <span class="fallback">YouTube</span> </a> </li>
+            <li> <a href="http://www.flickr.com/photos/usbr/" class="critical-icon" target="new"> <span class="icon-flickr" aria-hidden="true"></span> <span class="fallback">Flickr</span> </a> </li>
+            <li> <a href="http://usbr.tumblr.com/" class="critical-icon" target="new"> <span class="icon-tumblr" aria-hidden="true"></span> <span class="fallback">Tumblr</span> </a> </li>
+            <li> <a href="http://www.pinterest.com/usbrgov/" class="critical-icon" target="new"> <span class="icon-pinterest" aria-hidden="true"></span> <span class="fallback">Pinterest</span> </a> </li>
+            <li> <a href="http://instagram.com/bureau_of_reclamation" class="critical-icon" target="new"> <span class="icon-instagram" aria-hidden="true"></span> <span class="fallback">Instagram</span> </a> </li>
+            <li> <a href="https://www.usbr.gov/newsroom/rssxml/rssfeeds.html" class="critical-icon" target="new"> <span class="icon-rss" aria-hidden="true"></span> <span class="fallback">RSS</span> </a> </li>
+          </ul>
+        </div>
+        <!-- Site Links -->
+        <div class="Footer-links">
+          <ul>
+            <li><a href="https://www.usbr.gov/main/comments.cfm">Contact Us</a></li>
+            <li><a href="https://www.usbr.gov/main/index/">Site Index</a></li>
+          </ul>
+          <ul>
+            <li><a href="https://www.usbr.gov/main/access.html">Accessibility</a></li>
+            <li><a href="https://www.usbr.gov/main/disclaimer.html">Disclaimer</a></li>
+            <li><a href="http://www.doi.gov/" target="new"><abbr title="Department of the Interior">DOI</abbr></a></li>
+            <li><a href="https://www.usbr.gov/foia/">FOIA</a></li>
+            <li><a href="http://www.doi.gov/pmb/eeo/no-fear-act.cfm">No Fear Act</a></li>
+            <li><a href="https://www.usbr.gov/main/notices.html">Notices</a></li>
+            <li><a href="https://www.usbr.gov/main/privacy.html">Privacy Policy</a></li>
+            <li><a href="https://www.usbr.gov/main/qoi/">Quality of Information</a></li>
+            <li><a href="http://www.recreation.gov/" target="new">Recreation.gov</a></li>
+            <li><a href="http://www.usa.gov/" target="new">USA.gov</a></li>
+          </ul>
+        </div>
+        <!-- Logo --> 
+        <a class="Footer-logo" href="https://www.usbr.gov"><img src="https://www.usbr.gov/img/seal-white.png" alt="U.S. Department of the Interior - Bureau of Reclamation"></a> </div>
+    </div>
+  </div>
+  <!-- #EndLibraryItem --></div>
+
+<script>
+// Only load FastClick if touch events are supported
+if ( Modernizr.touch ) {
+  $(function() {
+    $.getScript("https://www.usbr.gov/js/lib/fastclick.min.js", function() {
+      FastClick.attach(document.body);
+    });
+  });
+}
+</script> 
+
+<!-- Responsive Video Plugin --> 
+<script src="https://www.usbr.gov/js/lib/jquery.fitvids.min.js"></script> 
+<script>
+  $(".fluid-video").fitVids();
+</script> 
+
+<!-- Outlines 
+<script src="https://www.usbr.gov/js/components/outlines.js"></script> --> 
+
+<!-- Mobile Navigation --> 
+<script src="https://www.usbr.gov/js/components/navigation.js"></script> 
+
+<!-- Responsive Tabs --> 
+<script src="https://www.usbr.gov/js/lib/responsive-tabs.js"></script> 
+<script src="https://www.usbr.gov/js/components/tabs.js"></script> 
+
+<!-- Explore Accordion --> 
+<script src="https://www.usbr.gov/js/components/explore.js"></script> 
+
+<!-- Carousel --> 
+<script src="https://www.usbr.gov/js/lib/carousel.js"></script> 
+<script src="https://www.usbr.gov/js/components/carousel.js"></script> 
+
+<!-- Left Navigation --> 
+<script src="https://www.usbr.gov/js/components/left-nav.js"></script>
+</body>
+</html>
