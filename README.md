@@ -16,3 +16,4 @@ Service: [Reclamation Water Information System](https://water.usbr.gov/) - Sampl
 
 Service: [Colorado River Basin Open Data](https://www.usbr.gov/lc/region/g4000/riverops/webreports/index.html) - Sample: [1]( https://usbr.github.io/crbTools/)
 
+Service: JSON Files [map](https://usbr.github.io/cbpDataExplorer/soigraphs.json), [explorer](https://usbr.github.io/cbpDataExplorer/soiGraphs.json) - Pages [map](https://usbr.github.io/cbpDataExplorer/soimap.html), [explorer](https://usbr.github.io/cbpDataExplorer/soigraphs.html)
