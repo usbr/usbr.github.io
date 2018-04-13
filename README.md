@@ -1,6 +1,6 @@
 # usbr.github.io
 
-This repository contains files that show snippets for how to request and use Reclamation data that are available via online data services.
+This repository contains files that generate or support public web pages hosted by Reclamation and files that show snippets for how to request and use Reclamation data that are available via online data services.
 
 Available Pages:
 
