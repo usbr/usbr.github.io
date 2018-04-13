@@ -358,11 +358,51 @@ function buildMap() {
 		infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
 		infowindow.open(map);
 	});
-}		
+}	
+
+// Builds the Alarm Table
+function getAlarms()
+{
+	$('#alarmTable').html("");
+	var queryUrl = "https://www.usbr.gov/pn-bin/cbp/curalarm.pl?_=" + new Date().getTime();
+	jQuery.get(queryUrl, function(data) {
+		//alert(data);
+		var alarmData = data.split(/\r?\n|\r/);
+		var alarmTable = '<table>';
+		for(var count = 0; count<alarmData.length; count++)
+		{
+			var cellData = alarmData[count].split(",");
+			alarmTable += '<tr>';
+			for(var cellCount=0; cellCount<cellData.length; cellCount++)
+			{
+				if(count === 0)
+				{
+					alarmTable += '<th>'+cellData[cellCount]+'</th>';
+				}
+				else
+				{
+					alarmTable += '<td>'+cellData[cellCount]+'</td>';
+				}
+			}
+			alarmTable += '</tr>';
+		}
+		alarmTable += '</table>';
+		$('#alarmTable').html(alarmTable);
+	}).fail(function() {
+		alert('Alarm data service error...'); 
+	});
+}
+
 </script>
 		
-		<!-- <script async defer src="https://maps-api-ssl.google.com/maps/api/js?client=gme-usgovdeptoftheinterior&sensor=false&v=3&callback=buildMap"> </script>-->		
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCQDeQUpjqumnTIJmrzSy2ItBr73ABTIs&callback=buildMap"> </script>			
+		<!-- <script async defer src="https://maps-api-ssl.google.com/maps/api/js?client=gme-usgovdeptoftheinterior&sensor=false&v=3&callback=buildMap"> </script>-->	
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCQDeQUpjqumnTIJmrzSy2ItBr73ABTIs&callback=buildMap"> </script>		
+
+<BR>
+<button onclick="getAlarms()"><strong><font color="red">(Re)Query Alarms</font></strong></button>
+<div id="alarmTable"></div>
+
+		
 		
 		<br><br>
 		This system uses data stored in the Hydromet databases. Columbia Basin Project (CBP) data in Hydromet is copied directly from the CBP SCADA system at regular intervals. Data edits and modifications within the CBP internal databases may not be reflected in the Hydromet databases and would therefore not be reflected on this system. Official and operational data are solely contained within the CBP internal databases. Contact the Ephrata Field Office for questions regarding official CBP data.
