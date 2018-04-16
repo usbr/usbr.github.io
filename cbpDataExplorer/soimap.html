@@ -360,6 +360,12 @@ function buildMap() {
 	});
 }	
 
+
+var graphJSON;
+$.getJSON('soiGraphs.json', function(json) {
+  graphJSON = json;
+});
+ 
 // Builds the Alarm Table
 function getAlarms()
 {
@@ -381,7 +387,22 @@ function getAlarms()
 				}
 				else
 				{
-					alarmTable += '<td>'+cellData[cellCount]+'</td>';
+					siteUrl = cellData[cellCount];
+					if(cellCount === 0)
+					{
+						var siteName = siteUrl.replace("SITE","SITE ");
+						for(var graphIdx=0; graphIdx<graphJSON.graphs.length; graphIdx++)
+						{
+							var graphRow = graphJSON.graphs[graphIdx];
+							var graphTitle = JSON.stringify(graphRow.title).toUpperCase();
+							var graphGroup = graphRow.group;
+							if(graphTitle.indexOf(siteName) !== -1)
+							{
+								siteUrl = '<a href="soigraphs.html?group=' + graphGroup + '" target="_blank">' + siteName + '</a><br>'
+							}
+						}						
+					}
+					alarmTable += '<td>' + siteUrl + '</td>';
 				}
 			}
 			alarmTable += '</tr>';
