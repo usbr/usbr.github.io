@@ -296,11 +296,14 @@ String.prototype.replaceAll = function(search, replace) {
 // Function to build dygraph
 var buildDygraph = function(dataObject, yLabelArray, curveLabelArray, graphDivString, legendDivString, colorArray) 
 {
+	var containerString = "container" + graphDivString.substr(graphDivString.length - 1);
+	var containerDiv = document.getElementById(containerString);
+	containerDiv.style.display = "block";
 	var graphData = dataObject.documentElement.innerHTML;
 	new Dygraph(document.getElementById(graphDivString),
 		graphData, 
 		{ 	
-			fillGraph: false, highlightCircleSize: 5, pointSize: 1.5, ylabel: yLabelArray, 
+			fillGraph: false, highlightCircleSize: 5, pointSize: 1.5, ylabel: yLabelArray, connectSeparatedPoints: true,
 			strokeWidth: 1.5, height: 300, labelsDiv: document.getElementById(legendDivString), labels: curveLabelArray,
 			colors: colorArray, showRangeSelector: true, legend: 'always', axisLabelWidth: 70, rangeSelectorHeight: 25, 
 			rangeSelectorPlotFillColor: "#244A9F", rangeSelectorPlotStrokeColor: "#244A9F" 
@@ -318,6 +321,9 @@ var buildEmptyDygraph = function(graphDivString, legendDivString, graphIdx)
 			showRangeSelector: false, legend: 'always'
 		}
 	);
+	var containerString = "container" + graphDivString.substr(graphDivString.length - 1);
+	var containerDiv = document.getElementById(containerString);
+	containerDiv.style.display = "none";
 };
 // Builds the Query Output frame(s)
 function getData()
@@ -439,27 +445,27 @@ function getData()
 		<blockquote>
 		You may mouse-over the interactive chart to view data values at specific dates. Drag the edges of the range selector below each graph to zoom in and out of the graph.
 		<br>
-		<div style="border:1px solid #C0C0C0">
+		<div id="container0" style="border:1px solid #C0C0C0">
 			<div id="status0" style="width:100%; font-size:0.8em; padding-top:5px;"></div><br>
 			<div id="graphdiv0" style="width:95%; padding-top:5px;"></div><br>
 		</div>
 		<br>
-		<div style="border:1px solid #C0C0C0">
+		<div id="container1" style="border:1px solid #C0C0C0">
 			<div id="status1" style="width:100%; font-size:0.8em; padding-top:5px;"></div><br>
 			<div id="graphdiv1" style="width:95%; padding-top:5px;"></div><br>
 		</div>
 		<br>
-		<div style="border:1px solid #C0C0C0">
+		<div id="container2" style="border:1px solid #C0C0C0">
 			<div id="status2" style="width:100%; font-size:0.8em; padding-top:5px;"></div><br>
 			<div id="graphdiv2" style="width:95%; padding-top:5px;"></div><br>
 		</div>
 		<br>
-		<div style="border:1px solid #C0C0C0">
+		<div id="container3" style="border:1px solid #C0C0C0">
 			<div id="status3" style="width:100%; font-size:0.8em; padding-top:5px;"></div><br>
 			<div id="graphdiv3" style="width:95%; padding-top:5px;"></div><br>
 		</div>
 		<br>
-		<div style="border:1px solid #C0C0C0">
+		<div id="container4" style="border:1px solid #C0C0C0">
 			<div id="status4" style="width:100%; font-size:0.8em; padding-top:5px;"></div><br>
 			<div id="graphdiv4" style="width:95%; padding-top:5px;"></div><br>
 		</div>
@@ -478,11 +484,7 @@ function getData()
 		32 C Street NW<br>
 		Ephrata, WA 98823<br>
 		Phone: (509)754-0260<br>
-		<br><br>
-		
-		
-			
-					
+		<br><br>					
 
           <!-- #EndLibraryItem -->
 	</div>
@@ -595,7 +597,6 @@ $.getJSON('soiGraphs.json?_='+ new Date().getTime(), function(data){
 	if (val != null)
 	{ document.getElementById('sitename').options.namedItem(val).selected = true; }
 });
-
 </script>
 
 
