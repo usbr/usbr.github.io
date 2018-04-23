@@ -595,7 +595,10 @@ $.getJSON('soiGraphs.json?_='+ new Date().getTime(), function(data){
 	//set selected group from drop-down based on URL
 	var val = getURLParameter('group');
 	if (val != null)
-	{ document.getElementById('sitename').options.namedItem(val).selected = true; }
+	{ 
+		document.getElementById('sitename').options.namedItem(val).selected = true; 
+		getData();
+	}
 });
 </script>
 
