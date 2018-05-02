@@ -126,7 +126,7 @@ Function WriteToCombinedGraphFile(data, objFile, isObs, isHourly)
 	uboundOffset = 0
 	If (isHourly) Then	' THESE CONSTANTS ARE CALIBRATED TO THE CGI OUTPUTS SO THAT THE GRAPH CURVES OVERLAP
 		If (isObs) Then
-			uboundOffset = Hour(Now()) - 3
+			uboundOffset = 25 - Hour(Now())
 		Else
 			ithHourOffset = Hour(Now()) - 1
 		End If
