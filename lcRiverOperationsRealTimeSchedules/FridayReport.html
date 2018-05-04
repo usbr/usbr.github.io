@@ -411,8 +411,14 @@ if ( Modernizr.touch ) {
   {
     if (document.getElementById(bodyDivId).style.display == "none")
     {
-       document.getElementById(bodyDivId).style.display = "block";
-       document.getElementById(controlId).src = "https://www.usbr.gov/lc/region/g4000/riverops/dygraphs/TriangleDown.png";
+		document.getElementById(bodyDivId).style.display = "block";
+		document.getElementById(controlId).src = "https://www.usbr.gov/lc/region/g4000/riverops/dygraphs/TriangleDown.png";
+		if (bodyDivId == 'hooverDam')
+		{ buildMeadGraphs(); }
+		if (bodyDivId == 'davisDam')
+		{ buildDavisGraphs(); }
+		if (bodyDivId == 'parkerDam')
+		{ buildParkerGraphs(); }
     }
     else
     {
@@ -425,15 +431,17 @@ if ( Modernizr.touch ) {
 
 <!-- Build Historical Flow Chart -->
 <script type="text/javascript">
-//Call tabledata html page and embed into div
+//BUILD DATA TABLE
 $.ajax({
     url : "tableData.html",
     success : function(result){	
 		document.getElementById("tableData").innerHTML = result
 	}
 })
-//Call daily reservoir data html page and build graphs
-$.ajax({
+//BUILD MEAD GRAPHS
+function buildMeadGraphs()
+{
+	$.ajax({
     url : "reservoirData.html",
     success : function(result){	
 		g1 = new Dygraph(document.getElementById("elevDivHoover"),
@@ -474,6 +482,14 @@ $.ajax({
 				xRangePad: 10,
 				yRangePad: 100
 			});
+	}});  
+}
+//BUILD DAVIS GRAPHS
+function buildDavisGraphs()
+{
+	$.ajax({
+    url : "reservoirData.html",
+    success : function(result){	
 		g3 = new Dygraph(document.getElementById("elevDivDavis"),
 			result, 
 			{
@@ -512,6 +528,38 @@ $.ajax({
 				xRangePad: 10,
 				yRangePad: 100
 			});
+	}}); 
+	$.ajax({
+    url : "reservoirDataHourly.html",
+    success : function(result){	
+		g7 = new Dygraph(document.getElementById("flowDivDavisHourly"),
+			result, 
+			{
+				ylabel: 'Reservoir Release (cfs)', 
+				visibility: [true,false,true,false], 
+				fillGraph: true, 
+				showRangeSelector: false, 
+				legend: 'always', 
+				xlabel: 'Date', 
+				labelsSeparateLines: true, 
+				axisLabelWidth: 75,
+				colors: ["#244A9F","#244A9F","#CB9F5B","#CB9F5B"],
+				fillAlpha: 0.25, 
+				strokeWidth : 4,
+				highlightCircleSize: 7,
+				panEdgeFraction: 0.2,
+				xRangePad: 10,
+				yRangePad: 100,
+				connectSeparatedPoints: true
+			});
+	}});
+}
+//BUILD PARKER GRAPHS
+function buildParkerGraphs()
+{
+	$.ajax({
+    url : "reservoirData.html",
+    success : function(result){	
 		g5 = new Dygraph(document.getElementById("elevDivParker"),
 			result, 
 			{
@@ -550,34 +598,10 @@ $.ajax({
 				xRangePad: 10,
 				yRangePad: 100
 			});				
-		toggleDisplay('hooverDam', 'rawDataToggleImage2');
-	}
-});
-
-//Call hourly reservoir data html page and build graphs
-$.ajax({
+	}});
+	$.ajax({
     url : "reservoirDataHourly.html",
     success : function(result){	
-		g7 = new Dygraph(document.getElementById("flowDivDavisHourly"),
-			result, 
-			{
-				ylabel: 'Reservoir Release (cfs)', 
-				visibility: [true,false,true,false], 
-				fillGraph: true, 
-				showRangeSelector: false, 
-				legend: 'always', 
-				xlabel: 'Date', 
-				labelsSeparateLines: true, 
-				axisLabelWidth: 75,
-				colors: ["#244A9F","#244A9F","#CB9F5B","#CB9F5B"],
-				fillAlpha: 0.25, 
-				strokeWidth : 4,
-				highlightCircleSize: 7,
-				panEdgeFraction: 0.2,
-				xRangePad: 10,
-				yRangePad: 100,
-				connectSeparatedPoints: true
-			});
 		g8 = new Dygraph(document.getElementById("flowDivParkerHourly"),
 			result, 
 			{
@@ -598,10 +622,12 @@ $.ajax({
 				yRangePad: 100,
 				connectSeparatedPoints: true
 			});		
-		toggleDisplay('davisDam', 'rawDataToggleImage3');
-		toggleDisplay('parkerDam', 'rawDataToggleImage4');
-	}
-});
+	}});
+}
+
+toggleDisplay('hooverDam', 'rawDataToggleImage2');
+toggleDisplay('davisDam', 'rawDataToggleImage3');
+toggleDisplay('parkerDam', 'rawDataToggleImage4');
 </script>
  
 
