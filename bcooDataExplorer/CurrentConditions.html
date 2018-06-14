@@ -277,16 +277,65 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
           <div class="Main-well">
 			 <h2>Lower Colorado River Hourly Conditions</h2>
-			 The data and information shown on this page are collected by an automated process and are provisional in nature. Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences. You may access the data used by this page in a machine readable (JSON) format at <a href="https://www.usbr.gov/lc/region/g4000/riverops/webreports/hourlyweb.json">this link</a>. The link and the data on this page are updated hourly with our most recent hourly data for the last 7 days. You may use the slider below to update the map and the tables with recent hourly data (right) or with hourly data going back 7 days (left).<br><br>		 
+			 The data and information shown on this page are collected by an automated process and are provisional in nature. Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences. You may access the data used by this page in a machine readable (JSON) format at <a href="https://www.usbr.gov/lc/region/g4000/riverops/webreports/hourlyweb.json">this link</a>. The link and the data on this page are updated hourly with our most recent hourly data for the last 7 days. You may use the slider below to update the map and the tables with recent hourly data (right) or with hourly data going back 7 days (left).<br>	 
 			<!-- CONTENT START --> 
+			<!--GOOGLE MAP-->
 			
-			<div id="map"></div>
-			
+			<!--RESERVOIR FILL GAUGES-->
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">				
+			<tr bgcolor="F2F2F2" align="left">
+				<td width="20%" valign="middle">
+					<center>			
+					<strong>Lake Mead</strong>
+					<br><br>
+					<svg id="meadGauge" width="100" height="100"></svg>				
+					</center>		
+				</td>
+				<td rowspan="0" id="map"></td>	
+			</tr>		
+			<tr bgcolor="F2F2F2" align="left">
+				<td width="20%" valign="middle">
+					<center>			
+					<strong>Lake Mohave</strong>
+					<br><br>
+					<svg id="mhveGauge" width="75" height="75"></svg>
+					</center>			
+				</td>	
+			</tr>		
+			<tr bgcolor="F2F2F2" align="left">
+				<td width="20%" valign="middle">
+					<center>			
+					<strong>Lake Havasu</strong>
+					<br><br>
+					<svg id="hvsuGauge" width="75" height="75"></svg>
+					</center>			
+				</td>
+			</tr>		
+			<tr bgcolor="F2F2F2" align="left">
+				<td width="20%" valign="middle">
+					<center>			
+					<strong>Brock</strong>
+					<br><br>
+					<svg id="brckGauge" width="60" height="60"></svg>
+					</center>			
+				</td>
+			</tr>		
+			<tr bgcolor="F2F2F2" align="left">
+				<td width="20%" valign="middle">
+					<center>			
+					<strong>Senator Wash</strong>
+					<br><br>
+					<svg id="washGauge" width="60" height="60"></svg>
+					</center>			
+				</td>
+			</tr>
+			</table>			
+			<!--DATE SLIDER-->
 			<div class="slidecontainer">
 				<input type="range" min="0" max="192" value="192" class="slider" id="tSlider">
 				<font color='red'><p>Date: <span id="tSliderValue"></span></p></font>
 			</div>
-
+			<!--DATA TABLES-->
 			<h3>Reservoir Conditions</h3>
 			<div id="resTable"></div>
 			<h3>River Flows</h3>
@@ -304,13 +353,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="https://www.usbr.gov/js/waterops/d3.v3.min.js"></script>
+<script src="https://www.usbr.gov/js/waterops/liquidFillGauge.js"></script>
+
 
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCQDeQUpjqumnTIJmrzSy2ItBr73ABTIs&callback=buildMap"> </script>	
 <!--<script async defer src="https://maps-api-ssl.google.com/maps/api/js?client=gme-usgovdeptoftheinterior&sensor=false&v=3&callback=buildMap"> </script>	-->
 
 <script>
-
 // DEFINE GLOBAL VARIABLES
 var slider = document.getElementById("tSlider");
 var output = document.getElementById("tSliderValue");
@@ -319,9 +370,16 @@ var map;
 var mapCenter = {lat: 34.410294, lng: -114.671499};
 var jsonData;
 var markers = [];
+var config1 = liquidFillGaugeDefaultSettings();
+	config1.circleColor = "#244A9F";
+	config1.textColor = "#CB9F5B";
+	config1.waveTextColor = "#CB9F5B";
+	config1.waveColor = "#244A9F";
+	config1.circleThickness = 0.2;
+	config1.textVertPosition = 0.2;
+	config1.waveAnimateTime = 1500;
 
 // GOOGLE MAPS API CODE FOR DYNAMICALLY WORKING WITH MARKERS
-
 // Adds a marker to the map and push to the array.
 function addMarker(locCoord, textLabel) {
   //var marker = new google.maps.Marker({
@@ -337,8 +395,10 @@ function addMarker(locCoord, textLabel) {
   		text: textLabel + ' cfs',
   	},
   	icon: {
-  			path: google.maps.SymbolPath.CIRCLE,
-  			scale: 0
+		labelOrigin: new google.maps.Point(0, 5),
+  		path: google.maps.SymbolPath.CIRCLE,
+  		scale: 2,
+		strokeColor: 'red'		
   	}
   });  
   markers.push(m);
@@ -373,7 +433,7 @@ function buildMap()
 {
 	map = new google.maps.Map(document.getElementById('map'), 
 		{
-			zoom: 7, 
+			zoom: 7.5, 
 			maxZoom:15,
 			minZoom:7,
 			center: mapCenter,
@@ -469,7 +529,7 @@ function getJsonIndexBySdi(json, sdi) {
     return foundIdx;
 }
 
-// FUNCTION THAT DYNAMICALLY POPULATES THE DATA TABLE
+// DYNAMICALLY POPULATES THE DATA TABLE, UPDATES THE MAP, AND UPDATES THE FILL GAUGES
 function getData(data, tIndex) {
 
 	deleteMarkers();
@@ -482,8 +542,8 @@ function getData(data, tIndex) {
 		output.innerHTML = 'Most Recent Data';
 	}	
 	// BUILD RESERVOIR TABLE
-	var resJsonIdx = [1930,1721,2100,2086,2101,2087,3415,20579,21289,21326,21294];
-	var resCode = ["HOVR_FB","XXX","DAVS_FB","XXX","PRKR_FB","XXX","XXX","XXX","XXX","XXX","XXX"];
+	var resJsonIdx = [1930,1721,2100,2086,2101,2087,3415,20579,3405,21289,21326,21294];
+	var resCode = ["HOVR_FB","XXX","DAVS_FB","XXX","PRKR_FB","XXX","XXX","XXX","XXX","XXX","XXX","XXX"];
 	var resTab = "<table style='width:100%'><tr><th>Reservoir</th><th>Last Data Value</th><th></th></tr>";
 	for (var i = 0; i < resJsonIdx.length; i++) {
 		var resIndex = getJsonIndexBySdi(data, resJsonIdx[i]);		
@@ -496,6 +556,29 @@ function getData(data, tIndex) {
 			resLink = "<a href='https://www.usbr.gov/lc/region/g4000/riverops/" + resCode[i] + "_CurrentDay_Hourly.html'>" + data.Series[resIndex].SiteName + "</a>";
 		}
 		resTab += "<tr><td>" + resLink + "</td><td>" + data.Series[resIndex].Data[lastIdx].t + "</td><td>" + Math.round(data.Series[resIndex].Data[lastIdx].v * 100) / 100 + ' ' + data.Series[resIndex].DataTypeUnit + "</td><td>" + data.Series[resIndex].DataTypeName + "</td></tr>";
+		
+		// BUILD RESERVOIR FILL GAUGES
+		if (resJsonIdx[i] == 1721) {
+			document.getElementById("meadGauge").innerHTML = "";
+			var gauge1 = loadLiquidFillGauge("meadGauge", Math.floor(100*data.Series[resIndex].Data[lastIdx].v/26120000), config1);				
+		}
+		if (resJsonIdx[i] == 2086) {
+			document.getElementById("mhveGauge").innerHTML = "";
+			var gauge2 = loadLiquidFillGauge("mhveGauge", Math.floor(100*data.Series[resIndex].Data[lastIdx].v/1809800), config1);				
+		}
+		if (resJsonIdx[i] == 2087) {
+			document.getElementById("hvsuGauge").innerHTML = "";
+			var gauge3 = loadLiquidFillGauge("hvsuGauge", Math.floor(100*data.Series[resIndex].Data[lastIdx].v/619400), config1);				
+		}
+		if (resJsonIdx[i] == 21289) {
+			document.getElementById("brckGauge").innerHTML = "";
+			var gauge3 = loadLiquidFillGauge("brckGauge", Math.floor(100*data.Series[resIndex].Data[lastIdx].v/8440), config1);				
+		}
+		if (resJsonIdx[i] == 3405) {
+			document.getElementById("washGauge").innerHTML = "";
+			var gauge3 = loadLiquidFillGauge("washGauge", Math.floor(100*(data.Series[resIndex].Data[lastIdx].v-1852)/(9144-1852)), config1);				
+		}
+		
 		if (tIndex == 999) {
 			var lastIdx = data.Series[resIndex].Data.reverse().findIndex(checkNotBlank);				
 		}	
@@ -553,8 +636,6 @@ $.getJSON('https://www.usbr.gov/lc/region/g4000/riverops/webreports/hourlyweb.js
 	jsonData = data;
 	getData(jsonData, 999);
 });
-
-
 </script>
 
 <div><!-- #BeginLibraryItem "/library/footer.lbi" -->
