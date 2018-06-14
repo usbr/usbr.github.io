@@ -279,7 +279,6 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 			 <h2>Lower Colorado River Hourly Conditions</h2>
 			 The data and information shown on this page are collected by an automated process and are provisional in nature. Users are cautioned to carefully consider the provisional nature of the information before using it for decisions that concern personal or public safety or the conduct of business that involves substantial monetary or operational consequences. You may access the data used by this page in a machine readable (JSON) format at <a href="https://www.usbr.gov/lc/region/g4000/riverops/webreports/hourlyweb.json">this link</a>. The link and the data on this page are updated hourly with our most recent hourly data for the last 7 days. You may use the slider below to update the map and the tables with recent hourly data (right) or with hourly data going back 7 days (left).<br>	 
 			<!-- CONTENT START --> 
-			<!--GOOGLE MAP-->
 			
 			<!--RESERVOIR FILL GAUGES-->
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">				
@@ -290,8 +289,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<br><br>
 					<svg id="meadGauge" width="100" height="100"></svg>				
 					</center>		
-				</td>
-				<td rowspan="0" id="map"></td>	
+				</td>				
+				<!--GOOGLE MAP-->
+				<td rowspan="5" id="map"></td>	
 			</tr>		
 			<tr bgcolor="F2F2F2" align="left">
 				<td width="20%" valign="middle">
@@ -328,13 +328,17 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 					<svg id="washGauge" width="60" height="60"></svg>
 					</center>			
 				</td>
+			</tr>	
+			<tr bgcolor="F2F2F2" align="right">
+				<td colspan="2" valign="middle">					
+					<div class="slidecontainer">
+						<strong><font color='red'><p>Date: <span id="tSliderValue"></span></p></font></strong>
+						<input type="range" min="0" max="192" value="192" class="slider" id="tSlider">
+					</div>
+				</td>
 			</tr>
 			</table>			
 			<!--DATE SLIDER-->
-			<div class="slidecontainer">
-				<input type="range" min="0" max="192" value="192" class="slider" id="tSlider">
-				<font color='red'><p>Date: <span id="tSliderValue"></span></p></font>
-			</div>
 			<!--DATA TABLES-->
 			<h3>Reservoir Conditions</h3>
 			<div id="resTable"></div>
@@ -393,6 +397,8 @@ function addMarker(locCoord, textLabel) {
   	label: {
   		color: 'red',
   		text: textLabel + ' cfs',
+		fontWeight: 'bold',
+		fontFamily: 'monospace'
   	},
   	icon: {
 		labelOrigin: new google.maps.Point(0, 5),
@@ -503,7 +509,6 @@ function buildMap()
 			]
 		}
 	);	
-	
 	map.setCenter(mapCenter);
 }
 
@@ -539,7 +544,7 @@ function getData(data, tIndex) {
 		output.innerHTML = data.Series[0].Data[Math.abs(tIndex)].t;
 	}	
 	else {
-		output.innerHTML = 'Most Recent Data';
+		output.innerHTML = 'Most recent data as of ' + new Date().toLocaleString();
 	}	
 	// BUILD RESERVOIR TABLE
 	var resJsonIdx = [1930,1721,2100,2086,2101,2087,3415,20579,3405,21289,21326,21294];
